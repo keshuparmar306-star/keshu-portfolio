@@ -3,469 +3,2904 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Keshu Parmar — Video Editor & Content Creator</title>
-<meta name="description" content="Keshu Parmar — Professional Video Editor & Content Creator. Founder of Quick Media.">
+
+<title>Keshu Parmar — Professional Video Editor & Founder of Quick Media</title>
+
+<meta name="description" content="Keshu Parmar — Professional Video Editor & Founder of Quick Media. Cinematic, retention-focused video editing for creators and brands.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
 :root{
   --bg:#08080c;
   --surface:#101016;
-  --surface-2:#15131d;
+  --surface2:#15131d;
   --text:#f7f5fb;
-  --muted:#a29daa;
+  --muted:#9d98a7;
   --line:rgba(255,255,255,.09);
+
   --purple:#b79cff;
-  --purple-2:#8060d6;
+  --purple2:#8060d6;
+
+  --green:#25D366;
+  --green-dark:#128C7E;
+
   --max:1440px;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   background:
-    radial-gradient(700px 500px at 75% -5%,rgba(142,94,235,.22),transparent 65%),
-    radial-gradient(600px 500px at -10% 35%,rgba(91,61,150,.12),transparent 65%),
+    radial-gradient(
+      700px 500px at 80% -5%,
+      rgba(142,94,235,.22),
+      transparent 65%
+    ),
+    radial-gradient(
+      600px 500px at -10% 35%,
+      rgba(91,61,150,.12),
+      transparent 65%
+    ),
     var(--bg);
+
   color:var(--text);
   font-family:"DM Sans",sans-serif;
   overflow-x:hidden;
 }
-a{text-decoration:none;color:inherit}
-button{font:inherit}
-.container{width:min(var(--max),90%);margin:auto}
 
-/* NAV */
+body:before{
+  content:"";
+  position:fixed;
+  width:500px;
+  height:500px;
+  border-radius:50%;
+  background:rgba(183,156,255,.035);
+  filter:blur(100px);
+  pointer-events:none;
+  left:-200px;
+  bottom:-200px;
+  animation:floatGlow 12s ease-in-out infinite alternate;
+}
+
+@keyframes floatGlow{
+  from{transform:translate(0,0) scale(1)}
+  to{transform:translate(120px,-100px) scale(1.2)}
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+button{
+  font:inherit;
+}
+
+.container{
+  width:min(var(--max),90%);
+  margin:auto;
+}
+
+/* =========================
+NAVIGATION
+========================= */
+
 .nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:100;
+
   border-bottom:1px solid rgba(255,255,255,.06);
+
   background:rgba(8,8,12,.72);
+
   backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
 }
+
 .nav-inner{
-  width:min(var(--max),90%);height:78px;margin:auto;
-  display:flex;align-items:center;justify-content:space-between;
+  width:min(var(--max),90%);
+  height:78px;
+  margin:auto;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
-.logo{font:700 17px "Space Grotesk";letter-spacing:-.04em}
-.logo span{color:var(--purple);font-weight:500}
-.nav-links{display:flex;gap:28px;align-items:center}
-.nav-links a{font-size:11px;letter-spacing:.1em;color:#aaa5b2;transition:.25s}
-.nav-links a:hover{color:#fff}
-.nav-cta{
-  padding:12px 18px;border:1px solid var(--line);border-radius:100px;
-  font-size:10px;letter-spacing:.08em;font-weight:700;
+
+.logo{
+  font:700 17px "Space Grotesk";
+  letter-spacing:-.04em;
+}
+
+.logo span{
+  color:var(--purple);
+  font-weight:500;
+}
+
+.nav-links{
+  display:flex;
+  gap:28px;
+  align-items:center;
+}
+
+.nav-links a{
+  font-size:10px;
+  letter-spacing:.1em;
+  color:#aaa5b2;
   transition:.25s;
 }
-.nav-cta:hover{background:var(--purple);color:#120d19;border-color:var(--purple)}
-.menu{display:none;background:none;border:0;color:#fff;font-size:24px}
 
-/* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;padding:150px 0 90px}
-.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center}
-.kicker{font-size:11px;letter-spacing:.18em;color:var(--purple);font-weight:700;margin-bottom:24px}
+.nav-links a:hover{
+  color:#fff;
+}
+
+.nav-cta{
+  padding:12px 18px;
+
+  border:1px solid var(--line);
+  border-radius:100px;
+
+  font-size:10px;
+  letter-spacing:.08em;
+  font-weight:700;
+
+  transition:.3s;
+}
+
+.nav-cta:hover{
+  background:var(--purple);
+  color:#120d19;
+  border-color:var(--purple);
+  transform:translateY(-2px);
+}
+
+.menu{
+  display:none;
+  background:none;
+  border:0;
+  color:#fff;
+  font-size:24px;
+}
+
+/* =========================
+HERO
+========================= */
+
+.hero{
+  min-height:100vh;
+
+  display:flex;
+  align-items:center;
+
+  padding:160px 0 100px;
+
+  position:relative;
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+
+  width:450px;
+  height:450px;
+
+  right:-180px;
+  top:15%;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(183,156,255,.18),
+      transparent 68%
+    );
+
+  filter:blur(20px);
+
+  animation:heroGlow 8s ease-in-out infinite alternate;
+
+  pointer-events:none;
+}
+
+@keyframes heroGlow{
+  from{
+    transform:translateY(0) scale(1);
+  }
+
+  to{
+    transform:translateY(-40px) scale(1.15);
+  }
+}
+
+.hero-content{
+  max-width:1050px;
+  position:relative;
+  z-index:2;
+}
+
+.kicker{
+  font-size:11px;
+  letter-spacing:.18em;
+  color:var(--purple);
+  font-weight:700;
+  margin-bottom:24px;
+
+  animation:fadeUp .8s ease both;
+}
+
 h1{
-  font-family:"Space Grotesk";font-size:clamp(58px,8vw,126px);
-  line-height:.88;letter-spacing:-.075em;font-weight:600;
+  font-family:"Space Grotesk";
+
+  font-size:clamp(58px,8vw,126px);
+
+  line-height:.88;
+
+  letter-spacing:-.075em;
+
+  font-weight:600;
+
+  animation:fadeUp .9s .1s ease both;
 }
-h1 em{font-style:normal;color:var(--purple)}
-.hero-copy{max-width:650px;margin-top:30px;color:var(--muted);font-size:17px;line-height:1.75}
-.hero-actions{display:flex;gap:12px;margin-top:35px;flex-wrap:wrap}
+
+h1 em{
+  font-style:normal;
+  color:var(--purple);
+}
+
+.hero-copy{
+  max-width:680px;
+
+  margin-top:32px;
+
+  color:var(--muted);
+
+  font-size:17px;
+
+  line-height:1.75;
+
+  animation:fadeUp .9s .2s ease both;
+}
+
+.hero-actions{
+  display:flex;
+  gap:12px;
+
+  margin-top:35px;
+
+  flex-wrap:wrap;
+
+  animation:fadeUp .9s .3s ease both;
+}
+
 .btn{
-  display:inline-flex;align-items:center;justify-content:center;
-  padding:14px 21px;border-radius:100px;border:1px solid var(--line);
-  font-size:10px;letter-spacing:.11em;font-weight:700;transition:.25s;
-}
-.btn-primary{background:var(--purple);color:#100c17;border-color:var(--purple)}
-.btn:hover{transform:translateY(-2px);border-color:var(--purple)}
-.hero-reel{
-  aspect-ratio:16/10;border-radius:22px;overflow:hidden;
-  border:1px solid var(--line);background:linear-gradient(145deg,#181521,#0d0d12);
-  position:relative;box-shadow:0 30px 100px rgba(72,42,128,.18);
-}
-.hero-reel:before{
-  content:"";position:absolute;inset:12%;border-radius:50%;
-  background:radial-gradient(circle,rgba(183,156,255,.28),transparent 68%);
-  filter:blur(25px);
-}
-.reel-label{position:absolute;left:22px;bottom:20px;z-index:2;font-size:10px;letter-spacing:.15em;color:#c9c2d3}
-.reel-play{
-  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-  width:68px;height:68px;border-radius:50%;border:1px solid rgba(255,255,255,.25);
-  display:grid;place-items:center;background:rgba(255,255,255,.08);font-size:17px;
+  display:inline-flex;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:14px 21px;
+
+  border-radius:100px;
+
+  border:1px solid var(--line);
+
+  font-size:10px;
+
+  letter-spacing:.11em;
+
+  font-weight:700;
+
+  transition:.3s;
+
+  position:relative;
+  overflow:hidden;
 }
 
-/* STATS */
-.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr)}
-.stat{padding:27px 0}
-.stat:not(:last-child){border-right:1px solid var(--line)}
-.stat b{display:block;font:600 28px "Space Grotesk";margin-bottom:5px}
-.stat span{font-size:9px;letter-spacing:.14em;color:var(--muted)}
+.btn:before{
+  content:"";
 
-/* SECTIONS */
-section{padding:125px 0}
-.section-top{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:40px}
-.label{font-size:10px;letter-spacing:.17em;color:var(--purple);font-weight:700}
-.section-title{font:600 clamp(42px,5.5vw,82px) "Space Grotesk";letter-spacing:-.06em;line-height:.94;margin-top:13px}
-.section-title em{font-style:normal;color:var(--purple)}
-.section-desc{max-width:430px;color:var(--muted);line-height:1.7;font-size:14px}
+  position:absolute;
 
-/* INTRO */
-.intro-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:65px;align-items:center}
-.video-box{
-  aspect-ratio:16/9;background:#0c0c11;border:1px solid var(--line);
-  border-radius:20px;overflow:hidden;position:relative;
-}
-.video-box video{width:100%;height:100%;display:block;object-fit:contain;background:#000}
-.placeholder{
-  position:absolute;inset:0;display:grid;place-items:center;
-  background:radial-gradient(circle at center,rgba(120,81,205,.18),transparent 55%);
-  color:#7e7886;font-size:11px;letter-spacing:.12em;
-}
-.intro-text h3{font:600 47px "Space Grotesk";letter-spacing:-.05em;line-height:1}
-.intro-text h3 em{font-style:normal;color:var(--purple)}
-.intro-text p{color:var(--muted);font-size:15px;line-height:1.8;margin-top:22px}
+  inset:0;
 
-/* FILTERS + CARDS */
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:25px}
-.filter{
-  border:1px solid var(--line);background:transparent;color:#8e8996;
-  border-radius:100px;padding:9px 13px;font-size:9px;letter-spacing:.09em;
-  cursor:pointer;transition:.2s;
-}
-.filter.active,.filter:hover{color:#fff;border-color:var(--purple);background:rgba(183,156,255,.07)}
-.video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.card{
-  background:var(--surface);border:1px solid var(--line);border-radius:17px;overflow:hidden;
-  transition:.3s;cursor:pointer;
-}
-.card:hover{transform:translateY(-5px);border-color:rgba(183,156,255,.45)}
-.thumb{
-  aspect-ratio:16/9;background:
-    radial-gradient(circle at 70% 30%,rgba(183,156,255,.22),transparent 35%),
-    linear-gradient(135deg,#17141f,#0d0d12);
-  position:relative;overflow:hidden;
-}
-.thumb:after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(135deg,transparent 35%,rgba(255,255,255,.035));
-}
-.thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.play{
-  position:absolute;z-index:2;left:15px;bottom:15px;
-  width:39px;height:39px;border-radius:50%;display:grid;place-items:center;
-  background:#fff;color:#111;font-size:11px;
-}
-.card-info{padding:16px}
-.card-title{font-size:14px;font-weight:600}
-.card-meta{font-size:10px;color:var(--muted);margin-top:7px}
-.short-grid{grid-template-columns:repeat(5,1fr)}
-.short-grid .thumb{aspect-ratio:9/16}
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.15),
+    transparent
+  );
 
-/* ABOUT */
-.about{border-top:1px solid var(--line)}
-.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:80px}
-.about-big{font:600 clamp(38px,5vw,72px) "Space Grotesk";letter-spacing:-.065em;line-height:.98}
-.about-big em{font-style:normal;color:var(--purple)}
-.about-copy p{color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:18px}
-.tools{display:flex;gap:10px;margin-top:30px}
-.tool{
-  width:58px;height:58px;border:1px solid var(--line);border-radius:13px;
-  display:grid;place-items:center;font:700 17px "Space Grotesk";
-  background:rgba(255,255,255,.02)
-}
-.tool.ai{font-size:13px;color:var(--purple)}
+  transform:translateX(-100%);
 
-/* CONTACT */
-.contact{
-  padding-bottom:140px;border-top:1px solid var(--line);
+  transition:.6s;
+}
+
+.btn:hover:before{
+  transform:translateX(100%);
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  border-color:var(--purple);
+}
+
+.btn-primary{
+  background:var(--purple);
+  color:#100c17;
+
+  border-color:var(--purple);
+}
+
+/* =========================
+STATS
+========================= */
+
+.stats-wrap{
+  display:flex;
+  justify-content:center;
+}
+
+.stats{
+  width:100%;
+
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
   text-align:center;
 }
-.contact .section-desc{margin:25px auto 0}
-.contact-actions{justify-content:center;margin-top:35px}
-.socials{display:flex;justify-content:center;gap:25px;margin-top:30px;color:#8e8996;font-size:12px}
-.socials a:hover{color:#fff}
 
-/* FOOTER */
-footer{border-top:1px solid var(--line);padding:30px 5%;display:flex;justify-content:space-between;gap:20px;color:#79747f;font-size:10px;letter-spacing:.04em}
-footer strong{color:#eee}
+.stat{
+  padding:30px 15px;
 
-/* LIGHTBOX */
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+.stat:not(:last-child){
+  border-right:1px solid var(--line);
+}
+
+.stat b{
+  display:block;
+
+  font:600 32px "Space Grotesk";
+
+  margin-bottom:6px;
+
+  letter-spacing:-.04em;
+}
+
+.stat span{
+  font-size:9px;
+
+  letter-spacing:.14em;
+
+  color:var(--muted);
+}
+
+/* =========================
+SECTIONS
+========================= */
+
+section{
+  padding:125px 0;
+}
+
+.section-top{
+  display:flex;
+
+  justify-content:space-between;
+
+  gap:40px;
+
+  align-items:end;
+
+  margin-bottom:40px;
+}
+
+.label{
+  font-size:10px;
+
+  letter-spacing:.17em;
+
+  color:var(--purple);
+
+  font-weight:700;
+}
+
+.section-title{
+  font:600 clamp(42px,5.5vw,82px) "Space Grotesk";
+
+  letter-spacing:-.06em;
+
+  line-height:.94;
+
+  margin-top:13px;
+}
+
+.section-title em{
+  font-style:normal;
+  color:var(--purple);
+}
+
+.section-desc{
+  max-width:430px;
+
+  color:var(--muted);
+
+  line-height:1.7;
+
+  font-size:14px;
+}
+
+/* =========================
+INTRO
+========================= */
+
+.intro{
+  padding-top:100px;
+}
+
+.intro-grid{
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:80px;
+
+  align-items:center;
+}
+
+.intro-visual{
+  min-height:430px;
+
+  border-radius:24px;
+
+  border:1px solid var(--line);
+
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(183,156,255,.18),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      #181521,
+      #0b0b10
+    );
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+.intro-visual:before{
+  content:"";
+
+  position:absolute;
+
+  width:280px;
+  height:280px;
+
+  border-radius:50%;
+
+  background:rgba(183,156,255,.1);
+
+  filter:blur(50px);
+
+  left:50%;
+  top:50%;
+
+  transform:translate(-50%,-50%);
+
+  animation:visualPulse 6s ease-in-out infinite;
+}
+
+@keyframes visualPulse{
+  0%,100%{
+    transform:translate(-50%,-50%) scale(1);
+  }
+
+  50%{
+    transform:translate(-50%,-50%) scale(1.25);
+  }
+}
+
+.visual-content{
+  position:absolute;
+
+  inset:0;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:center;
+
+  align-items:center;
+
+  text-align:center;
+
+  z-index:2;
+}
+
+.visual-content strong{
+  font:600 58px "Space Grotesk";
+
+  letter-spacing:-.06em;
+}
+
+.visual-content span{
+  margin-top:10px;
+
+  color:var(--muted);
+
+  font-size:10px;
+
+  letter-spacing:.2em;
+}
+
+.intro-text h3{
+  font:600 55px "Space Grotesk";
+
+  letter-spacing:-.05em;
+
+  line-height:1;
+}
+
+.intro-text h3 em{
+  font-style:normal;
+  color:var(--purple);
+}
+
+.intro-text p{
+  color:var(--muted);
+
+  font-size:15px;
+
+  line-height:1.8;
+
+  margin-top:22px;
+}
+
+/* =========================
+VIDEO FILTERS
+========================= */
+
+.filters{
+  display:flex;
+
+  gap:8px;
+
+  flex-wrap:wrap;
+
+  margin-bottom:25px;
+}
+
+.filter{
+  border:1px solid var(--line);
+
+  background:transparent;
+
+  color:#8e8996;
+
+  border-radius:100px;
+
+  padding:9px 13px;
+
+  font-size:9px;
+
+  letter-spacing:.09em;
+
+  cursor:pointer;
+
+  transition:.25s;
+}
+
+.filter.active,
+.filter:hover{
+  color:#fff;
+
+  border-color:var(--purple);
+
+  background:rgba(183,156,255,.07);
+
+  transform:translateY(-2px);
+}
+
+/* =========================
+VIDEO GRID
+========================= */
+
+.video-grid{
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:18px;
+}
+
+.card{
+  background:var(--surface);
+
+  border:1px solid var(--line);
+
+  border-radius:17px;
+
+  overflow:hidden;
+
+  transition:.4s;
+
+  cursor:pointer;
+
+  opacity:0;
+
+  transform:translateY(25px);
+}
+
+.card.visible{
+  opacity:1;
+
+  transform:translateY(0);
+}
+
+.card:hover{
+  transform:translateY(-8px);
+
+  border-color:rgba(183,156,255,.5);
+
+  box-shadow:
+    0 25px 70px rgba(76,44,130,.2);
+}
+
+.thumb{
+  aspect-ratio:16/9;
+
+  background:
+    radial-gradient(
+      circle at 70% 30%,
+      rgba(183,156,255,.22),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #17141f,
+      #0d0d12
+    );
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+.thumb:before{
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+    linear-gradient(
+      120deg,
+      transparent 30%,
+      rgba(255,255,255,.05),
+      transparent 70%
+    );
+
+  transform:translateX(-100%);
+
+  transition:.8s;
+}
+
+.card:hover .thumb:before{
+  transform:translateX(100%);
+}
+
+.thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.play{
+  position:absolute;
+
+  z-index:2;
+
+  left:15px;
+  bottom:15px;
+
+  width:39px;
+  height:39px;
+
+  border-radius:50%;
+
+  display:grid;
+  place-items:center;
+
+  background:#fff;
+
+  color:#111;
+
+  font-size:11px;
+
+  transition:.3s;
+}
+
+.card:hover .play{
+  transform:scale(1.12);
+}
+
+.card-info{
+  padding:16px;
+}
+
+.card-title{
+  font-size:14px;
+  font-weight:600;
+}
+
+.card-meta{
+  font-size:10px;
+
+  color:var(--muted);
+
+  margin-top:7px;
+}
+
+.short-grid{
+  grid-template-columns:repeat(5,1fr);
+}
+
+.short-grid .thumb{
+  aspect-ratio:9/16;
+}
+
+/* LOAD MORE */
+
+.load-more-wrap{
+  display:flex;
+
+  justify-content:center;
+
+  margin-top:35px;
+}
+
+.load-more{
+  background:transparent;
+
+  color:#fff;
+
+  border:1px solid var(--line);
+
+  padding:13px 25px;
+
+  border-radius:100px;
+
+  cursor:pointer;
+
+  font-size:10px;
+
+  letter-spacing:.12em;
+
+  transition:.3s;
+}
+
+.load-more:hover{
+  background:var(--purple);
+
+  color:#100c17;
+
+  border-color:var(--purple);
+
+  transform:translateY(-3px);
+}
+
+/* =========================
+CLIENT FEEDBACK
+========================= */
+
+.feedback-section{
+  border-top:1px solid var(--line);
+}
+
+.feedback-label{
+  font-size:10px;
+
+  letter-spacing:.17em;
+
+  color:var(--purple);
+
+  font-weight:700;
+}
+
+.feedback-title{
+  font:600 clamp(42px,5.5vw,82px) "Space Grotesk";
+
+  letter-spacing:-.06em;
+
+  line-height:.94;
+
+  margin-top:13px;
+}
+
+.feedback-title em{
+  font-style:normal;
+
+  color:var(--purple);
+}
+
+/* =========================
+ABOUT
+========================= */
+
+.about{
+  border-top:1px solid var(--line);
+}
+
+.about-grid{
+  display:grid;
+
+  grid-template-columns:1.1fr .9fr;
+
+  gap:80px;
+}
+
+.about-big{
+  font:600 clamp(38px,5vw,72px) "Space Grotesk";
+
+  letter-spacing:-.065em;
+
+  line-height:.98;
+}
+
+.about-big em{
+  font-style:normal;
+
+  color:var(--purple);
+}
+
+.about-copy p{
+  color:var(--muted);
+
+  font-size:15px;
+
+  line-height:1.8;
+
+  margin-bottom:18px;
+}
+
+.about-copy strong{
+  color:#fff;
+}
+
+/* =========================
+TOOLS
+========================= */
+
+.tools{
+  display:flex;
+
+  gap:12px;
+
+  margin-top:32px;
+
+  flex-wrap:wrap;
+}
+
+.tool{
+  width:68px;
+  height:68px;
+
+  border-radius:16px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:1px solid rgba(255,255,255,.1);
+
+  background:rgba(255,255,255,.025);
+
+  transition:.35s;
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+.tool:hover{
+  transform:translateY(-7px) rotate(-2deg);
+
+  border-color:rgba(255,255,255,.25);
+
+  box-shadow:0 20px 45px rgba(0,0,0,.3);
+}
+
+.tool-logo{
+  font:700 20px "Space Grotesk";
+}
+
+.tool-name{
+  font-size:7px;
+
+  letter-spacing:.08em;
+
+  margin-top:4px;
+
+  color:#aaa;
+}
+
+/* Premiere */
+
+.tool.pr{
+  background:
+    linear-gradient(
+      145deg,
+      rgba(153,74,255,.25),
+      rgba(60,15,100,.15)
+    );
+}
+
+.tool.pr .tool-logo{
+  color:#9990ff;
+}
+
+/* After Effects */
+
+.tool.ae{
+  background:
+    linear-gradient(
+      145deg,
+      rgba(154,83,255,.25),
+      rgba(48,20,100,.15)
+    );
+}
+
+.tool.ae .tool-logo{
+  color:#b99cff;
+}
+
+/* Photoshop */
+
+.tool.ps{
+  background:
+    linear-gradient(
+      145deg,
+      rgba(35,140,255,.22),
+      rgba(15,50,100,.15)
+    );
+}
+
+.tool.ps .tool-logo{
+  color:#55aaff;
+}
+
+/* AI */
+
+.tool.ai{
+  background:
+    linear-gradient(
+      145deg,
+      rgba(183,156,255,.25),
+      rgba(128,96,214,.12)
+    );
+}
+
+.tool.ai .tool-logo{
+  color:#d4c6ff;
+}
+
+/* =========================
+CONTACT
+========================= */
+
+.contact{
+  padding-bottom:150px;
+
+  border-top:1px solid var(--line);
+
+  text-align:center;
+
+  position:relative;
+}
+
+.contact:before{
+  content:"";
+
+  position:absolute;
+
+  width:500px;
+  height:300px;
+
+  left:50%;
+  top:40%;
+
+  transform:translate(-50%,-50%);
+
+  background:radial-gradient(
+    circle,
+    rgba(183,156,255,.13),
+    transparent 70%
+  );
+
+  filter:blur(20px);
+
+  pointer-events:none;
+}
+
+.contact .container{
+  position:relative;
+  z-index:2;
+}
+
+.contact .section-desc{
+  margin:25px auto 0;
+}
+
+.contact-actions{
+  justify-content:center;
+
+  margin-top:35px;
+}
+
+/* WhatsApp */
+
+.whatsapp-btn{
+  background:var(--green);
+
+  color:#07130b;
+
+  border-color:var(--green);
+
+  box-shadow:
+    0 10px 35px rgba(37,211,102,.18);
+}
+
+.whatsapp-btn:hover{
+  background:#32e875;
+
+  border-color:#32e875;
+
+  color:#061009;
+}
+
+.whatsapp-icon{
+  margin-right:8px;
+
+  font-size:14px;
+}
+
+.socials{
+  display:flex;
+
+  justify-content:center;
+
+  gap:25px;
+
+  margin-top:30px;
+
+  color:#8e8996;
+
+  font-size:12px;
+}
+
+.socials a{
+  transition:.25s;
+}
+
+.socials a:hover{
+  color:#fff;
+
+  transform:translateY(-2px);
+}
+
+/* =========================
+FOOTER
+========================= */
+
+footer{
+  border-top:1px solid var(--line);
+
+  padding:30px 5%;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  gap:20px;
+
+  color:#79747f;
+
+  font-size:10px;
+
+  letter-spacing:.04em;
+}
+
+footer strong{
+  color:#eee;
+}
+
+/* =========================
+LIGHTBOX
+========================= */
+
 .lightbox{
-  position:fixed;inset:0;z-index:300;background:rgba(3,3,6,.93);
-  backdrop-filter:blur(18px);display:none;align-items:center;justify-content:center;
-  flex-direction:column;padding:40px;
-}
-.lightbox.open{display:flex}
-.lightbox video{max-width:90vw;max-height:78vh;background:#000;border-radius:12px}
-.lightbox h4{margin-top:14px;font-size:13px}
-.close{
-  position:absolute;right:28px;top:20px;border:0;background:none;color:#fff;
-  font-size:38px;cursor:pointer;font-weight:200;
+  position:fixed;
+
+  inset:0;
+
+  z-index:300;
+
+  background:rgba(3,3,6,.93);
+
+  backdrop-filter:blur(18px);
+
+  display:none;
+
+  align-items:center;
+
+  justify-content:center;
+
+  flex-direction:column;
+
+  padding:40px;
 }
 
-/* MOBILE */
+.lightbox.open{
+  display:flex;
+}
+
+.lightbox video{
+  max-width:90vw;
+
+  max-height:78vh;
+
+  background:#000;
+
+  border-radius:12px;
+}
+
+.lightbox h4{
+  margin-top:14px;
+
+  font-size:13px;
+}
+
+.close{
+  position:absolute;
+
+  right:28px;
+  top:20px;
+
+  border:0;
+
+  background:none;
+
+  color:#fff;
+
+  font-size:38px;
+
+  cursor:pointer;
+
+  font-weight:200;
+}
+
+/* =========================
+SCROLL REVEAL
+========================= */
+
+.reveal{
+  opacity:0;
+
+  transform:translateY(35px);
+
+  transition:
+    opacity .8s ease,
+    transform .8s ease;
+}
+
+.reveal.show{
+  opacity:1;
+
+  transform:translateY(0);
+}
+
+/* =========================
+MOBILE
+========================= */
+
 @media(max-width:950px){
-  .nav-links{display:none}.nav-cta{display:none}.menu{display:block}
-  .hero-grid,.intro-grid,.about-grid{grid-template-columns:1fr}
-  .hero-grid{gap:45px}.hero-reel{max-width:700px}
-  .video-grid{grid-template-columns:repeat(2,1fr)}
-  .short-grid{grid-template-columns:repeat(3,1fr)}
+
+  .nav-links{
+    display:none;
+  }
+
+  .nav-cta{
+    display:none;
+  }
+
+  .menu{
+    display:block;
+  }
+
+  .intro-grid,
+  .about-grid{
+    grid-template-columns:1fr;
+  }
+
+  .video-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .short-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .intro-visual{
+    min-height:350px;
+  }
 }
+
 @media(max-width:600px){
-  .container{width:90%}.nav-inner{height:68px}
-  section{padding:85px 0}
-  .hero{padding-top:125px}.hero h1{font-size:53px}
-  .stats{grid-template-columns:repeat(2,1fr)}
-  .stat:nth-child(2){border-right:0}.stat{padding:20px 0}
-  .section-top{display:block}.section-desc{margin-top:18px}
-  .video-grid{grid-template-columns:1fr}
-  .short-grid{grid-template-columns:repeat(2,1fr)}
-  .intro-text h3{font-size:40px}
-  footer{display:block;line-height:1.8}
-  footer span{display:block;margin-top:7px}
+
+  .container{
+    width:90%;
+  }
+
+  .nav-inner{
+    height:68px;
+  }
+
+  section{
+    padding:85px 0;
+  }
+
+  .hero{
+    padding-top:125px;
+  }
+
+  .hero h1{
+    font-size:53px;
+  }
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .stat:not(:last-child){
+    border-right:0;
+
+    border-bottom:1px solid var(--line);
+  }
+
+  .section-top{
+    display:block;
+  }
+
+  .section-desc{
+    margin-top:18px;
+  }
+
+  .video-grid{
+    grid-template-columns:1fr;
+  }
+
+  .short-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .intro-text h3{
+    font-size:40px;
+  }
+
+  .intro-visual{
+    min-height:280px;
+  }
+
+  .visual-content strong{
+    font-size:45px;
+  }
+
+  footer{
+    display:block;
+
+    line-height:1.8;
+  }
+
+  footer span{
+    display:block;
+
+    margin-top:7px;
+  }
+
+  .socials{
+    flex-wrap:wrap;
+    gap:18px;
+  }
 }
+
 </style>
 </head>
 
 <body>
 
+<!-- =========================
+NAV
+========================= -->
+
 <header class="nav">
+
   <div class="nav-inner">
-    <a class="logo" href="#home">KESHU <span>PARMAR</span></a>
+
+    <a class="logo" href="#home">
+      KESHU <span>PARMAR</span>
+    </a>
+
     <nav class="nav-links">
+
       <a href="#about">ABOUT</a>
+
       <a href="#long-form">LONG-FORM</a>
+
       <a href="#short-form">SHORT-FORM</a>
-      <a href="#testimonials">TESTIMONIALS</a>
+
+      <a href="#testimonials">CLIENT FEEDBACK</a>
+
       <a href="#contact">CONTACT</a>
+
     </nav>
-    <a class="nav-cta" href="#contact">LET'S WORK TOGETHER</a>
-    <button class="menu" aria-label="Menu">☰</button>
+
+    <a class="nav-cta" href="#contact">
+      LET'S WORK TOGETHER
+    </a>
+
+    <button class="menu" aria-label="Menu">
+      ☰
+    </button>
+
   </div>
+
 </header>
+
 
 <main>
 
+<!-- =========================
+HERO
+========================= -->
+
 <section id="home" class="hero">
-  <div class="container hero-grid">
-    <div>
-      <div class="kicker">FOUNDER — QUICK MEDIA</div>
-      <h1>VIDEO EDITOR<br><em>& CONTENT CREATOR</em></h1>
-      <p class="hero-copy">
-        I edit videos built for attention, retention and growth — from YouTube
-        long-form and documentaries to high-retention Shorts and Reels.
-      </p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#long-form">VIEW MY WORK</a>
-        <a class="btn" href="#contact">LET'S WORK TOGETHER</a>
+
+  <div class="container">
+
+    <div class="hero-content">
+
+      <div class="kicker">
+        FOUNDER — QUICK MEDIA
       </div>
+
+      <h1>
+        VIDEO EDITOR
+        <br>
+        <em>& CONTENT CREATOR</em>
+      </h1>
+
+      <p class="hero-copy">
+        I create cinematic, retention-focused videos designed to
+        capture attention, tell strong stories and keep viewers watching.
+        From YouTube long-form to high-retention Shorts and Reels.
+      </p>
+
+      <div class="hero-actions">
+
+        <a class="btn btn-primary" href="#long-form">
+          VIEW MY WORK
+        </a>
+
+        <a class="btn" href="#contact">
+          LET'S WORK TOGETHER
+        </a>
+
+      </div>
+
     </div>
 
-    <div class="hero-reel">
-      <!-- Later replace this block with your actual showreel video -->
-      <div class="reel-play">▶</div>
-      <div class="reel-label">SHOWREEL · 2026</div>
-    </div>
   </div>
+
 </section>
 
-<div class="container">
-  <div class="stats">
-    <div class="stat"><b>4+</b><span>YEARS EXPERIENCE</span></div>
-    <div class="stat"><b>500+</b><span>VIDEOS</span></div>
-    <div class="stat"><b>50+</b><span>CREATORS WORKED WITH</span></div>
-    <div class="stat"><b>LEVEL 2</b><span>FIVERR SELLER</span></div>
+
+<!-- =========================
+STATS
+========================= -->
+
+<div class="container stats-wrap">
+
+  <div class="stats reveal">
+
+    <div class="stat">
+
+      <b>4+</b>
+
+      <span>
+        YEARS EXPERIENCE
+      </span>
+
+    </div>
+
+
+    <div class="stat">
+
+      <b>500+</b>
+
+      <span>
+        VIDEOS DELIVERED
+      </span>
+
+    </div>
+
+
+    <div class="stat">
+
+      <b class="views-counter">
+        0
+      </b>
+
+      <span>
+        CLIENT VIDEO VIEWS
+      </span>
+
+    </div>
+
   </div>
+
 </div>
 
+
+<!-- =========================
+INTRO
+========================= -->
+
 <section class="intro">
+
   <div class="container">
-    <div class="section-top">
-      <div><div class="label">INTRO</div><div class="section-title">HI, I'M <em>KESHU.</em></div></div>
+
+    <div class="section-top reveal">
+
+      <div>
+
+        <div class="label">
+          INTRO
+        </div>
+
+        <div class="section-title">
+          HI, I'M <em>KESHU.</em>
+        </div>
+
+      </div>
+
     </div>
+
+
     <div class="intro-grid">
-      <div class="video-box">
-        <div class="placeholder">YOUR INTRO VIDEO WILL APPEAR HERE</div>
-        <!-- Later put your intro video URL in src -->
-        <video id="introVideo" controls playsinline preload="metadata" style="display:none"></video>
+
+      <div class="intro-visual reveal">
+
+        <div class="visual-content">
+
+          <strong>
+            KESHU
+          </strong>
+
+          <span>
+            VIDEO EDITOR · FOUNDER · QUICK MEDIA
+          </span>
+
+        </div>
+
       </div>
-      <div class="intro-text">
-        <h3>EDITING WITH<br><em>STORY + RETENTION</em></h3>
-        <p>I'm a professional video editor and content creator focused on cinematic visuals, storytelling, pacing, motion graphics and retention-driven editing.</p>
-        <p>As the Founder of Quick Media, I work with creators and brands to turn raw footage into videos that look premium and keep viewers watching.</p>
+
+
+      <div class="intro-text reveal">
+
+        <h3>
+          EDITING WITH
+          <br>
+          <em>STORY + RETENTION</em>
+        </h3>
+
+        <p>
+          I'm a professional video editor and content creator focused on
+          cinematic visuals, storytelling, pacing, motion graphics and
+          retention-driven editing.
+        </p>
+
+        <p>
+          As the Founder of Quick Media, I work with a dedicated creative
+          team to help creators and brands turn raw footage into premium
+          content that looks sharp and keeps viewers watching.
+        </p>
+
       </div>
+
     </div>
+
   </div>
+
 </section>
+
+
+<!-- =========================
+LONG FORM
+========================= -->
 
 <section id="long-form">
+
   <div class="container">
-    <div class="section-top">
-      <div><div class="label">01 — LONG-FORM VIDEO EDITING</div><div class="section-title">LONG-FORM</div></div>
-      <p class="section-desc">Talking head, documentary, brand video and motion graphics work.</p>
+
+    <div class="section-top reveal">
+
+      <div>
+
+        <div class="label">
+          01 — LONG-FORM
+        </div>
+
+        <div class="section-title">
+          LONG-FORM
+        </div>
+
+      </div>
+
     </div>
+
 
     <div class="filters" id="longFilters">
-      <button class="filter active" data-filter="all">ALL</button>
-      <button class="filter" data-filter="talking">TALKING HEAD</button>
-      <button class="filter" data-filter="documentary">DOCUMENTARY</button>
-      <button class="filter" data-filter="brand">BRAND VIDEO</button>
-      <button class="filter" data-filter="motion">MOTION GRAPHICS</button>
+
+      <button class="filter active" data-filter="all">
+        ALL
+      </button>
+
+      <button class="filter" data-filter="talking">
+        TALKING HEAD
+      </button>
+
+      <button class="filter" data-filter="documentary">
+        DOCUMENTARY
+      </button>
+
+      <button class="filter" data-filter="brand">
+        BRAND VIDEO
+      </button>
+
+      <button class="filter" data-filter="motion">
+        MOTION GRAPHICS
+      </button>
+
     </div>
+
 
     <div class="video-grid" id="longGrid">
-      <article class="card" data-category="talking" data-video="">
-        <div class="thumb"><div class="play">▶</div></div>
-        <div class="card-info"><div class="card-title">Talking Head Project</div><div class="card-meta">TALKING HEAD · ADD YOUR VIDEO</div></div>
+
+
+      <article
+        class="card"
+        data-category="talking"
+        data-video=""
+      >
+
+        <div class="thumb">
+
+          <div class="play">
+            ▶
+          </div>
+
+        </div>
+
+        <div class="card-info">
+
+          <div class="card-title">
+            Talking Head Project
+          </div>
+
+          <div class="card-meta">
+            TALKING HEAD
+          </div>
+
+        </div>
+
       </article>
-      <article class="card" data-category="documentary" data-video="">
-        <div class="thumb"><div class="play">▶</div></div>
-        <div class="card-info"><div class="card-title">Documentary Edit</div><div class="card-meta">DOCUMENTARY · ADD YOUR VIDEO</div></div>
+
+
+      <article
+        class="card"
+        data-category="documentary"
+        data-video=""
+      >
+
+        <div class="thumb">
+
+          <div class="play">
+            ▶
+          </div>
+
+        </div>
+
+        <div class="card-info">
+
+          <div class="card-title">
+            Documentary Edit
+          </div>
+
+          <div class="card-meta">
+            DOCUMENTARY
+          </div>
+
+        </div>
+
       </article>
-      <article class="card" data-category="brand" data-video="">
-        <div class="thumb"><div class="play">▶</div></div>
-        <div class="card-info"><div class="card-title">Brand Video</div><div class="card-meta">BRAND VIDEO · ADD YOUR VIDEO</div></div>
+
+
+      <article
+        class="card"
+        data-category="brand"
+        data-video=""
+      >
+
+        <div class="thumb">
+
+          <div class="play">
+            ▶
+          </div>
+
+        </div>
+
+        <div class="card-info">
+
+          <div class="card-title">
+            Brand Video
+          </div>
+
+          <div class="card-meta">
+            BRAND VIDEO
+          </div>
+
+        </div>
+
       </article>
+
+
+      <article
+        class="card extra-video"
+        data-category="motion"
+        data-video=""
+        style="display:none"
+      >
+
+        <div class="thumb">
+
+          <div class="play">
+            ▶
+          </div>
+
+        </div>
+
+        <div class="card-info">
+
+          <div class="card-title">
+            Motion Graphics Project
+          </div>
+
+          <div class="card-meta">
+            MOTION GRAPHICS
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article
+        class="card extra-video"
+        data-category="talking"
+        data-video=""
+        style="display:none"
+      >
+
+        <div class="thumb">
+
+          <div class="play">
+            ▶
+          </div>
+
+        </div>
+
+        <div class="card-info">
+
+          <div class="card-title">
+            YouTube Editing Project
+          </div>
+
+          <div class="card-meta">
+            TALKING HEAD
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article
+        class="card extra-video"
+        data-category="documentary"
+        data-video=""
+        style="display:none"
+      >
+
+        <div class="thumb">
+
+          <div class="play">
+            ▶
+          </div>
+
+        </div>
+
+        <div class="card-info">
+
+          <div class="card-title">
+            Documentary Project
+          </div>
+
+          <div class="card-meta">
+            DOCUMENTARY
+          </div>
+
+        </div>
+
+      </article>
+
     </div>
+
+
+    <div class="load-more-wrap">
+
+      <button
+        class="load-more"
+        id="longLoadMore"
+      >
+        LOAD MORE WORK
+      </button>
+
+    </div>
+
   </div>
+
 </section>
+
+
+<!-- =========================
+SHORT FORM
+========================= -->
 
 <section id="short-form">
+
   <div class="container">
-    <div class="section-top">
-      <div><div class="label">02 — SHORT-FORM CONTENT</div><div class="section-title">SHORT-FORM</div></div>
-      <p class="section-desc">High-retention vertical edits for Reels, Shorts and social content.</p>
+
+    <div class="section-top reveal">
+
+      <div>
+
+        <div class="label">
+          02 — SHORT-FORM
+        </div>
+
+        <div class="section-title">
+          SHORT-FORM
+        </div>
+
+      </div>
+
     </div>
+
 
     <div class="filters" id="shortFilters">
-      <button class="filter active" data-filter="all">ALL</button>
-      <button class="filter" data-filter="talking">TALKING HEAD REELS</button>
-      <button class="filter" data-filter="documentary">DOCUMENTARY REELS</button>
-      <button class="filter" data-filter="brand">BRAND REELS</button>
-      <button class="filter" data-filter="food">FOOD REELS</button>
-      <button class="filter" data-filter="motion">MOTION GRAPHICS REELS</button>
+
+      <button class="filter active" data-filter="all">
+        ALL
+      </button>
+
+      <button class="filter" data-filter="talking">
+        TALKING HEAD
+      </button>
+
+      <button class="filter" data-filter="documentary">
+        DOCUMENTARY
+      </button>
+
+      <button class="filter" data-filter="brand">
+        BRAND REELS
+      </button>
+
+      <button class="filter" data-filter="food">
+        FOOD
+      </button>
+
+      <button class="filter" data-filter="motion">
+        MOTION GRAPHICS
+      </button>
+
     </div>
+
 
     <div class="video-grid short-grid" id="shortGrid">
-      <article class="card" data-category="talking" data-video=""><div class="thumb"><div class="play">▶</div></div><div class="card-info"><div class="card-title">Talking Head Reel</div><div class="card-meta">9:16 · ADD YOUR VIDEO</div></div></article>
-      <article class="card" data-category="documentary" data-video=""><div class="thumb"><div class="play">▶</div></div><div class="card-info"><div class="card-title">Documentary Reel</div><div class="card-meta">9:16 · ADD YOUR VIDEO</div></div></article>
-      <article class="card" data-category="brand" data-video=""><div class="thumb"><div class="play">▶</div></div><div class="card-info"><div class="card-title">Brand Reel</div><div class="card-meta">9:16 · ADD YOUR VIDEO</div></div></article>
-      <article class="card" data-category="food" data-video=""><div class="thumb"><div class="play">▶</div></div><div class="card-info"><div class="card-title">Food Reel</div><div class="card-meta">9:16 · ADD YOUR VIDEO</div></div></article>
-      <article class="card" data-category="motion" data-video=""><div class="thumb"><div class="play">▶</div></div><div class="card-info"><div class="card-title">Motion Graphics Reel</div><div class="card-meta">9:16 · ADD YOUR VIDEO</div></div></article>
+
+
+      <article
+        class="card"
+        data-category="talking"
+        data-video=""
+      >
+
+        <div class="thumb">
+
+          <div class="play">
+            ▶
+          </div>
+
+        </div>
+
+        <div class="card-info">
+
+          <div class="card-title">
+            Talking Head Reel
+          </div>
+
+          <div class="card-meta">
+            9:16
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article
+        class="card"
+        data-category="documentary"
+        data-video=""
+      >
+
+        <div class="thumb">
+
+          <div class="play">
+            ▶
+          </div>
+
+        </div>
+
+        <div class="card-info">
+
+          <div class="card-title">
+            Documentary Reel
+          </div>
+
+          <div class="card-meta">
+            9:16
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article
+        class="card"
+        data-category="brand"
+        data-video=""
+      >
+
+        <div class="thumb">
+
+          <div class="play">
+            ▶
+          </div>
+
+        </div>
+
+        <div class="card-info">
+
+          <div class="card-title">
+            Brand Reel
+          </div>
+
+          <div class="card-meta">
+            9:16
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article
+        class="card"
+        data-category="food"
+        data-video=""
+      >
+
+        <div class="thumb">
+
+          <div class="play">
+            ▶
+          </div>
+
+        </div>
+
+        <div class="card-info">
+
+          <div class="card-title">
+            Food Reel
+          </div>
+
+          <div class="card-meta">
+            9:16
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article
+        class="card"
+        data-category="motion"
+        data-video=""
+      >
+
+        <div class="thumb">
+
+          <div class="play">
+            ▶
+          </div>
+
+        </div>
+
+        <div class="card-info">
+
+          <div class="card-title">
+            Motion Graphics Reel
+          </div>
+
+          <div class="card-meta">
+            9:16
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article
+        class="card extra-short"
+        data-category="talking"
+        data-video=""
+        style="display:none"
+      >
+
+        <div class="thumb">
+
+          <div class="play">
+            ▶
+          </div>
+
+        </div>
+
+        <div class="card-info">
+
+          <div class="card-title">
+            Talking Head Reel 02
+          </div>
+
+          <div class="card-meta">
+            9:16
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article
+        class="card extra-short"
+        data-category="food"
+        data-video=""
+        style="display:none"
+      >
+
+        <div class="thumb">
+
+          <div class="play">
+            ▶
+          </div>
+
+        </div>
+
+        <div class="card-info">
+
+          <div class="card-title">
+            Food Reel 02
+          </div>
+
+          <div class="card-meta">
+            9:16
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article
+        class="card extra-short"
+        data-category="motion"
+        data-video=""
+        style="display:none"
+      >
+
+        <div class="thumb">
+
+          <div class="play">
+            ▶
+          </div>
+
+        </div>
+
+        <div class="card-info">
+
+          <div class="card-title">
+            Motion Reel 02
+          </div>
+
+          <div class="card-meta">
+            9:16
+          </div>
+
+        </div>
+
+      </article>
+
     </div>
+
+
+    <div class="load-more-wrap">
+
+      <button
+        class="load-more"
+        id="shortLoadMore"
+      >
+        LOAD MORE WORK
+      </button>
+
+    </div>
+
   </div>
+
 </section>
 
-<section id="testimonials">
+
+<!-- =========================
+CLIENT FEEDBACK
+========================= -->
+
+<section id="testimonials" class="feedback-section">
+
   <div class="container">
-    <div class="section-top">
-      <div><div class="label">CLIENT TESTIMONIALS</div><div class="section-title">REAL PEOPLE.<br><em>REAL FEEDBACK.</em></div></div>
-      <p class="section-desc">Only real client testimonial videos will be shown here.</p>
+
+    <div class="section-top reveal">
+
+      <div>
+
+        <div class="feedback-label">
+          CLIENT FEEDBACK
+        </div>
+
+        <div class="feedback-title">
+          REAL PEOPLE.
+          <br>
+          <em>REAL FEEDBACK.</em>
+        </div>
+
+      </div>
+
     </div>
+
+
     <div class="video-grid" id="testimonialGrid">
-      <article class="card" data-video=""><div class="thumb"><div class="play">▶</div></div><div class="card-info"><div class="card-title">Client Testimonial</div><div class="card-meta">ADD REAL TESTIMONIAL VIDEO</div></div></article>
-      <article class="card" data-video=""><div class="thumb"><div class="play">▶</div></div><div class="card-info"><div class="card-title">Client Testimonial</div><div class="card-meta">ADD REAL TESTIMONIAL VIDEO</div></div></article>
-      <article class="card" data-video=""><div class="thumb"><div class="play">▶</div></div><div class="card-info"><div class="card-title">Client Testimonial</div><div class="card-meta">ADD REAL TESTIMONIAL VIDEO</div></div></article>
+
+
+      <article
+        class="card"
+        data-video=""
+      >
+
+        <div class="thumb">
+
+          <div class="play">
+            ▶
+          </div>
+
+        </div>
+
+        <div class="card-info">
+
+          <div class="card-title">
+            Client Feedback
+          </div>
+
+          <div class="card-meta">
+            VIDEO TESTIMONIAL
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article
+        class="card"
+        data-video=""
+      >
+
+        <div class="thumb">
+
+          <div class="play">
+            ▶
+          </div>
+
+        </div>
+
+        <div class="card-info">
+
+          <div class="card-title">
+            Client Feedback
+          </div>
+
+          <div class="card-meta">
+            VIDEO TESTIMONIAL
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article
+        class="card"
+        data-video=""
+      >
+
+        <div class="thumb">
+
+          <div class="play">
+            ▶
+          </div>
+
+        </div>
+
+        <div class="card-info">
+
+          <div class="card-title">
+            Client Feedback
+          </div>
+
+          <div class="card-meta">
+            VIDEO TESTIMONIAL
+          </div>
+
+        </div>
+
+      </article>
+
     </div>
+
   </div>
+
 </section>
+
+
+<!-- =========================
+ABOUT
+========================= -->
 
 <section id="about" class="about">
+
   <div class="container">
-    <div class="label">ABOUT KESHU</div>
-    <div class="about-grid" style="margin-top:25px">
-      <div class="about-big">EDITING ISN'T JUST ABOUT CUTS.<br><em>IT'S ABOUT KEEPING PEOPLE WATCHING.</em></div>
-      <div class="about-copy">
-        <p>I'm Keshu Parmar, a Professional Video Editor & Content Creator with 4+ years of experience and 500+ videos delivered for creators and brands.</p>
-        <p><strong>Founder — Quick Media</strong></p>
-        <div class="tools">
-          <div class="tool">Pr</div>
-          <div class="tool">Ae</div>
-          <div class="tool">Ps</div>
-          <div class="tool ai">AI</div>
-        </div>
-      </div>
+
+    <div class="label reveal">
+      ABOUT KESHU
     </div>
+
+
+    <div
+      class="about-grid"
+      style="margin-top:25px"
+    >
+
+      <div class="about-big reveal">
+
+        EDITING ISN'T JUST
+        ABOUT CUTS.
+
+        <br>
+
+        <em>
+          IT'S ABOUT KEEPING
+          PEOPLE WATCHING.
+        </em>
+
+      </div>
+
+
+      <div class="about-copy reveal">
+
+        <p>
+          I'm Keshu Parmar, a Professional Video Editor & Content Creator
+          with 4+ years of experience and 500+ videos delivered for creators
+          and brands.
+        </p>
+
+        <p>
+          My focus is simple: strong storytelling, clean pacing,
+          cinematic visuals and edits built around audience retention.
+        </p>
+
+        <p>
+          <strong>
+            Founder — Quick Media
+          </strong>
+        </p>
+
+
+        <div class="tools">
+
+          <div class="tool pr">
+
+            <div class="tool-logo">
+              Pr
+            </div>
+
+            <div class="tool-name">
+              PREMIERE
+            </div>
+
+          </div>
+
+
+          <div class="tool ae">
+
+            <div class="tool-logo">
+              Ae
+            </div>
+
+            <div class="tool-name">
+              AFTER EFFECTS
+            </div>
+
+          </div>
+
+
+          <div class="tool ps">
+
+            <div class="tool-logo">
+              Ps
+            </div>
+
+            <div class="tool-name">
+              PHOTOSHOP
+            </div>
+
+          </div>
+
+
+          <div class="tool ai">
+
+            <div class="tool-logo">
+              AI
+            </div>
+
+            <div class="tool-name">
+              AI TOOLS
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
+
 </section>
 
+
+<!-- =========================
+CONTACT
+========================= -->
+
 <section id="contact" class="contact">
+
   <div class="container">
-    <div class="label">LET'S WORK TOGETHER</div>
-    <div class="section-title">HAVE A PROJECT<br><em>IN MIND?</em></div>
-    <p class="section-desc">Tell me about your project, the style you want and your deadline. Let's create something that looks great and performs.</p>
-    <div class="hero-actions contact-actions">
-      <a class="btn btn-primary" target="_blank" href="https://wa.me/919016913568?text=Hi%20Keshu%2C%20I%20visited%20your%20portfolio%20and%20I%27m%20interested%20in%20discussing%20a%20video%20editing%20project.">WHATSAPP</a>
-      <a class="btn" href="mailto:keshuparmar306@gmail.com">EMAIL ME</a>
+
+    <div class="label reveal">
+      LET'S WORK TOGETHER
     </div>
+
+
+    <div class="section-title reveal">
+
+      HAVE A PROJECT
+      <br>
+
+      <em>IN MIND?</em>
+
+    </div>
+
+
+    <p class="section-desc reveal">
+
+      Have a video project in mind?
+      Send me the details and let's discuss
+      how I can help turn your footage into
+      content that looks premium and keeps people watching.
+
+    </p>
+
+
+    <div class="hero-actions contact-actions reveal">
+
+
+      <a
+        class="btn whatsapp-btn"
+        target="_blank"
+        href="https://wa.me/919016913568?text=Hi%20Keshu%2C%20I%20visited%20your%20portfolio%20and%20I%27m%20interested%20in%20discussing%20a%20video%20editing%20project."
+      >
+
+        <span class="whatsapp-icon">
+          ◉
+        </span>
+
+        WHATSAPP
+
+      </a>
+
+
+      <a
+        class="btn"
+        href="mailto:keshuparmar306@gmail.com"
+      >
+        EMAIL ME
+      </a>
+
+
+    </div>
+
+
     <div class="socials">
-      <a target="_blank" href="https://www.linkedin.com/in/keshu-parmar-b26829236">LinkedIn</a>
-      <a target="_blank" href="https://www.instagram.com/quick_media._">Instagram</a>
-      <a target="_blank" href="https://x.com/Keshuparmar41">X</a>
-      <a target="_blank" href="https://www.fiverr.com/s/X0R2YDm">Fiverr</a>
+
+      <a
+        target="_blank"
+        href="https://www.linkedin.com/in/keshu-parmar-b26829236"
+      >
+        LinkedIn
+      </a>
+
+      <a
+        target="_blank"
+        href="https://www.instagram.com/quick_media._"
+      >
+        Instagram
+      </a>
+
+      <a
+        target="_blank"
+        href="https://x.com/Keshuparmar41"
+      >
+        X
+      </a>
+
+      <a
+        target="_blank"
+        href="https://www.fiverr.com/s/X0R2YDm"
+      >
+        Fiverr
+      </a>
+
     </div>
+
   </div>
+
 </section>
 
 </main>
 
+
+<!-- =========================
+FOOTER
+========================= -->
+
 <footer>
-  <strong>KESHU PARMAR</strong>
-  <span>Professional Video Editor & Content Creator · Founder — Quick Media</span>
-  <span>© 2026 Keshu Parmar. All Rights Reserved.</span>
+
+  <strong>
+    KESHU PARMAR
+  </strong>
+
+  <span>
+    Professional Video Editor & Content Creator · Founder — Quick Media
+  </span>
+
+  <span>
+    © 2026 Keshu Parmar. All Rights Reserved.
+  </span>
+
 </footer>
 
+
+<!-- =========================
+LIGHTBOX
+========================= -->
+
 <div class="lightbox" id="lightbox">
-  <button class="close" id="close">×</button>
-  <video id="player" controls playsinline></video>
+
+  <button
+    class="close"
+    id="close"
+  >
+    ×
+  </button>
+
+  <video
+    id="player"
+    controls
+    playsinline
+  ></video>
+
   <h4 id="playerTitle"></h4>
+
 </div>
 
+
 <script>
-/* Category filters */
+
+/* =========================
+CATEGORY FILTERS
+========================= */
+
 document.querySelectorAll(".filters").forEach(group=>{
+
   group.querySelectorAll(".filter").forEach(btn=>{
+
     btn.addEventListener("click",()=>{
-      group.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));
+
+      group.querySelectorAll(".filter")
+        .forEach(x=>x.classList.remove("active"));
+
       btn.classList.add("active");
+
       const value=btn.dataset.filter;
-      const section=group.parentElement;
+
+      const section=group.closest("section");
+
       section.querySelectorAll(".card").forEach(card=>{
-        card.style.display=(value==="all"||card.dataset.category===value)?"block":"none";
+
+        const match =
+          value==="all" ||
+          card.dataset.category===value;
+
+        card.style.display =
+          match ? "" : "none";
+
       });
+
     });
+
   });
+
 });
 
-/* Video lightbox — cards become real video players when data-video is filled */
-const lightbox=document.getElementById("lightbox");
-const player=document.getElementById("player");
-const playerTitle=document.getElementById("playerTitle");
 
-document.querySelectorAll(".card").forEach(card=>{
-  card.addEventListener("click",()=>{
-    const src=card.dataset.video;
-    if(!src){
-      alert("This portfolio slot is ready. Add the real video URL here.");
-      return;
-    }
-    player.src=src;
-    playerTitle.textContent=card.querySelector(".card-title")?.textContent||"";
-    lightbox.classList.add("open");
-    player.play().catch(()=>{});
+/* =========================
+VIDEO LIGHTBOX
+========================= */
+
+const lightbox =
+  document.getElementById("lightbox");
+
+const player =
+  document.getElementById("player");
+
+const playerTitle =
+  document.getElementById("playerTitle");
+
+
+function attachVideoCards(){
+
+  document.querySelectorAll(".card").forEach(card=>{
+
+    if(card.dataset.listenerAttached) return;
+
+    card.dataset.listenerAttached="true";
+
+    card.addEventListener("click",()=>{
+
+      const src=card.dataset.video;
+
+      if(!src){
+
+        alert(
+          "This portfolio slot is ready. Add your real video URL here."
+        );
+
+        return;
+      }
+
+      player.src=src;
+
+      playerTitle.textContent =
+        card.querySelector(".card-title")?.textContent || "";
+
+      lightbox.classList.add("open");
+
+      player.play().catch(()=>{});
+
+    });
+
   });
-});
+
+}
+
+attachVideoCards();
+
 
 function closePlayer(){
+
   player.pause();
+
   player.removeAttribute("src");
+
   player.load();
+
   lightbox.classList.remove("open");
+
 }
-document.getElementById("close").onclick=closePlayer;
-lightbox.addEventListener("click",e=>{if(e.target===lightbox)closePlayer()});
-document.addEventListener("keydown",e=>{if(e.key==="Escape")closePlayer()});
+
+
+document.getElementById("close")
+  .onclick=closePlayer;
+
+
+lightbox.addEventListener("click",e=>{
+
+  if(e.target===lightbox){
+
+    closePlayer();
+
+  }
+
+});
+
+
+document.addEventListener("keydown",e=>{
+
+  if(e.key==="Escape"){
+
+    closePlayer();
+
+  }
+
+});
+
+
+/* =========================
+LOAD MORE
+========================= */
+
+function setupLoadMore(buttonId,className){
+
+  const button =
+    document.getElementById(buttonId);
+
+  if(!button) return;
+
+  button.addEventListener("click",()=>{
+
+    document.querySelectorAll(
+      "."+className
+    ).forEach(card=>{
+
+      card.style.display="";
+
+    });
+
+    button.style.display="none";
+
+    revealCards();
+
+  });
+
+}
+
+
+setupLoadMore(
+  "longLoadMore",
+  "extra-video"
+);
+
+
+setupLoadMore(
+  "shortLoadMore",
+  "extra-short"
+);
+
+
+/* =========================
+SCROLL REVEAL
+========================= */
+
+const observer =
+  new IntersectionObserver(
+
+    entries=>{
+
+      entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+          entry.target.classList.add("show");
+
+        }
+
+      });
+
+    },
+
+    {
+      threshold:.12
+    }
+
+  );
+
+
+document.querySelectorAll(".reveal")
+  .forEach(el=>observer.observe(el));
+
+
+/* =========================
+CARD REVEAL
+========================= */
+
+function revealCards(){
+
+  document.querySelectorAll(".card")
+    .forEach((card,index)=>{
+
+      setTimeout(()=>{
+
+        card.classList.add("visible");
+
+      },index*90);
+
+    });
+
+}
+
+
+window.addEventListener(
+  "load",
+  revealCards
+);
+
+
+/* =========================
+1M VIEW COUNTER
+========================= */
+
+const counter =
+  document.querySelector(".views-counter");
+
+let counterStarted=false;
+
+
+function animateViews(){
+
+  if(counterStarted) return;
+
+  counterStarted=true;
+
+  const duration=2200;
+
+  const start=0;
+
+  const end=1000000;
+
+  const startTime=performance.now();
+
+
+  function update(time){
+
+    const progress =
+      Math.min(
+        (time-startTime)/duration,
+        1
+      );
+
+
+    const eased =
+      1-Math.pow(1-progress,3);
+
+
+    const value =
+      Math.floor(
+        start+
+        (end-start)*eased
+      );
+
+
+    if(value>=1000000){
+
+      counter.textContent="1M+";
+
+    }else if(value>=1000){
+
+      counter.textContent =
+        Math.floor(value/1000)+"K";
+
+    }else{
+
+      counter.textContent=value;
+
+    }
+
+
+    if(progress<1){
+
+      requestAnimationFrame(update);
+
+    }
+
+  }
+
+
+  requestAnimationFrame(update);
+
+}
+
+
+const counterObserver =
+  new IntersectionObserver(
+
+    entries=>{
+
+      entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+          animateViews();
+
+        }
+
+      });
+
+    },
+
+    {
+      threshold:.7
+    }
+
+  );
+
+
+counterObserver.observe(
+  document.querySelector(".views-counter")
+);
+
+
+/* =========================
+MOBILE MENU
+========================= */
+
+const menu =
+  document.querySelector(".menu");
+
+const navLinks =
+  document.querySelector(".nav-links");
+
+
+menu.addEventListener("click",()=>{
+
+  const open =
+    navLinks.style.display==="flex";
+
+  navLinks.style.display =
+    open ? "" : "flex";
+
+  if(!open){
+
+    navLinks.style.position="absolute";
+
+    navLinks.style.top="68px";
+
+    navLinks.style.left="5%";
+
+    navLinks.style.right="5%";
+
+    navLinks.style.padding="20px";
+
+    navLinks.style.flexDirection="column";
+
+    navLinks.style.background="rgba(8,8,12,.96)";
+
+    navLinks.style.border="1px solid rgba(255,255,255,.08)";
+
+    navLinks.style.borderRadius="16px";
+
+  }
+
+});
+
+
+/* =========================
+SMOOTH NAV CLOSE
+========================= */
+
+document.querySelectorAll(".nav-links a")
+.forEach(link=>{
+
+  link.addEventListener("click",()=>{
+
+    if(window.innerWidth<=950){
+
+      navLinks.style.display="";
+
+    }
+
+  });
+
+});
+
 </script>
+
 </body>
 </html>

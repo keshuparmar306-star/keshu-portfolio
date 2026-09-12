@@ -1,911 +1,1475 @@
-<!-- =====================================================
-     WORK SECTION
-===================================================== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<section class="portfolio-work" id="work">
+  <title>Keshu Parmar — Professional Video Editor & Founder of Quick Media</title>
 
-  <!-- ===================================================
-       LONG-FORM
-  =================================================== -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  <div class="work-section long-section">
+    html {
+      scroll-behavior: smooth;
+    }
 
-    <div class="work-label">01 — LONG-FORM</div>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #08070d;
+      color: #ffffff;
+      line-height: 1.5;
+    }
 
-    <h2 class="work-heading">LONG-FORM</h2>
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-    <!-- LONG FORM FILTERS -->
-    <div class="filter-row" data-filter-group="long">
+    img,
+    video {
+      max-width: 100%;
+      display: block;
+    }
 
-      <button class="filter active" data-filter="all">
-        ALL
-      </button>
+    /* =========================
+       NAVBAR
+    ========================= */
 
-      <button class="filter" data-filter="talking-head">
-        TALKING HEAD
-      </button>
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
 
-      <button class="filter" data-filter="documentary">
-        DOCUMENTARY
-      </button>
+      padding: 20px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
-      <button class="filter" data-filter="brand-video">
-        BRAND VIDEO
-      </button>
+      background: rgba(8, 7, 13, 0.75);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
 
-      <button class="filter" data-filter="motion-graphics">
-        MOTION GRAPHICS
-      </button>
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: #b58cff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+      color: #c7c3d2;
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+      padding: 150px 6% 100px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      background:
+        radial-gradient(circle at 50% 20%, rgba(142, 86, 255, 0.22), transparent 35%),
+        #08070d;
+    }
+
+    .hero-content {
+      max-width: 1000px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 25px;
+
+      padding: 8px 16px;
+      border-radius: 100px;
+
+      background: rgba(181, 140, 255, 0.10);
+      border: 1px solid rgba(181, 140, 255, 0.25);
+
+      color: #c5a7ff;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 7vw, 92px);
+      line-height: 0.98;
+      letter-spacing: -4px;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 span {
+      color: #b58cff;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+
+      color: #aaa6b5;
+      font-size: 18px;
+    }
+
+    .hero-buttons {
+      margin-top: 38px;
+
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 24px;
+      border-radius: 10px;
+
+      font-weight: 700;
+      font-size: 14px;
+
+      transition: 0.25s;
+    }
+
+    .btn-primary {
+      background: #b58cff;
+      color: #0b0811;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 35px rgba(181,140,255,0.25);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.07);
+    }
+
+    /* =========================
+       GENERAL SECTIONS
+    ========================= */
+
+    section {
+      padding: 110px 6%;
+    }
+
+    .section-header {
+      max-width: 850px;
+      margin-bottom: 45px;
+    }
+
+    .section-label {
+      color: #b58cff;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(36px, 5vw, 62px);
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+
+    .section-header p {
+      color: #9e9aa8;
+      max-width: 650px;
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: #aaa6b5;
+      font-size: 17px;
+      margin-bottom: 18px;
+    }
+
+    .about-card {
+      padding: 35px;
+
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+
+      background: linear-gradient(
+        145deg,
+        rgba(181,140,255,0.10),
+        rgba(255,255,255,0.02)
+      );
+    }
+
+    .about-card h3 {
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .stat {
+      padding: 20px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 28px;
+      color: #b58cff;
+    }
+
+    .stat span {
+      color: #aaa6b5;
+      font-size: 13px;
+    }
+
+    /* =========================
+       VIDEO PORTFOLIO
+    ========================= */
+
+    .portfolio-section {
+      background:
+        radial-gradient(circle at 80% 30%, rgba(142,86,255,0.10), transparent 35%);
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .video-card {
+      position: relative;
+      overflow: hidden;
+
+      border-radius: 18px;
+      background: #111018;
+
+      border: 1px solid rgba(255,255,255,0.07);
+
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .video-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(181,140,255,0.35);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    }
+
+    .video-thumb {
+      aspect-ratio: 16 / 9;
+      background: #16141d;
+      overflow: hidden;
+    }
+
+    .video-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.4s;
+    }
+
+    .video-card:hover .video-thumb img {
+      transform: scale(1.04);
+    }
+
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+      transform: translate(-50%, -50%);
+
+      width: 58px;
+      height: 58px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      background: rgba(181,140,255,0.95);
+      color: #100b18;
+
+      font-size: 20px;
+    }
+
+    .video-info {
+      padding: 20px;
+    }
+
+    .video-info h3 {
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .video-info p {
+      color: #918d9b;
+      font-size: 13px;
+    }
+
+    /* =========================
+       VIDEO MODAL
+    ========================= */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+
+      display: none;
+      align-items: center;
+      justify-content: center;
+
+      padding: 30px;
+
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(15px);
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      width: min(1100px, 100%);
+      position: relative;
+    }
+
+    .modal video {
+      width: 100%;
+      max-height: 80vh;
+      border-radius: 14px;
+      background: #000;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: -45px;
+      right: 0;
+
+      width: 35px;
+      height: 35px;
+
+      border: 0;
+      border-radius: 50%;
+
+      background: rgba(255,255,255,0.12);
+      color: white;
+
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    /* =========================
+       SKILLS
+    ========================= */
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill {
+      padding: 12px 18px;
+
+      border-radius: 100px;
+
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+
+      color: #c7c3d2;
+      font-size: 14px;
+    }
+
+    /* =========================
+       TOOLS
+    ========================= */
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .tool {
+      padding: 25px;
+      text-align: center;
+
+      border-radius: 16px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.07);
+
+      color: #d8d4df;
+    }
+
+    .tool strong {
+      display: block;
+      color: white;
+      margin-bottom: 5px;
+    }
+
+    .tool span {
+      color: #918d9b;
+      font-size: 12px;
+    }
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    .contact {
+      text-align: center;
+
+      background:
+        radial-gradient(circle at 50% 50%, rgba(181,140,255,0.15), transparent 40%);
+    }
+
+    .contact-content {
+      max-width: 750px;
+      margin: auto;
+    }
+
+    .contact h2 {
+      font-size: clamp(40px, 6vw, 70px);
+      line-height: 1;
+      letter-spacing: -3px;
+      margin-bottom: 20px;
+    }
+
+    .contact p {
+      color: #aaa6b5;
+      margin-bottom: 30px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .social-links a {
+      padding: 12px 18px;
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 10px;
+      color: #c7c3d2;
+      font-size: 14px;
+    }
+
+    .social-links a:hover {
+      border-color: #b58cff;
+      color: white;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      padding: 30px 6%;
+      border-top: 1px solid rgba(255,255,255,0.06);
+
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+
+      color: #777381;
+      font-size: 13px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 900px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      section {
+        padding: 80px 5%;
+      }
+
+      .hero {
+        padding: 130px 5% 80px;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tools-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        text-align: center;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       NAVIGATION
+  ========================= -->
+
+  <nav>
+
+    <div class="logo">
+      Keshu<span>.</span>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#long-form">Long Videos</a></li>
+      <li><a href="#short-form">Short Videos</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+  </nav>
+
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-content">
+
+      <div class="eyebrow">
+        Professional Video Editor & Founder of Quick Media
+      </div>
+
+      <h1>
+        I Edit Videos That
+        <span>Keep People Watching.</span>
+      </h1>
+
+      <p>
+        I'm Keshu Parmar, a professional video editor and content creator
+        specializing in high-retention YouTube videos, Shorts, Reels,
+        documentaries, motion graphics and cinematic storytelling.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#long-form" class="btn btn-primary">
+          View My Work
+        </a>
+
+        <a
+          href="https://wa.me/919016913568"
+          target="_blank"
+          class="btn btn-secondary"
+        >
+          Contact Me
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       ABOUT
+  ========================= -->
+
+  <section id="about">
+
+    <div class="section-header">
+
+      <div class="section-label">
+        About Me
+      </div>
+
+      <h2>
+        More Than Just An Editor.
+      </h2>
+
+      <p>
+        I help creators and brands turn raw footage into engaging,
+        high-retention content designed to keep viewers watching.
+      </p>
 
     </div>
 
 
-    <!-- LONG FORM VIDEOS -->
-    <div class="long-video-grid">
+    <div class="about-grid">
+
+      <div class="about-text">
+
+        <p>
+          With 4+ years of experience, I've worked on 500+ videos
+          across YouTube, Instagram and other social platforms.
+        </p>
+
+        <p>
+          My editing focuses on storytelling, pacing, retention,
+          motion graphics, sound design, B-roll and cinematic visuals.
+        </p>
+
+        <p>
+          I work primarily with Adobe Premiere Pro and After Effects
+          to create polished content that feels professional and
+          keeps the audience engaged.
+        </p>
+
+      </div>
 
 
-      <!-- LONG VIDEO 1 -->
-      <article
-        class="portfolio-card long-video"
-        data-category="talking-head"
+      <div class="about-card">
+
+        <h3>
+          Quick Media
+        </h3>
+
+        <div class="stats">
+
+          <div class="stat">
+            <strong>4+</strong>
+            <span>Years Experience</span>
+          </div>
+
+          <div class="stat">
+            <strong>500+</strong>
+            <span>Videos Edited</span>
+          </div>
+
+          <div class="stat">
+            <strong>50+</strong>
+            <span>Creators Worked With</span>
+          </div>
+
+          <div class="stat">
+            <strong>Level 2</strong>
+            <span>Fiverr Seller</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       LONG-FORM VIDEO PORTFOLIO
+  ====================================================== -->
+
+  <section class="portfolio-section" id="long-form">
+
+    <div class="section-header">
+
+      <div class="section-label">
+        Portfolio
+      </div>
+
+      <h2>
+        Long-Form Videos
+      </h2>
+
+      <p>
+        YouTube videos, talking-head content, documentaries,
+        podcasts, brand videos and retention-focused editing.
+      </p>
+
+    </div>
+
+
+    <div class="video-grid" id="longVideoGrid">
+
+      <!-- VIDEO 1 -->
+
+      <div
+        class="video-card"
+        onclick="openVideo('videos/long/video1.mp4')"
       >
 
-        <div class="video-container">
-          <video controls preload="metadata">
-            <source src="videos/long-01.mp4" type="video/mp4">
-          </video>
+        <div class="video-thumb">
 
-          <div class="play-circle">▶</div>
+          <img
+            src="thumbnails/long1.jpg"
+            alt="Long Form Video"
+          />
+
+          <div class="play-button">
+            ▶
+          </div>
+
         </div>
 
-        <div class="card-info">
-          <h3>Talking Head Project</h3>
-          <p>TALKING HEAD</p>
+        <div class="video-info">
+
+          <h3>
+            Documentary Style Video
+          </h3>
+
+          <p>
+            Long-Form • Documentary
+          </p>
+
         </div>
 
-      </article>
+      </div>
 
 
-      <!-- LONG VIDEO 2 -->
-      <article
-        class="portfolio-card long-video"
-        data-category="documentary"
+      <!-- VIDEO 2 -->
+
+      <div
+        class="video-card"
+        onclick="openVideo('videos/long/video2.mp4')"
       >
 
-        <div class="video-container">
-          <video controls preload="metadata">
-            <source src="videos/long-02.mp4" type="video/mp4">
-          </video>
+        <div class="video-thumb">
 
-          <div class="play-circle">▶</div>
+          <img
+            src="thumbnails/long2.jpg"
+            alt="Talking Head Video"
+          />
+
+          <div class="play-button">
+            ▶
+          </div>
+
         </div>
 
-        <div class="card-info">
-          <h3>Documentary Edit</h3>
-          <p>DOCUMENTARY</p>
+        <div class="video-info">
+
+          <h3>
+            Talking Head Video
+          </h3>
+
+          <p>
+            Long-Form • YouTube
+          </p>
+
         </div>
 
-      </article>
+      </div>
 
 
-      <!-- LONG VIDEO 3 -->
-      <article
-        class="portfolio-card long-video"
-        data-category="brand-video"
+      <!-- VIDEO 3 -->
+
+      <div
+        class="video-card"
+        onclick="openVideo('videos/long/video3.mp4')"
       >
 
-        <div class="video-container">
-          <video controls preload="metadata">
-            <source src="videos/long-03.mp4" type="video/mp4">
-          </video>
+        <div class="video-thumb">
 
-          <div class="play-circle">▶</div>
+          <img
+            src="thumbnails/long3.jpg"
+            alt="YouTube Video"
+          />
+
+          <div class="play-button">
+            ▶
+          </div>
+
         </div>
 
-        <div class="card-info">
-          <h3>Brand Video</h3>
-          <p>BRAND VIDEO</p>
+        <div class="video-info">
+
+          <h3>
+            High Retention YouTube Video
+          </h3>
+
+          <p>
+            Long-Form • Retention Editing
+          </p>
+
         </div>
 
-      </article>
+      </div>
 
 
-      <!-- LONG VIDEO 4 -->
-      <article
-        class="portfolio-card long-video"
-        data-category="motion-graphics"
+      <!-- VIDEO 4 -->
+
+      <div
+        class="video-card"
+        onclick="openVideo('videos/long/video4.mp4')"
       >
 
-        <div class="video-container">
-          <video controls preload="metadata">
-            <source src="videos/long-04.mp4" type="video/mp4">
-          </video>
+        <div class="video-thumb">
 
-          <div class="play-circle">▶</div>
+          <img
+            src="thumbnails/long4.jpg"
+            alt="Brand Video"
+          />
+
+          <div class="play-button">
+            ▶
+          </div>
+
         </div>
 
-        <div class="card-info">
-          <h3>Motion Graphics</h3>
-          <p>MOTION GRAPHICS</p>
+        <div class="video-info">
+
+          <h3>
+            Brand Video
+          </h3>
+
+          <p>
+            Long-Form • Brand Content
+          </p>
+
         </div>
 
-      </article>
+      </div>
 
 
-      <!-- LONG VIDEO 5 -->
-      <article
-        class="portfolio-card long-video"
-        data-category="talking-head"
+      <!-- VIDEO 5 -->
+
+      <div
+        class="video-card"
+        onclick="openVideo('videos/long/video5.mp4')"
       >
 
-        <div class="video-container">
-          <video controls preload="metadata">
-            <source src="videos/long-05.mp4" type="video/mp4">
-          </video>
+        <div class="video-thumb">
 
-          <div class="play-circle">▶</div>
+          <img
+            src="thumbnails/long5.jpg"
+            alt="Podcast Video"
+          />
+
+          <div class="play-button">
+            ▶
+          </div>
+
         </div>
 
-        <div class="card-info">
-          <h3>Talking Head Edit</h3>
-          <p>TALKING HEAD</p>
+        <div class="video-info">
+
+          <h3>
+            Podcast / Interview
+          </h3>
+
+          <p>
+            Long-Form • Podcast
+          </p>
+
         </div>
 
-      </article>
+      </div>
 
 
-      <!-- LONG VIDEO 6 -->
-      <article
-        class="portfolio-card long-video"
-        data-category="documentary"
+      <!-- VIDEO 6 -->
+
+      <div
+        class="video-card"
+        onclick="openVideo('videos/long/video6.mp4')"
       >
 
-        <div class="video-container">
-          <video controls preload="metadata">
-            <source src="videos/long-06.mp4" type="video/mp4">
-          </video>
+        <div class="video-thumb">
 
-          <div class="play-circle">▶</div>
+          <img
+            src="thumbnails/long6.jpg"
+            alt="Motion Graphics Video"
+          />
+
+          <div class="play-button">
+            ▶
+          </div>
+
         </div>
 
-        <div class="card-info">
-          <h3>Documentary Project</h3>
-          <p>DOCUMENTARY</p>
+        <div class="video-info">
+
+          <h3>
+            Motion Graphics Video
+          </h3>
+
+          <p>
+            Long-Form • Motion Graphics
+          </p>
+
         </div>
 
-      </article>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       SHORT-FORM VIDEO PORTFOLIO
+  ====================================================== -->
+
+  <section class="portfolio-section" id="short-form">
+
+    <div class="section-header">
+
+      <div class="section-label">
+        Portfolio
+      </div>
+
+      <h2>
+        Short-Form Content
+      </h2>
+
+      <p>
+        Instagram Reels, YouTube Shorts, talking-head reels,
+        documentary reels, food content and motion graphics.
+      </p>
+
+    </div>
+
+
+    <div class="video-grid" id="shortVideoGrid">
+
+
+      <!-- SHORT 1 -->
+
+      <div
+        class="video-card"
+        onclick="openVideo('videos/short/short1.mp4')"
+      >
+
+        <div class="video-thumb">
+
+          <img
+            src="thumbnails/short1.jpg"
+            alt="Instagram Reel"
+          />
+
+          <div class="play-button">
+            ▶
+          </div>
+
+        </div>
+
+        <div class="video-info">
+
+          <h3>
+            Talking Head Reel
+          </h3>
+
+          <p>
+            Reels • Talking Head
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- SHORT 2 -->
+
+      <div
+        class="video-card"
+        onclick="openVideo('videos/short/short2.mp4')"
+      >
+
+        <div class="video-thumb">
+
+          <img
+            src="thumbnails/short2.jpg"
+            alt="Food Reel"
+          />
+
+          <div class="play-button">
+            ▶
+          </div>
+
+        </div>
+
+        <div class="video-info">
+
+          <h3>
+            Food Concept Reel
+          </h3>
+
+          <p>
+            Reels • Food Content
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- SHORT 3 -->
+
+      <div
+        class="video-card"
+        onclick="openVideo('videos/short/short3.mp4')"
+      >
+
+        <div class="video-thumb">
+
+          <img
+            src="thumbnails/short3.jpg"
+            alt="Documentary Reel"
+          />
+
+          <div class="play-button">
+            ▶
+          </div>
+
+        </div>
+
+        <div class="video-info">
+
+          <h3>
+            Documentary Reel
+          </h3>
+
+          <p>
+            Reels • Documentary
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- SHORT 4 -->
+
+      <div
+        class="video-card"
+        onclick="openVideo('videos/short/short4.mp4')"
+      >
+
+        <div class="video-thumb">
+
+          <img
+            src="thumbnails/short4.jpg"
+            alt="Motion Graphics Reel"
+          />
+
+          <div class="play-button">
+            ▶
+          </div>
+
+        </div>
+
+        <div class="video-info">
+
+          <h3>
+            Motion Graphics Reel
+          </h3>
+
+          <p>
+            Reels • Motion Graphics
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- SHORT 5 -->
+
+      <div
+        class="video-card"
+        onclick="openVideo('videos/short/short5.mp4')"
+      >
+
+        <div class="video-thumb">
+
+          <img
+            src="thumbnails/short5.jpg"
+            alt="Cinematic Reel"
+          />
+
+          <div class="play-button">
+            ▶
+          </div>
+
+        </div>
+
+        <div class="video-info">
+
+          <h3>
+            Cinematic Reel
+          </h3>
+
+          <p>
+            Reels • Cinematic
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- SHORT 6 -->
+
+      <div
+        class="video-card"
+        onclick="openVideo('videos/short/short6.mp4')"
+      >
+
+        <div class="video-thumb">
+
+          <img
+            src="thumbnails/short6.jpg"
+            alt="Social Media Reel"
+          />
+
+          <div class="play-button">
+            ▶
+          </div>
+
+        </div>
+
+        <div class="video-info">
+
+          <h3>
+            Social Media Reel
+          </h3>
+
+          <p>
+            Shorts • Social Content
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       SKILLS
+  ========================= -->
+
+  <section>
+
+    <div class="section-header">
+
+      <div class="section-label">
+        Expertise
+      </div>
+
+      <h2>
+        Editing Skills
+      </h2>
+
+    </div>
+
+
+    <div class="skills">
+
+      <div class="skill">YouTube Long-Form</div>
+      <div class="skill">YouTube Shorts</div>
+      <div class="skill">Instagram Reels</div>
+      <div class="skill">Documentary Editing</div>
+      <div class="skill">Faceless Videos</div>
+      <div class="skill">Cinematic Editing</div>
+      <div class="skill">Motion Graphics</div>
+      <div class="skill">Animations</div>
+      <div class="skill">Color Grading</div>
+      <div class="skill">B-Roll</div>
+      <div class="skill">Sound Design</div>
+      <div class="skill">Retention Editing</div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       TOOLS
+  ========================= -->
+
+  <section>
+
+    <div class="section-header">
+
+      <div class="section-label">
+        Tools
+      </div>
+
+      <h2>
+        Software I Use
+      </h2>
+
+    </div>
+
+
+    <div class="tools-grid">
+
+      <div class="tool">
+        <strong>Adobe Premiere Pro</strong>
+        <span>Primary Editing</span>
+      </div>
+
+      <div class="tool">
+        <strong>Adobe After Effects</strong>
+        <span>Motion Graphics</span>
+      </div>
+
+      <div class="tool">
+        <strong>Adobe Photoshop</strong>
+        <span>Graphics & Thumbnails</span>
+      </div>
+
+      <div class="tool">
+        <strong>AI Editing Tools</strong>
+        <span>AI Workflow</span>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CONTACT
+  ========================= -->
+
+  <section class="contact" id="contact">
+
+    <div class="contact-content">
+
+      <div class="section-label">
+        Let's Work Together
+      </div>
+
+      <h2>
+        Have A Video Project?
+      </h2>
+
+      <p>
+        Tell me about your project, editing style and goals.
+        Let's create something that people want to watch.
+      </p>
+
+
+      <div class="hero-buttons">
+
+        <a
+          href="mailto:keshuparmar306@gmail.com"
+          class="btn btn-primary"
+        >
+          Email Me
+        </a>
+
+        <a
+          href="https://wa.me/919016913568"
+          target="_blank"
+          class="btn btn-secondary"
+        >
+          WhatsApp
+        </a>
+
+      </div>
+
+
+      <div class="social-links">
+
+        <a
+          href="https://www.linkedin.com/in/keshu-parmar-b26829236/"
+          target="_blank"
+        >
+          LinkedIn
+        </a>
+
+        <a
+          href="https://www.instagram.com/quick_media._/"
+          target="_blank"
+        >
+          Instagram
+        </a>
+
+        <a
+          href="https://x.com/Keshuparmar41"
+          target="_blank"
+        >
+          X
+        </a>
+
+        <a
+          href="https://www.fiverr.com/s/X0R2YDm"
+          target="_blank"
+        >
+          Fiverr
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <div>
+      © 2026 Keshu Parmar — Quick Media
+    </div>
+
+    <div>
+      Professional Video Editor & Founder of Quick Media
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       VIDEO MODAL
+  ========================= -->
+
+  <div class="modal" id="videoModal">
+
+    <div class="modal-content">
+
+      <button
+        class="close-modal"
+        onclick="closeVideo()"
+      >
+        ×
+      </button>
+
+      <video
+        id="modalVideo"
+        controls
+        playsinline
+      ></video>
 
     </div>
 
   </div>
 
 
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
 
-  <!-- ===================================================
-       SHORT-FORM
-  =================================================== -->
+  <script>
 
-  <div class="work-section short-section">
+    const modal = document.getElementById("videoModal");
+    const modalVideo = document.getElementById("modalVideo");
 
-    <div class="work-label">02 — SHORT-FORM</div>
 
-    <h2 class="work-heading">SHORT-FORM</h2>
+    function openVideo(videoPath) {
 
+      modalVideo.src = videoPath;
 
-    <!-- SHORT FORM FILTERS -->
-    <div class="filter-row" data-filter-group="short">
+      modal.classList.add("active");
 
-      <button class="filter active" data-filter="all">
-        ALL
-      </button>
+      modalVideo.play();
 
-      <button class="filter" data-filter="talking-head">
-        TALKING HEAD
-      </button>
+    }
 
-      <button class="filter" data-filter="documentary">
-        DOCUMENTARY
-      </button>
 
-      <button class="filter" data-filter="brand-reels">
-        BRAND REELS
-      </button>
+    function closeVideo() {
 
-      <button class="filter" data-filter="food">
-        FOOD
-      </button>
+      modalVideo.pause();
 
-      <button class="filter" data-filter="motion-graphics">
-        MOTION GRAPHICS
-      </button>
+      modalVideo.src = "";
 
-    </div>
+      modal.classList.remove("active");
 
+    }
 
-    <!-- SHORT FORM VIDEOS -->
-    <div class="short-video-grid">
 
+    modal.addEventListener("click", function(event) {
 
-      <!-- SHORT VIDEO 1 -->
-      <article
-        class="portfolio-card short-video"
-        data-category="talking-head"
-      >
-
-        <div class="short-video-container">
-
-          <video controls preload="metadata">
-            <source src="videos/short-01.mp4" type="video/mp4">
-          </video>
-
-          <div class="play-circle">▶</div>
-
-        </div>
-
-        <div class="card-info">
-          <h3>Talking Head Reel</h3>
-          <p>9:16</p>
-        </div>
-
-      </article>
-
-
-      <!-- SHORT VIDEO 2 -->
-      <article
-        class="portfolio-card short-video"
-        data-category="documentary"
-      >
-
-        <div class="short-video-container">
-
-          <video controls preload="metadata">
-            <source src="videos/short-02.mp4" type="video/mp4">
-          </video>
-
-          <div class="play-circle">▶</div>
-
-        </div>
-
-        <div class="card-info">
-          <h3>Documentary Reel</h3>
-          <p>9:16</p>
-        </div>
-
-      </article>
-
-
-      <!-- SHORT VIDEO 3 -->
-      <article
-        class="portfolio-card short-video"
-        data-category="brand-reels"
-      >
-
-        <div class="short-video-container">
-
-          <video controls preload="metadata">
-            <source src="videos/short-03.mp4" type="video/mp4">
-          </video>
-
-          <div class="play-circle">▶</div>
-
-        </div>
-
-        <div class="card-info">
-          <h3>Brand Reel</h3>
-          <p>9:16</p>
-        </div>
-
-      </article>
-
-
-      <!-- SHORT VIDEO 4 -->
-      <article
-        class="portfolio-card short-video"
-        data-category="food"
-      >
-
-        <div class="short-video-container">
-
-          <video controls preload="metadata">
-            <source src="videos/short-04.mp4" type="video/mp4">
-          </video>
-
-          <div class="play-circle">▶</div>
-
-        </div>
-
-        <div class="card-info">
-          <h3>Food Reel</h3>
-          <p>9:16</p>
-        </div>
-
-      </article>
-
-
-      <!-- SHORT VIDEO 5 -->
-      <article
-        class="portfolio-card short-video"
-        data-category="motion-graphics"
-      >
-
-        <div class="short-video-container">
-
-          <video controls preload="metadata">
-            <source src="videos/short-05.mp4" type="video/mp4">
-          </video>
-
-          <div class="play-circle">▶</div>
-
-        </div>
-
-        <div class="card-info">
-          <h3>Motion Graphics Reel</h3>
-          <p>9:16</p>
-        </div>
-
-      </article>
-
-
-      <!-- SHORT VIDEO 6 -->
-      <article
-        class="portfolio-card short-video"
-        data-category="talking-head"
-      >
-
-        <div class="short-video-container">
-
-          <video controls preload="metadata">
-            <source src="videos/short-06.mp4" type="video/mp4">
-          </video>
-
-          <div class="play-circle">▶</div>
-
-        </div>
-
-        <div class="card-info">
-          <h3>Talking Head Reel 02</h3>
-          <p>9:16</p>
-        </div>
-
-      </article>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<style>
-
-/* =====================================================
-   MAIN SECTION
-===================================================== */
-
-.portfolio-work {
-  width: 100%;
-  padding: 100px 30px;
-  background: #08080b;
-  color: #f5f3f8;
-}
-
-
-/* =====================================================
-   WORK SECTION
-===================================================== */
-
-.work-section {
-  width: 100%;
-  max-width: 1900px;
-  margin: 0 auto 150px;
-}
-
-.work-section:last-child {
-  margin-bottom: 0;
-}
-
-
-/* =====================================================
-   SMALL NUMBER TITLE
-===================================================== */
-
-.work-label {
-  margin-bottom: 18px;
-
-  font-size: 13px;
-  font-weight: 600;
-
-  letter-spacing: 2px;
-
-  color: #b99aff;
-}
-
-
-/* =====================================================
-   MAIN TITLE
-===================================================== */
-
-.work-heading {
-  margin: 0 0 55px;
-
-  font-size: clamp(48px, 5vw, 76px);
-  line-height: .95;
-
-  font-weight: 500;
-
-  letter-spacing: -3px;
-
-  color: #f7f5fa;
-}
-
-
-/* =====================================================
-   FILTER BUTTONS
-===================================================== */
-
-.filter-row {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-
-  gap: 10px;
-
-  margin-bottom: 34px;
-}
-
-
-.filter {
-  border: 1px solid rgba(255,255,255,.10);
-
-  background: transparent;
-
-  color: rgba(255,255,255,.48);
-
-  padding: 11px 18px;
-
-  border-radius: 999px;
-
-  font-family: inherit;
-
-  font-size: 11px;
-
-  letter-spacing: 1.1px;
-
-  cursor: pointer;
-
-  transition: all .3s ease;
-}
-
-
-.filter:hover {
-  color: #fff;
-
-  border-color: rgba(185,154,255,.45);
-}
-
-
-.filter.active {
-  color: #fff;
-
-  border-color: #b99aff;
-
-  background: rgba(185,154,255,.06);
-
-  box-shadow: 0 0 20px rgba(185,154,255,.08);
-}
-
-
-/* =====================================================
-   LONG FORM GRID
-   SCREENSHOT STYLE = 3 COLUMNS
-===================================================== */
-
-.long-video-grid {
-  display: grid;
-
-  grid-template-columns:
-    repeat(3, minmax(0, 1fr));
-
-  gap: 24px;
-}
-
-
-/* =====================================================
-   LONG VIDEO
-===================================================== */
-
-.video-container {
-  position: relative;
-
-  width: 100%;
-
-  aspect-ratio: 16 / 9;
-
-  overflow: hidden;
-
-  border-radius: 22px;
-
-  background:
-    radial-gradient(
-      circle at 70% 30%,
-      rgba(120,90,170,.22),
-      transparent 45%
-    ),
-    #101016;
-
-  border: 1px solid rgba(255,255,255,.10);
-
-  transition:
-    border-color .35s ease,
-    transform .35s ease,
-    box-shadow .35s ease;
-}
-
-
-.video-container video {
-  width: 100%;
-  height: 100%;
-
-  display: block;
-
-  object-fit: cover;
-}
-
-
-/* =====================================================
-   SHORT FORM GRID
-   SCREENSHOT STYLE = 5 COLUMNS
-===================================================== */
-
-.short-video-grid {
-  display: grid;
-
-  grid-template-columns:
-    repeat(5, minmax(0, 1fr));
-
-  gap: 20px;
-}
-
-
-/* =====================================================
-   SHORT VIDEO
-===================================================== */
-
-.short-video-container {
-  position: relative;
-
-  width: 100%;
-
-  aspect-ratio: 9 / 16;
-
-  overflow: hidden;
-
-  border-radius: 20px;
-
-  background:
-    radial-gradient(
-      circle at 55% 25%,
-      rgba(120,90,170,.24),
-      transparent 45%
-    ),
-    #101016;
-
-  border: 1px solid rgba(255,255,255,.10);
-
-  transition:
-    border-color .35s ease,
-    transform .35s ease,
-    box-shadow .35s ease;
-}
-
-
-.short-video-container video {
-  width: 100%;
-  height: 100%;
-
-  display: block;
-
-  object-fit: cover;
-}
-
-
-/* =====================================================
-   PLAY BUTTON
-===================================================== */
-
-.play-circle {
-  position: absolute;
-
-  left: 20px;
-  bottom: 20px;
-
-  width: 52px;
-  height: 52px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  background: #fff;
-
-  color: #08080b;
-
-  font-size: 15px;
-
-  pointer-events: none;
-
-  transition: transform .3s ease;
-}
-
-
-/* =====================================================
-   CARD HOVER
-===================================================== */
-
-.portfolio-card:hover .video-container,
-.portfolio-card:hover .short-video-container {
-
-  transform: translateY(-4px);
-
-  border-color: rgba(185,154,255,.42);
-
-  box-shadow:
-    0 25px 70px rgba(90,60,150,.16);
-}
-
-
-.portfolio-card:hover .play-circle {
-  transform: scale(1.08);
-}
-
-
-/* =====================================================
-   CARD INFO
-===================================================== */
-
-.card-info {
-  padding: 18px 2px 0;
-}
-
-
-.card-info h3 {
-  margin: 0 0 8px;
-
-  font-size: 17px;
-
-  font-weight: 600;
-
-  line-height: 1.2;
-
-  color: #f4f1f7;
-}
-
-
-.card-info p {
-  margin: 0;
-
-  font-size: 11px;
-
-  letter-spacing: 1px;
-
-  color: rgba(255,255,255,.45);
-}
-
-
-/* =====================================================
-   FILTER HIDE
-===================================================== */
-
-.portfolio-card.is-hidden {
-  display: none;
-}
-
-
-/* =====================================================
-   TABLET
-===================================================== */
-
-@media (max-width: 1100px) {
-
-  .long-video-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .short-video-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media (max-width: 700px) {
-
-  .portfolio-work {
-    padding: 70px 18px;
-  }
-
-
-  .work-section {
-    margin-bottom: 100px;
-  }
-
-
-  .work-label {
-    font-size: 11px;
-
-    letter-spacing: 1.6px;
-
-    margin-bottom: 12px;
-  }
-
-
-  .work-heading {
-    font-size: 42px;
-
-    letter-spacing: -1.8px;
-
-    margin-bottom: 30px;
-  }
-
-
-  .filter-row {
-    gap: 7px;
-
-    margin-bottom: 25px;
-  }
-
-
-  .filter {
-    padding: 8px 12px;
-
-    font-size: 9px;
-  }
-
-
-  .long-video-grid {
-    grid-template-columns: 1fr;
-
-    gap: 25px;
-  }
-
-
-  .short-video-grid {
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 14px;
-  }
-
-
-  .video-container {
-    border-radius: 16px;
-  }
-
-
-  .short-video-container {
-    border-radius: 15px;
-  }
-
-
-  .play-circle {
-    width: 42px;
-    height: 42px;
-
-    left: 12px;
-    bottom: 12px;
-
-    font-size: 12px;
-  }
-
-
-  .card-info {
-    padding-top: 12px;
-  }
-
-
-  .card-info h3 {
-    font-size: 14px;
-  }
-
-
-  .card-info p {
-    font-size: 9px;
-  }
-
-}
-
-</style>
-
-
-
-<script>
-
-/* =====================================================
-   LONG + SHORT FILTER SYSTEM
-===================================================== */
-
-document.querySelectorAll(".filter-row").forEach(filterRow => {
-
-  const group = filterRow.dataset.filterGroup;
-
-  const buttons =
-    filterRow.querySelectorAll(".filter");
-
-
-  buttons.forEach(button => {
-
-    button.addEventListener("click", function () {
-
-      const selectedCategory =
-        this.dataset.filter;
-
-
-      /* Active button */
-
-      buttons.forEach(btn => {
-        btn.classList.remove("active");
-      });
-
-      this.classList.add("active");
-
-
-      /* Find correct cards */
-
-      let cards = [];
-
-
-      if (group === "long") {
-
-        cards = document.querySelectorAll(
-          ".long-video"
-        );
-
+      if (event.target === modal) {
+        closeVideo();
       }
-
-
-      if (group === "short") {
-
-        cards = document.querySelectorAll(
-          ".short-video"
-        );
-
-      }
-
-
-      /* Show / hide */
-
-      cards.forEach(card => {
-
-        const cardCategory =
-          card.dataset.category;
-
-
-        if (
-          selectedCategory === "all" ||
-          cardCategory === selectedCategory
-        ) {
-
-          card.classList.remove("is-hidden");
-
-        } else {
-
-          card.classList.add("is-hidden");
-
-        }
-
-      });
 
     });
 
-  });
 
-});
+    document.addEventListener("keydown", function(event) {
 
-</script>
+      if (event.key === "Escape") {
+        closeVideo();
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>

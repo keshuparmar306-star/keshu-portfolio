@@ -342,9 +342,9 @@ section{
   line-height:1.85;
 }
 
-/* =========================================================
-   PORTFOLIO VIDEO SECTIONS
-========================================================= */
+/* =========================
+   WORK
+========================= */
 
 .work-section{
   background:linear-gradient(
@@ -367,7 +367,6 @@ section{
   border:1px solid var(--line);
   border-radius:18px;
   transition:.35s;
-  cursor:pointer;
 }
 
 .video-card:hover{
@@ -376,54 +375,18 @@ section{
   box-shadow:0 22px 60px rgba(0,0,0,.35);
 }
 
-.video-thumbnail{
-  position:relative;
+.video-placeholder{
   aspect-ratio:16/10;
-  overflow:hidden;
-  background:
-    linear-gradient(135deg,rgba(156,124,255,.13),rgba(255,255,255,.025)),
-    #0e0e14;
-}
-
-.video-thumbnail img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-  transition:.4s;
-}
-
-.video-card:hover .video-thumbnail img{
-  transform:scale(1.04);
-}
-
-.video-play{
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-
-  width:58px;
-  height:58px;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
-  border-radius:50%;
-
-  background:rgba(156,124,255,.95);
-  color:#08080c;
-
-  font-size:20px;
-  padding-left:3px;
-
-  box-shadow:0 10px 35px rgba(0,0,0,.35);
-  transition:.3s;
-}
-
-.video-card:hover .video-play{
-  transform:translate(-50%,-50%) scale(1.08);
+  background:
+    linear-gradient(135deg,rgba(156,124,255,.13),rgba(255,255,255,.025)),
+    #0e0e14;
+  color:#696572;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
 }
 
 .video-info{
@@ -439,65 +402,6 @@ section{
   color:#74707c;
   margin-top:6px;
   font-size:10px;
-}
-
-/* =========================
-   VIDEO MODAL
-========================= */
-
-.video-modal{
-  position:fixed;
-  inset:0;
-  z-index:3000;
-
-  display:none;
-  align-items:center;
-  justify-content:center;
-
-  padding:30px;
-
-  background:rgba(0,0,0,.9);
-  backdrop-filter:blur(15px);
-}
-
-.video-modal.active{
-  display:flex;
-}
-
-.modal-inner{
-  position:relative;
-  width:min(1100px,100%);
-}
-
-.modal-inner video{
-  width:100%;
-  max-height:82vh;
-  display:block;
-  border-radius:16px;
-  background:#000;
-  border:1px solid rgba(255,255,255,.1);
-}
-
-.modal-close{
-  position:absolute;
-  right:0;
-  top:-48px;
-
-  width:38px;
-  height:38px;
-
-  border:1px solid rgba(255,255,255,.15);
-  border-radius:50%;
-
-  background:rgba(255,255,255,.08);
-  color:#fff;
-
-  font-size:23px;
-  cursor:pointer;
-}
-
-.modal-close:hover{
-  background:rgba(156,124,255,.25);
 }
 
 /* =========================
@@ -953,24 +857,13 @@ footer{
   .footer-bottom{
     flex-direction:column;
   }
-
-  .video-modal{
-    padding:15px;
-  }
-
-  .modal-inner video{
-    max-height:75vh;
-  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     NAVIGATION
-========================= -->
-
+<!-- NAVIGATION -->
 <nav>
   <div class="container nav-inner">
 
@@ -979,35 +872,18 @@ footer{
     </a>
 
     <div class="nav-links">
-
       <a href="#about">About</a>
-
-      <a href="#long-form">
-        Long-Form
-      </a>
-
-      <a href="#short-form">
-        Short-Form
-      </a>
-
-      <a href="#testimonials">
-        Testimonials
-      </a>
-
-      <a href="#contact" class="nav-contact">
-        Contact ↗
-      </a>
-
+      <a href="#long-form">Long-Form</a>
+      <a href="#short-form">Short-Form</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact" class="nav-contact">Contact ↗</a>
     </div>
 
   </div>
 </nav>
 
 
-<!-- =========================
-     HERO
-========================= -->
-
+<!-- HERO -->
 <header class="hero">
 
   <div class="container">
@@ -1046,10 +922,7 @@ footer{
 </header>
 
 
-<!-- =========================
-     STATS
-========================= -->
-
+<!-- STATS -->
 <section class="stats">
 
   <div class="container">
@@ -1057,7 +930,6 @@ footer{
     <div class="stats-grid">
 
       <div class="stat">
-
         <div
           class="stat-number counter"
           data-target="4"
@@ -1068,12 +940,10 @@ footer{
         <div class="stat-label">
           Years Experience
         </div>
-
       </div>
 
 
       <div class="stat">
-
         <div
           class="stat-number counter"
           data-target="500"
@@ -1084,12 +954,10 @@ footer{
         <div class="stat-label">
           Videos Edited
         </div>
-
       </div>
 
 
       <div class="stat">
-
         <div
           class="stat-number counter"
           data-target="2"
@@ -1100,7 +968,6 @@ footer{
         <div class="stat-label">
           Fiverr Seller
         </div>
-
       </div>
 
     </div>
@@ -1110,10 +977,7 @@ footer{
 </section>
 
 
-<!-- =========================
-     INTRO
-========================= -->
-
+<!-- INTRO -->
 <section class="reveal">
 
   <div class="container">
@@ -1176,10 +1040,7 @@ footer{
 </section>
 
 
-<!-- =====================================================
-     LONG-FORM VIDEO PORTFOLIO
-====================================================== -->
-
+<!-- LONG FORM -->
 <section id="long-form" class="work-section reveal">
 
   <div class="container">
@@ -1199,204 +1060,76 @@ footer{
 
     <div class="video-grid">
 
-
-      <!-- LONG VIDEO 1 -->
-
-      <div
-        class="video-card"
-        onclick="openVideo('YOUR_LONG_VIDEO_1.mp4')">
-
-        <div class="video-thumbnail">
-
-          <img
-            src="YOUR_LONG_THUMBNAIL_1.jpg"
-            alt="Long-Form Video 1">
-
-          <div class="video-play">
-            ▶
-          </div>
-
+      <div class="video-card">
+        <div class="video-placeholder">
+          Video 01
         </div>
 
         <div class="video-info">
-
-          <h4>
-            Documentary Style Video
-          </h4>
-
-          <p>
-            Long-Form · Documentary
-          </p>
-
+          <h4>Long-Form Project 01</h4>
+          <p>YouTube Editing</p>
         </div>
-
       </div>
 
 
-      <!-- LONG VIDEO 2 -->
-
-      <div
-        class="video-card"
-        onclick="openVideo('YOUR_LONG_VIDEO_2.mp4')">
-
-        <div class="video-thumbnail">
-
-          <img
-            src="YOUR_LONG_THUMBNAIL_2.jpg"
-            alt="Long-Form Video 2">
-
-          <div class="video-play">
-            ▶
-          </div>
-
+      <div class="video-card">
+        <div class="video-placeholder">
+          Video 02
         </div>
 
         <div class="video-info">
-
-          <h4>
-            Talking Head Video
-          </h4>
-
-          <p>
-            Long-Form · YouTube
-          </p>
-
+          <h4>Long-Form Project 02</h4>
+          <p>YouTube Editing</p>
         </div>
-
       </div>
 
 
-      <!-- LONG VIDEO 3 -->
-
-      <div
-        class="video-card"
-        onclick="openVideo('YOUR_LONG_VIDEO_3.mp4')">
-
-        <div class="video-thumbnail">
-
-          <img
-            src="YOUR_LONG_THUMBNAIL_3.jpg"
-            alt="Long-Form Video 3">
-
-          <div class="video-play">
-            ▶
-          </div>
-
+      <div class="video-card">
+        <div class="video-placeholder">
+          Video 03
         </div>
 
         <div class="video-info">
-
-          <h4>
-            High-Retention YouTube Video
-          </h4>
-
-          <p>
-            Long-Form · Retention Editing
-          </p>
-
+          <h4>Long-Form Project 03</h4>
+          <p>YouTube Editing</p>
         </div>
-
       </div>
 
 
-      <!-- LONG VIDEO 4 -->
-
-      <div
-        class="video-card"
-        onclick="openVideo('YOUR_LONG_VIDEO_4.mp4')">
-
-        <div class="video-thumbnail">
-
-          <img
-            src="YOUR_LONG_THUMBNAIL_4.jpg"
-            alt="Long-Form Video 4">
-
-          <div class="video-play">
-            ▶
-          </div>
-
+      <div class="video-card">
+        <div class="video-placeholder">
+          Video 04
         </div>
 
         <div class="video-info">
-
-          <h4>
-            Brand Video
-          </h4>
-
-          <p>
-            Long-Form · Brand Content
-          </p>
-
+          <h4>Long-Form Project 04</h4>
+          <p>YouTube Editing</p>
         </div>
-
       </div>
 
 
-      <!-- LONG VIDEO 5 -->
-
-      <div
-        class="video-card"
-        onclick="openVideo('YOUR_LONG_VIDEO_5.mp4')">
-
-        <div class="video-thumbnail">
-
-          <img
-            src="YOUR_LONG_THUMBNAIL_5.jpg"
-            alt="Long-Form Video 5">
-
-          <div class="video-play">
-            ▶
-          </div>
-
+      <div class="video-card">
+        <div class="video-placeholder">
+          Video 05
         </div>
 
         <div class="video-info">
-
-          <h4>
-            Podcast / Interview
-          </h4>
-
-          <p>
-            Long-Form · Podcast
-          </p>
-
+          <h4>Long-Form Project 05</h4>
+          <p>YouTube Editing</p>
         </div>
-
       </div>
 
 
-      <!-- LONG VIDEO 6 -->
-
-      <div
-        class="video-card"
-        onclick="openVideo('YOUR_LONG_VIDEO_6.mp4')">
-
-        <div class="video-thumbnail">
-
-          <img
-            src="YOUR_LONG_THUMBNAIL_6.jpg"
-            alt="Long-Form Video 6">
-
-          <div class="video-play">
-            ▶
-          </div>
-
+      <div class="video-card">
+        <div class="video-placeholder">
+          Video 06
         </div>
 
         <div class="video-info">
-
-          <h4>
-            Motion Graphics Video
-          </h4>
-
-          <p>
-            Long-Form · Motion Graphics
-          </p>
-
+          <h4>Long-Form Project 06</h4>
+          <p>YouTube Editing</p>
         </div>
-
       </div>
-
 
     </div>
 
@@ -1405,10 +1138,7 @@ footer{
 </section>
 
 
-<!-- =====================================================
-     SHORT-FORM VIDEO PORTFOLIO
-====================================================== -->
-
+<!-- SHORT FORM -->
 <section id="short-form" class="reveal">
 
   <div class="container">
@@ -1428,204 +1158,76 @@ footer{
 
     <div class="video-grid">
 
-
-      <!-- SHORT VIDEO 1 -->
-
-      <div
-        class="video-card"
-        onclick="openVideo('YOUR_SHORT_VIDEO_1.mp4')">
-
-        <div class="video-thumbnail">
-
-          <img
-            src="YOUR_SHORT_THUMBNAIL_1.jpg"
-            alt="Short-Form Video 1">
-
-          <div class="video-play">
-            ▶
-          </div>
-
+      <div class="video-card">
+        <div class="video-placeholder">
+          Video 01
         </div>
 
         <div class="video-info">
-
-          <h4>
-            Talking Head Reel
-          </h4>
-
-          <p>
-            Reels · Talking Head
-          </p>
-
+          <h4>Short-Form Project 01</h4>
+          <p>Reels · Shorts</p>
         </div>
-
       </div>
 
 
-      <!-- SHORT VIDEO 2 -->
-
-      <div
-        class="video-card"
-        onclick="openVideo('YOUR_SHORT_VIDEO_2.mp4')">
-
-        <div class="video-thumbnail">
-
-          <img
-            src="YOUR_SHORT_THUMBNAIL_2.jpg"
-            alt="Short-Form Video 2">
-
-          <div class="video-play">
-            ▶
-          </div>
-
+      <div class="video-card">
+        <div class="video-placeholder">
+          Video 02
         </div>
 
         <div class="video-info">
-
-          <h4>
-            Food Concept Reel
-          </h4>
-
-          <p>
-            Reels · Food Content
-          </p>
-
+          <h4>Short-Form Project 02</h4>
+          <p>Reels · Shorts</p>
         </div>
-
       </div>
 
 
-      <!-- SHORT VIDEO 3 -->
-
-      <div
-        class="video-card"
-        onclick="openVideo('YOUR_SHORT_VIDEO_3.mp4')">
-
-        <div class="video-thumbnail">
-
-          <img
-            src="YOUR_SHORT_THUMBNAIL_3.jpg"
-            alt="Short-Form Video 3">
-
-          <div class="video-play">
-            ▶
-          </div>
-
+      <div class="video-card">
+        <div class="video-placeholder">
+          Video 03
         </div>
 
         <div class="video-info">
-
-          <h4>
-            Documentary Reel
-          </h4>
-
-          <p>
-            Reels · Documentary
-          </p>
-
+          <h4>Short-Form Project 03</h4>
+          <p>Reels · Shorts</p>
         </div>
-
       </div>
 
 
-      <!-- SHORT VIDEO 4 -->
-
-      <div
-        class="video-card"
-        onclick="openVideo('YOUR_SHORT_VIDEO_4.mp4')">
-
-        <div class="video-thumbnail">
-
-          <img
-            src="YOUR_SHORT_THUMBNAIL_4.jpg"
-            alt="Short-Form Video 4">
-
-          <div class="video-play">
-            ▶
-          </div>
-
+      <div class="video-card">
+        <div class="video-placeholder">
+          Video 04
         </div>
 
         <div class="video-info">
-
-          <h4>
-            Motion Graphics Reel
-          </h4>
-
-          <p>
-            Reels · Motion Graphics
-          </p>
-
+          <h4>Short-Form Project 04</h4>
+          <p>Reels · Shorts</p>
         </div>
-
       </div>
 
 
-      <!-- SHORT VIDEO 5 -->
-
-      <div
-        class="video-card"
-        onclick="openVideo('YOUR_SHORT_VIDEO_5.mp4')">
-
-        <div class="video-thumbnail">
-
-          <img
-            src="YOUR_SHORT_THUMBNAIL_5.jpg"
-            alt="Short-Form Video 5">
-
-          <div class="video-play">
-            ▶
-          </div>
-
+      <div class="video-card">
+        <div class="video-placeholder">
+          Video 05
         </div>
 
         <div class="video-info">
-
-          <h4>
-            Cinematic Reel
-          </h4>
-
-          <p>
-            Reels · Cinematic
-          </p>
-
+          <h4>Short-Form Project 05</h4>
+          <p>Reels · Shorts</p>
         </div>
-
       </div>
 
 
-      <!-- SHORT VIDEO 6 -->
-
-      <div
-        class="video-card"
-        onclick="openVideo('YOUR_SHORT_VIDEO_6.mp4')">
-
-        <div class="video-thumbnail">
-
-          <img
-            src="YOUR_SHORT_THUMBNAIL_6.jpg"
-            alt="Short-Form Video 6">
-
-          <div class="video-play">
-            ▶
-          </div>
-
+      <div class="video-card">
+        <div class="video-placeholder">
+          Video 06
         </div>
 
         <div class="video-info">
-
-          <h4>
-            Social Media Reel
-          </h4>
-
-          <p>
-            Shorts · Social Content
-          </p>
-
+          <h4>Short-Form Project 06</h4>
+          <p>Reels · Shorts</p>
         </div>
-
       </div>
-
 
     </div>
 
@@ -1634,10 +1236,7 @@ footer{
 </section>
 
 
-<!-- =========================
-     ABOUT
-========================= -->
-
+<!-- ABOUT -->
 <section id="about" class="about reveal">
 
   <div class="container">
@@ -1687,54 +1286,34 @@ footer{
           <div class="tools-grid">
 
             <div class="tool">
-
-              <div class="tool-icon">
-                Pr
-              </div>
-
+              <div class="tool-icon">Pr</div>
               <div class="tool-name">
                 Adobe Premiere Pro
               </div>
-
             </div>
 
 
             <div class="tool">
-
-              <div class="tool-icon">
-                Ae
-              </div>
-
+              <div class="tool-icon">Ae</div>
               <div class="tool-name">
                 Adobe After Effects
               </div>
-
             </div>
 
 
             <div class="tool">
-
-              <div class="tool-icon">
-                Ps
-              </div>
-
+              <div class="tool-icon">Ps</div>
               <div class="tool-name">
                 Adobe Photoshop
               </div>
-
             </div>
 
 
             <div class="tool">
-
-              <div class="tool-icon">
-                AI
-              </div>
-
+              <div class="tool-icon">AI</div>
               <div class="tool-name">
                 AI Editing Tools
               </div>
-
             </div>
 
           </div>
@@ -1750,10 +1329,7 @@ footer{
 </section>
 
 
-<!-- =========================
-     CLIENT SATISFACTION
-========================= -->
-
+<!-- CLIENT SATISFACTION -->
 <section id="testimonials" class="testimonials reveal">
 
   <div class="container">
@@ -1821,10 +1397,7 @@ footer{
 </section>
 
 
-<!-- =========================
-     CONTACT
-========================= -->
-
+<!-- CONTACT -->
 <section id="contact" class="contact reveal">
 
   <div class="container">
@@ -1912,10 +1485,7 @@ footer{
 </section>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
-
+<!-- FOOTER -->
 <footer>
 
   <div class="container">
@@ -1943,22 +1513,9 @@ footer{
         </h4>
 
         <a href="#">Home</a>
-
-        <a href="#long-form">
-          Long-Form
-        </a>
-
-        <a href="#short-form">
-          Short-Form
-        </a>
-
-        <a href="#about">
-          About
-        </a>
-
-        <a href="#contact">
-          Contact
-        </a>
+        <a href="#long-form">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
 
       </div>
 
@@ -2013,110 +1570,67 @@ footer{
 </footer>
 
 
-<!-- =====================================================
-     VIDEO PLAYER MODAL
-====================================================== -->
-
-<div
-  class="video-modal"
-  id="videoModal">
-
-  <div class="modal-inner">
-
-    <button
-      class="modal-close"
-      onclick="closeVideo()">
-      ×
-    </button>
-
-    <video
-      id="modalVideo"
-      controls
-      playsinline>
-    </video>
-
-  </div>
-
-</div>
-
-
 <script>
 
 /* =========================
    ANIMATED STATS
 ========================= */
 
-const counters =
-  document.querySelectorAll(".counter");
+const counters = document.querySelectorAll(".counter");
 
-const counterObserver =
-  new IntersectionObserver(
-    (entries, observer) => {
+const counterObserver = new IntersectionObserver(
+  (entries, observer) => {
 
-      entries.forEach(entry => {
+    entries.forEach(entry => {
 
-        if(!entry.isIntersecting) return;
+      if(!entry.isIntersecting) return;
 
-        const element = entry.target;
+      const element = entry.target;
 
-        const target =
-          Number(element.dataset.target);
+      const target = Number(element.dataset.target);
+      const prefix = element.dataset.prefix || "";
+      const suffix = element.dataset.suffix || "";
 
-        const prefix =
-          element.dataset.prefix || "";
+      const duration = 1400;
+      const startTime = performance.now();
 
-        const suffix =
-          element.dataset.suffix || "";
+      function animate(currentTime){
 
-        const duration = 1400;
+        const progress = Math.min(
+          (currentTime - startTime) / duration,
+          1
+        );
 
-        const startTime =
-          performance.now();
+        const eased =
+          1 - Math.pow(1 - progress, 3);
 
-        function animate(currentTime){
+        const value =
+          Math.floor(target * eased);
 
-          const progress =
-            Math.min(
-              (currentTime - startTime) / duration,
-              1
-            );
+        element.textContent =
+          prefix +
+          value +
+          (progress === 1 ? suffix : "");
 
-          const eased =
-            1 - Math.pow(1 - progress, 3);
-
-          const value =
-            Math.floor(target * eased);
-
-          element.textContent =
-            prefix +
-            value +
-            (progress === 1 ? suffix : "");
-
-          if(progress < 1){
-
-            requestAnimationFrame(animate);
-
-          }
-
+        if(progress < 1){
+          requestAnimationFrame(animate);
         }
+      }
 
-        requestAnimationFrame(animate);
+      requestAnimationFrame(animate);
 
-        observer.unobserve(element);
+      observer.unobserve(element);
 
-      });
+    });
 
-    },
-    {
-      threshold:.5
-    }
-  );
-
+  },
+  {
+    threshold:.5
+  }
+);
 
 counters.forEach(counter => {
-
   counterObserver.observe(counter);
-
 });
 
 
@@ -2134,9 +1648,7 @@ const revealObserver =
       entries.forEach(entry => {
 
         if(entry.isIntersecting){
-
           entry.target.classList.add("show");
-
         }
 
       });
@@ -2147,79 +1659,9 @@ const revealObserver =
     }
   );
 
-
 revealElements.forEach(element => {
-
   revealObserver.observe(element);
-
 });
-
-
-/* =========================
-   VIDEO PLAYER
-========================= */
-
-const videoModal =
-  document.getElementById("videoModal");
-
-const modalVideo =
-  document.getElementById("modalVideo");
-
-
-function openVideo(videoUrl){
-
-  modalVideo.src = videoUrl;
-
-  videoModal.classList.add("active");
-
-  modalVideo.play().catch(() => {});
-
-}
-
-
-function closeVideo(){
-
-  modalVideo.pause();
-
-  modalVideo.removeAttribute("src");
-
-  modalVideo.load();
-
-  videoModal.classList.remove("active");
-
-}
-
-
-/* Close when clicking outside video */
-
-videoModal.addEventListener(
-  "click",
-  function(event){
-
-    if(event.target === videoModal){
-
-      closeVideo();
-
-    }
-
-  }
-);
-
-
-/* Close with ESC */
-
-document.addEventListener(
-  "keydown",
-  function(event){
-
-    if(event.key === "Escape"){
-
-      closeVideo();
-
-    }
-
-  }
-);
 
 </script>
 

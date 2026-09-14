@@ -1,1088 +1,422 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+from pathlib import Path
+import re
 
-  <title>Keshu — Video Editor</title>
+path = Path("/mnt/data/keshu_portfolio.html")
+html = path.read_text(encoding="utf-8")
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+# 1) Remove the "AVAILABLE FOR WORK" badge from the hero photo.
+html = re.sub(
+    r'\s*<div class="hero-label">.*?</div>\s*',
+    '\n',
+    html,
+    count=1,
+    flags=re.S
+)
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0; 
-      box-sizing: border-box;
-    }
+# 2) Change intro placeholder to "INTRODUCTION VIDEO".
+html = html.replace(
+    '<span class="mono">SELECT A VIDEO FROM THE PORTFOLIO</span>',
+    '<span class="mono">INTRODUCTION VIDEO</span>'
+)
 
-    html {
-      scroll-behavior: smooth;
-    }
+# 3) Update worldwide clients to 30 and prepare animated stat numbers.
+html = html.replace(
+    '<strong>4+ Years</strong>',
+    '<strong class="count-number" data-target="4" data-suffix="+ Years">0</strong>'
+)
+html = html.replace(
+    '<strong>500+</strong>',
+    '<strong class="count-number" data-target="500" data-suffix="+ Videos">0</strong>'
+)
+html = html.replace(
+    '<strong>130+</strong>',
+    '<strong class="count-number" data-target="30" data-suffix=" Clients Worldwide">0</strong>'
+)
 
-    body {
-      background: #000;
-      color: #fff;
-      font-family: "Inter", sans-serif;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font-family: inherit;
-    }
-
-    /* =========================
-       MAIN
-    ========================= */
-
-    .page {
-      width: 100%;
-      min-height: 100vh;
-      background:
-        radial-gradient(
-          circle at 82% 10%,
-          rgba(132, 42, 255, 0.42),
-          transparent 26%
-        ),
-        #000;
-    }
-
-    .container {
-      width: min(1120px, calc(100% - 80px));
-      margin: 0 auto;
-    }
-
-    /* =========================
-       NAVBAR
-    ========================= */
-
-    nav {
-      height: 82px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .logo {
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 34px;
-      font-size: 11px;
-      color: #aaa;
-    }
-
-    .nav-links a:hover {
-      color: #fff;
-    }
-
-    .nav-button {
-      padding: 9px 17px;
-      border-radius: 4px;
-      background: #8b35ff;
-      color: #fff;
-      font-size: 10px;
-      font-weight: 700;
-      border: 0;
-    }
-
-    /* =========================
-       HERO
-    ========================= */
-
-    .hero {
-      min-height: 620px;
-      display: flex;
-      align-items: center;
+# 4) Make the "about" photo sit a little lower on desktop.
+html = html.replace(
+    '''    .about-photo {
+      position: relative;''',
+    '''    .about-photo {
       position: relative;
-    }
-
-    .hero-content {
-      max-width: 570px;
-      padding-top: 20px;
-    }
-
-    .eyebrow {
-      color: #a95aff;
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      margin-bottom: 22px;
-    }
-
-    .hero h1 {
-      font-size: clamp(42px, 6vw, 75px);
-      line-height: 0.98;
-      letter-spacing: -0.055em;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-
-    .hero h1 span {
-      color: #9b46ff;
-    }
-
-    .hero-description {
-      margin-top: 28px;
-      max-width: 430px;
-      color: #999;
-      font-size: 12px;
-      line-height: 1.75;
-    }
-
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-top: 28px;
-    }
-
-    .primary-btn {
-      background: #8632ff;
-      padding: 12px 22px;
-      border-radius: 4px;
-      font-size: 10px;
-      font-weight: 700;
-      border: 0;
-      color: white;
-    }
-
-    .secondary-btn {
-      font-size: 10px;
-      color: #999;
-      border-bottom: 1px solid #555;
-      padding-bottom: 3px;
-    }
-
-    /* =========================
-       SECTION
-    ========================= */
-
-    section {
-      padding: 100px 0;
-    }
-
-    .section-number {
-      color: #8c3cff;
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      margin-bottom: 10px;
-    }
-
-    .section-title {
-      font-size: 25px;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      text-transform: uppercase;
-    }
-
-    .section-subtitle {
-      color: #777;
-      font-size: 9px;
-      margin-top: 9px;
-      line-height: 1.7;
-    }
-
-    /* =========================
-       INTRO
-    ========================= */
-
-    .intro {
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .intro-grid {
-      display: grid;
-      grid-template-columns: 1.4fr 0.6fr;
-      gap: 70px;
-      align-items: center;
-    }
-
-    .intro-video {
-      height: 340px;
-      border: 1px dashed rgba(255,255,255,0.18);
-      background: #050505;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .intro-video video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .intro-info {
-      display: grid;
-      gap: 20px;
-    }
-
-    .info-box {
-      border-left: 1px solid #8738ff;
-      padding-left: 14px;
-    }
-
-    .info-box span {
-      display: block;
-      color: #777;
-      font-size: 8px;
-      text-transform: uppercase;
-      margin-bottom: 5px;
-    }
-
-    .info-box strong {
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    /* =========================
-       WORK
-    ========================= */
-
-    .work {
-      padding-top: 30px;
-    }
-
-    .work-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 30px;
-    }
-
-    .work-filter {
-      display: flex;
-      gap: 7px;
-    }
-
-    .filter {
-      border: 1px solid rgba(255,255,255,0.1);
-      background: transparent;
-      color: #777;
-      padding: 6px 10px;
-      font-size: 8px;
-      border-radius: 3px;
-    }
-
-    .filter.active {
-      color: #fff;
-      border-color: #8738ff;
-    }
-
-    /* =========================
-       FEATURED VIDEO
-    ========================= */
-
-    .featured {
-      margin-bottom: 50px;
-    }
-
-    .featured-video {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: #080808;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.07);
-    }
-
-    .featured-video video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .video-meta {
-      padding-top: 13px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .video-meta h3 {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-
-    .video-meta p {
-      font-size: 8px;
-      color: #666;
-      margin-top: 5px;
-    }
-
-    .video-tag {
-      font-size: 8px;
-      color: #a64dff;
-      border: 1px solid rgba(166,77,255,0.4);
-      padding: 5px 8px;
-      border-radius: 3px;
-    }
-
-    /* =========================
-       VIDEO GRID
-    ========================= */
-
-    .project-title {
-      margin: 60px 0 18px;
-    }
-
-    .project-title h3 {
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-
-    .project-title p {
-      color: #555;
-      font-size: 8px;
-      margin-top: 5px;
-    }
-
-    .video-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-    }
-
-    .video-card {
-      aspect-ratio: 16 / 10;
-      background: #050505;
-      border: 1px solid rgba(255,255,255,0.07);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .video-card video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .video-card.empty::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(
-          135deg,
-          transparent 49%,
-          rgba(255,255,255,0.025) 50%,
-          transparent 51%
-        );
-    }
-
-    .video-card-label {
-      position: absolute;
-      left: 8px;
-      bottom: 7px;
-      z-index: 2;
-      font-size: 7px;
-      color: white;
-      background: rgba(0,0,0,0.7);
-      padding: 4px 6px;
-    }
-
-    /* =========================
-       TESTIMONIALS
-    ========================= */
-
-    .testimonials {
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 30px;
-    }
-
-    .testimonial {
-      min-height: 125px;
-      background: #050505;
-      border: 1px solid rgba(255,255,255,0.07);
-      padding: 18px;
-    }
-
-    .testimonial p {
-      font-size: 9px;
-      line-height: 1.7;
-      color: #888;
-    }
-
-    .testimonial strong {
-      display: block;
-      font-size: 9px;
-      margin-top: 15px;
-    }
-
-    /* =========================
-       ABOUT
-    ========================= */
-
-    .about {
-      background:
-        radial-gradient(
-          circle at 10% 50%,
-          rgba(107, 28, 210, 0.22),
-          transparent 30%
-        );
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.3fr 0.7fr;
-      gap: 90px;
-      align-items: center;
-    }
-
-    .about-photo {
-      width: 100%;
-      max-width: 420px;
-      aspect-ratio: 1 / 1;
-      border: 1px dashed rgba(255,255,255,0.15);
-      overflow: hidden;
-      background: #050505;
-    }
-
-    .about-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .about-copy h2 {
-      font-size: 28px;
-      line-height: 1;
-      text-transform: uppercase;
-      letter-spacing: -0.05em;
-    }
-
-    .about-copy p {
-      margin-top: 22px;
-      color: #777;
-      font-size: 10px;
-      line-height: 1.9;
-      max-width: 430px;
-    }
-
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      margin-top: 22px;
-    }
-
-    .skill {
-      font-size: 7px;
-      color: #999;
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 6px 9px;
-      border-radius: 3px;
-    }
-
-    /* =========================
-       CTA
-    ========================= */
-
-    .cta {
-      text-align: center;
-      padding: 120px 0;
-      background:
-        radial-gradient(
-          circle at center,
-          rgba(116, 37, 218, 0.35),
-          transparent 45%
-        );
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .cta h2 {
-      font-size: 36px;
-      line-height: 0.95;
-      text-transform: uppercase;
-      letter-spacing: -0.05em;
-    }
-
-    .cta p {
-      color: #777;
-      font-size: 9px;
-      margin-top: 15px;
-    }
-
-    .cta .primary-btn {
-      display: inline-block;
-      margin-top: 25px;
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer {
-      border-top: 1px solid rgba(255,255,255,0.07);
-      padding: 35px 0;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 30px;
-    }
-
-    .footer-column h4 {
-      font-size: 8px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    .footer-column a,
-    .footer-column p {
-      color: #666;
-      font-size: 8px;
-      line-height: 1.9;
-    }
-
-    /* =========================
-       RESPONSIVE
-    ========================= */
-
-    @media (max-width: 800px) {
-
-      .container {
-        width: min(100% - 36px, 1120px);
-      }
-
-      nav {
-        height: 70px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        min-height: 540px;
-      }
-
-      .intro-grid,
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 35px;
-      }
-
-      .intro-video {
-        height: auto;
-        aspect-ratio: 16 / 10;
-      }
-
-      .video-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .testimonial-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .work-header {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 500px) {
-
-      section {
-        padding: 70px 0;
-      }
-
-      .hero h1 {
-        font-size: 43px;
-      }
-
-      .video-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .cta h2 {
-        font-size: 30px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <div class="page">
-
-    <!-- =========================
-         NAV
+      transform: translateY(34px);'''
+)
+
+html = html.replace(
+    '''      .about-photo {
+        width: 100%;
+      }''',
+    '''      .about-photo {
+        width: 100%;
+        transform: none;
+      }'''
+)
+
+# 5) Add a dedicated tools section before About.
+about_marker = '''    <!-- =========================
+         ABOUT
+    ========================== -->'''
+
+tools_section = '''    <!-- =========================
+         TOOLS
     ========================== -->
+    <section class="section tools-section" id="tools">
+      <div class="wrap">
 
-    <div class="container">
-      <nav>
-        <div class="logo">KESHU.</div>
-
-        <div class="nav-links">
-          <a href="#work">WORK</a>
-          <a href="#about">ABOUT</a>
-          <a href="#contact">CONTACT</a>
-        </div>
-
-        <a href="#contact" class="nav-button">LET'S TALK</a>
-      </nav>
-    </div>
-
-
-    <!-- =========================
-         HERO
-    ========================== -->
-
-    <header class="hero">
-      <div class="container">
-
-        <div class="hero-content">
-
-          <div class="eyebrow">
-            VIDEO EDITOR / 4+ YEARS
-          </div>
-
-          <h1>
-            VIDEO EDITOR<br>
-            WHO MAKES <span>PEOPLE</span><br>
-            WATCH.
-          </h1>
-
-          <p class="hero-description">
-            I edit talking-head videos, documentaries, YouTube videos,
-            podcasts, reels and short-form content with a focus on
-            clean pacing, storytelling and retention.
-          </p>
-
-          <div class="hero-actions">
-            <a href="#work" class="primary-btn">WATCH MY WORK</a>
-            <a href="#contact" class="secondary-btn">LET'S WORK TOGETHER →</a>
-          </div>
-
-        </div>
-
-      </div>
-    </header>
-
-
-    <!-- =========================
-         INTRO
-    ========================== -->
-
-    <section class="intro">
-      <div class="container">
-
-        <div class="intro-grid">
-
-          <div class="intro-video">
-            <video
-              controls
-              playsinline
-              preload="metadata"
-              src="https://res.cloudinary.com/sle2ecwx/video/upload/v1789287652/Facebook_Subscribe_2_V2.mp4">
-            </video>
-          </div>
-
-          <div class="intro-info">
-
-            <div class="info-box">
-              <span>Experience</span>
-              <strong>4+ Years</strong>
-            </div>
-
-            <div class="info-box">
-              <span>Videos Edited</span>
-              <strong>500+</strong>
-            </div>
-
-            <div class="info-box">
-              <span>Clients</span>
-              <strong>130+</strong>
-            </div>
-
-            <div class="info-box">
-              <span>Specialization</span>
-              <strong>Video Editing</strong>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- =========================
-         WORK
-    ========================== -->
-
-    <section class="work" id="work">
-
-      <div class="container">
-
-        <div class="work-header">
-
+        <div class="section-head reveal">
           <div>
-            <div class="section-number">01 / SELECTED WORK</div>
-
-            <h2 class="section-title">
-              WATCH THE EDITS.
-            </h2>
-
-            <p class="section-subtitle">
-              A selection of videos edited for creators, brands and businesses.
-            </p>
+            <div class="kicker mono">02 / TOOLS</div>
+            <h2 class="section-title">TOOLS I <span>USE.</span></h2>
           </div>
 
-          <div class="work-filter">
-            <button class="filter active">ALL</button>
-            <button class="filter">LONG FORM</button>
-            <button class="filter">REELS</button>
-          </div>
-
+          <p class="section-copy">
+            Professional editing software and AI tools used to build
+            polished, efficient and high-retention content.
+          </p>
         </div>
 
+        <div class="tools-grid reveal">
 
-        <!-- =========================
-             TALKING HEAD
-        ========================== -->
-
-        <div class="featured">
-
-          <div class="featured-video">
-            <video
-              controls
-              playsinline
-              preload="metadata"
-              src="https://res.cloudinary.com/sle2ecwx/video/upload/v1789287652/Facebook_Subscribe_2_V2.mp4">
-            </video>
-          </div>
-
-          <div class="video-meta">
-
+          <div class="tool-card">
+            <div class="tool-logo adobe-pr">Pr</div>
             <div>
-              <h3>01 — Long-Form Video Editing</h3>
-              <p>Talking Head / YouTube</p>
+              <small class="mono">EDITING</small>
+              <h3>Premiere Pro</h3>
+              <p>Professional video editing</p>
             </div>
+          </div>
 
-            <div class="video-tag">
-              TALKING HEAD
+          <div class="tool-card">
+            <div class="tool-logo adobe-ae">Ae</div>
+            <div>
+              <small class="mono">MOTION</small>
+              <h3>After Effects</h3>
+              <p>Motion graphics & visual effects</p>
             </div>
-
           </div>
 
-        </div>
-
-
-        <!-- =========================
-             DOCUMENTARY
-        ========================== -->
-
-        <div class="project-title">
-          <h3>02 — Selected Long-Form Work</h3>
-          <p>Documentary / Storytelling / Retention</p>
-        </div>
-
-        <div class="video-grid">
-
-          <div class="video-card">
-            <video
-              controls
-              playsinline
-              preload="metadata"
-              src="https://res.cloudinary.com/sle2ecwx/video/upload/v1789287640/Video3-4hK1u-MR4rY-ZrbMZ_2.mp4">
-            </video>
-          </div>
-
-          <div class="video-card empty"></div>
-          <div class="video-card empty"></div>
-          <div class="video-card empty"></div>
-
-          <div class="video-card empty"></div>
-          <div class="video-card empty"></div>
-          <div class="video-card empty"></div>
-          <div class="video-card empty"></div>
-
-        </div>
-
-
-        <!-- =========================
-             REELS
-        ========================== -->
-
-        <div class="project-title">
-          <h3>03 — Short-Form & Reels</h3>
-          <p>Fast-paced / Social Media / Retention</p>
-        </div>
-
-        <div class="video-grid">
-
-          <div class="video-card">
-
-            <video
-              controls
-              playsinline
-              preload="metadata"
-              src="https://res.cloudinary.com/sle2ecwx/video/upload/v1789375665/Video-951.mp4">
-            </video>
-
-          </div>
-
-          <div class="video-card empty"></div>
-          <div class="video-card empty"></div>
-          <div class="video-card empty"></div>
-
-          <div class="video-card empty"></div>
-          <div class="video-card empty"></div>
-          <div class="video-card empty"></div>
-          <div class="video-card empty"></div>
-
-        </div>
-
-
-        <!-- =========================
-             MORE WORK
-        ========================== -->
-
-        <div class="project-title">
-          <h3>04 — More Selected Work</h3>
-          <p>Video Editing / Motion Graphics / Social Content</p>
-        </div>
-
-        <div class="video-grid">
-
-          <div class="video-card empty"></div>
-          <div class="video-card empty"></div>
-          <div class="video-card empty"></div>
-          <div class="video-card empty"></div>
-
-          <div class="video-card empty"></div>
-          <div class="video-card empty"></div>
-          <div class="video-card empty"></div>
-          <div class="video-card empty"></div>
-
-          <div class="video-card empty"></div>
-          <div class="video-card empty"></div>
-          <div class="video-card empty"></div>
-          <div class="video-card empty"></div>
-
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- =========================
-         TESTIMONIALS
-    ========================== -->
-
-    <section class="testimonials">
-
-      <div class="container">
-
-        <div class="section-number">
-          05 / CLIENT FEEDBACK
-        </div>
-
-        <h2 class="section-title">
-          CLIENT TESTIMONIALS
-        </h2>
-
-        <div class="testimonial-grid">
-
-          <div class="testimonial">
-            <p>
-              Replace this section with your client testimonial.
-            </p>
-            <strong>CLIENT NAME</strong>
-          </div>
-
-          <div class="testimonial">
-            <p>
-              Replace this section with your client testimonial.
-            </p>
-            <strong>CLIENT NAME</strong>
-          </div>
-
-          <div class="testimonial">
-            <p>
-              Replace this section with your client testimonial.
-            </p>
-            <strong>CLIENT NAME</strong>
-          </div>
-
-          <div class="testimonial">
-            <p>
-              Replace this section with your client testimonial.
-            </p>
-            <strong>CLIENT NAME</strong>
+          <div class="tool-card">
+            <div class="tool-logo ai-logo">AI</div>
+            <div>
+              <small class="mono">WORKFLOW</small>
+              <h3>AI Tools</h3>
+              <p>AI-assisted creative workflow</p>
+            </div>
           </div>
 
         </div>
 
       </div>
-
     </section>
 
 
     <!-- =========================
          ABOUT
+    ========================== -->'''
+
+html = html.replace(about_marker, tools_section)
+
+# 6) Rename About from section 02 to section 03.
+html = html.replace(
+    '<div class="kicker mono">02 / ABOUT KESHU</div>',
+    '<div class="kicker mono">03 / ABOUT KESHU</div>'
+)
+
+# 7) Replace the existing Contact Details + CTA area with CTA followed immediately
+#    by compact clickable contact boxes. IDs/details are NOT visibly shown.
+contact_start = html.find('    <!-- =========================\n         CONTACT\n    ========================== -->')
+footer_start = html.find('    <!-- =========================\n       FOOTER\n    ========================== -->')
+
+if contact_start != -1 and footer_start != -1:
+    replacement = '''    <!-- =========================
+         CONTACT / FINAL CTA
     ========================== -->
-
-    <section class="about" id="about">
-
-      <div class="container">
-
-        <div class="about-grid">
-
-          <div class="about-photo">
-
-            <!--
-              APNI PHOTO KA URL YAHAN PASTE KARNA:
-              YOUR_PHOTO_URL_HERE
-            -->
-
-            <img
-              src="YOUR_PHOTO_URL_HERE"
-              alt="Keshu">
-          </div>
-
-          <div class="about-copy">
-
-            <div class="section-number">
-              06 / ABOUT
-            </div>
-
-            <h2>
-              ABOUT KESHU
-            </h2>
-
-            <p>
-              I'm Keshu, a professional video editor with 4+ years
-              of experience. I work on YouTube videos, documentaries,
-              talking-head content, podcasts, reels and short-form
-              videos.
-            </p>
-
-            <div class="skills">
-              <span class="skill">PREMIERE PRO</span>
-              <span class="skill">AFTER EFFECTS</span>
-              <span class="skill">YOUTUBE</span>
-              <span class="skill">DOCUMENTARY</span>
-              <span class="skill">TALKING HEAD</span>
-              <span class="skill">REELS</span>
-              <span class="skill">MOTION GRAPHICS</span>
-              <span class="skill">SOUND DESIGN</span>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         CTA
-    ========================== -->
-
     <section class="cta" id="contact">
+      <div class="wrap reveal">
 
-      <div class="container">
+        <div class="kicker mono">04 / CONTACT</div>
 
         <h2>
           LET'S WORK<br>
-          TOGETHER.
+          <span>TOGETHER.</span>
         </h2>
 
         <p>
-          Have a project in mind? Let's create something people want to watch.
+          Have a project in mind? Let's turn your footage into something
+          people actually want to watch.
         </p>
 
-        <a
-          href="mailto:YOUR_EMAIL_HERE"
-          class="primary-btn">
-          GET IN TOUCH
-        </a>
+        <div class="final-contact-grid">
 
-      </div>
+          <a class="final-contact-box email-box" href="mailto:keshuparmar306@gmail.com" aria-label="Email Keshu">
+            <span class="final-contact-icon">✉</span>
+            <span class="final-contact-label">EMAIL</span>
+            <span class="final-contact-arrow">↗</span>
+          </a>
 
-    </section>
+          <a class="final-contact-box whatsapp-box" href="https://wa.me/919016913568" target="_blank" rel="noopener" aria-label="WhatsApp Keshu">
+            <span class="final-contact-icon">◉</span>
+            <span class="final-contact-label">WHATSAPP</span>
+            <span class="final-contact-arrow">↗</span>
+          </a>
 
+          <a class="final-contact-box" href="https://www.instagram.com/quick_media._?stkn=dmFtODBzdWI2ZGw5" target="_blank" rel="noopener" aria-label="Instagram">
+            <span class="final-contact-icon">◎</span>
+            <span class="final-contact-label">INSTAGRAM</span>
+            <span class="final-contact-arrow">↗</span>
+          </a>
 
-    <!-- =========================
-         FOOTER
-    ========================== -->
+          <a class="final-contact-box" href="https://www.linkedin.com/in/keshu-parmar-b26829236" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <span class="final-contact-icon">in</span>
+            <span class="final-contact-label">LINKEDIN</span>
+            <span class="final-contact-arrow">↗</span>
+          </a>
 
-    <footer>
-
-      <div class="container">
-
-        <div class="footer-grid">
-
-          <div class="footer-column">
-            <h4>KESHU.</h4>
-            <p>
-              Professional Video Editor.
-            </p>
-          </div>
-
-          <div class="footer-column">
-            <h4>LINKS</h4>
-            <p>
-              <a href="#work">WORK</a><br>
-              <a href="#about">ABOUT</a><br>
-              <a href="#contact">CONTACT</a>
-            </p>
-          </div>
-
-          <div class="footer-column">
-            <h4>SOCIAL</h4>
-            <p>
-              <a href="https://www.fiverr.com/s/wkvk4Pq" target="_blank">
-                FIVERR
-              </a>
-            </p>
-          </div>
+          <a class="final-contact-box" href="https://x.com/Keshuparmar41" target="_blank" rel="noopener" aria-label="X">
+            <span class="final-contact-icon">𝕏</span>
+            <span class="final-contact-label">X</span>
+            <span class="final-contact-arrow">↗</span>
+          </a>
 
         </div>
 
       </div>
+    </section>
 
-    </footer>
 
-  </div>
+'''
+    html = html[:contact_start] + replacement + html[footer_start:]
 
-</body>
-</html>
+# 8) Change footer numbering / remove redundant old social links if present.
+html = html.replace(
+    '<a href="mailto:keshuparmar306@gmail.com">EMAIL</a>\n        <a href="https://wa.me/919016913568" target="_blank" rel="noopener">WHATSAPP</a>\n        <a href="https://www.instagram.com/quick_media._?stkn=dmFtODBzdWI2ZGw5" target="_blank" rel="noopener">INSTAGRAM</a>\n        <a href="https://www.linkedin.com/in/keshu-parmar-b26829236" target="_blank" rel="noopener">LINKEDIN</a>\n        <a href="https://x.com/Keshuparmar41" target="_blank" rel="noopener">X</a>',
+    '<a href="#work">WORK</a>\n        <a href="#tools">TOOLS</a>\n        <a href="#about">ABOUT</a>'
+)
+
+# 9) Add CSS for tools and final compact contact boxes.
+css_marker = '''    /* ---------- CTA ---------- */'''
+extra_css = '''    /* ---------- Tools ---------- */
+    .tools-section {
+      border-top: 1px solid var(--line);
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .tool-card {
+      min-height: 130px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 19px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(151,71,255,.055), transparent 55%),
+        #08080c;
+      transition: transform .4s var(--ease), border-color .3s ease, box-shadow .3s ease;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(151,71,255,.38);
+      box-shadow: 0 24px 60px rgba(0,0,0,.35);
+    }
+
+    .tool-logo {
+      width: 52px;
+      height: 52px;
+      flex: 0 0 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: 800;
+      font-size: 17px;
+      letter-spacing: -.06em;
+      background: #121016;
+      border: 1px solid rgba(151,71,255,.38);
+      box-shadow: 0 0 28px rgba(151,71,255,.10);
+    }
+
+    .tool-logo.adobe-pr,
+    .tool-logo.adobe-ae {
+      background: linear-gradient(145deg, #2b123d, #110c16);
+      color: #e7bfff;
+    }
+
+    .tool-logo.ai-logo {
+      background: linear-gradient(145deg, #201332, #0e0b13);
+      color: var(--brand-2);
+    }
+
+    .tool-card small {
+      display: block;
+      color: var(--brand-2);
+      font-size: 8px;
+      margin-bottom: 5px;
+    }
+
+    .tool-card h3 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: -.02em;
+    }
+
+    .tool-card p {
+      margin-top: 6px;
+      color: #625e69;
+      font-size: 8px;
+      line-height: 1.5;
+    }
+
+
+    /* ---------- Final contact boxes ---------- */
+    .final-contact-grid {
+      width: min(720px, 100%);
+      margin: 36px auto 0;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .final-contact-box {
+      min-height: 72px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 9px 7px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(6,6,9,.72);
+      color: #b4afba;
+      transition: transform .3s var(--ease), border-color .3s ease,
+                  background .3s ease, color .3s ease, box-shadow .3s ease;
+    }
+
+    .final-contact-box:hover {
+      transform: translateY(-5px);
+      border-color: rgba(151,71,255,.48);
+      background: rgba(151,71,255,.075);
+      color: #fff;
+      box-shadow: 0 16px 45px rgba(0,0,0,.32);
+    }
+
+    .final-contact-box.whatsapp-box {
+      border-color: rgba(52,211,106,.25);
+    }
+
+    .final-contact-box.whatsapp-box:hover {
+      border-color: rgba(52,211,106,.72);
+      background: rgba(52,211,106,.08);
+    }
+
+    .final-contact-box.whatsapp-box .final-contact-icon,
+    .final-contact-box.whatsapp-box .final-contact-label {
+      color: #35d36a;
+    }
+
+    .final-contact-icon {
+      color: var(--brand-2);
+      font-size: 14px;
+      line-height: 1;
+      font-weight: 800;
+    }
+
+    .final-contact-label {
+      color: #89838f;
+      font: 500 7px/1 "DM Mono", monospace;
+      letter-spacing: .09em;
+    }
+
+    .final-contact-arrow {
+      position: absolute;
+      top: 7px;
+      right: 8px;
+      color: #4e4955;
+      font-size: 11px;
+      transition: color .25s ease, transform .25s ease;
+    }
+
+    .final-contact-box:hover .final-contact-arrow {
+      color: var(--brand-2);
+      transform: translate(2px, -2px);
+    }
+
+'''
+html = html.replace(css_marker, extra_css + css_marker)
+
+# 10) Mobile adjustments for tools and final contacts.
+mobile_marker = '''      .video-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }'''
+
+mobile_replacement = '''      .video-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .final-contact-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }'''
+
+html = html.replace(mobile_marker, mobile_replacement)
+
+# 11) Add the zero-to-target number animation before the initial render.
+script_marker = '''    /* Initial render */
+    renderCategories();
+    renderVideos();'''
+
+counter_script = '''    /* ==========================================================
+       ZERO -> TARGET STAT COUNTERS
+    ========================================================== */
+
+    function animateCounters() {
+      document.querySelectorAll(".count-number").forEach(counter => {
+        const target = Number(counter.dataset.target);
+        const suffix = counter.dataset.suffix || "";
+        const duration = 1300;
+        const start = performance.now();
+
+        function tick(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const value = Math.floor(target * eased);
+
+          counter.textContent = `${value}${suffix}`;
+
+          if (progress < 1) {
+            requestAnimationFrame(tick);
+          } else {
+            counter.textContent = `${target}${suffix}`;
+          }
+        }
+
+        requestAnimationFrame(tick);
+      });
+    }
+
+    /* Initial render */
+    renderCategories();
+    renderVideos();
+    animateCounters();'''
+
+html = html.replace(script_marker, counter_script)
+
+path.write_text(html, encoding="utf-8")
+print(f"Updated successfully: {path}")

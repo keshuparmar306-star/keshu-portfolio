@@ -4,868 +4,484 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Keshu Parmar — Professional Video Editor & Founder of Quick Media</title>
+<title>Keshu Parmar — Professional Video Editor</title>
 
-<meta name="description" content="Keshu Parmar — Professional Video Editor and Founder of Quick Media. High-retention video editing for creators, brands and YouTube channels.">
+<meta name="description" content="Keshu Parmar — Professional Video Editor & Founder of Quick Media. Long-form, short-form, documentary, talking-head and motion graphics editing.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 html{
-  scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-  background:#09080d;
-  color:#f4f1f8;
-  font-family:"DM Sans",sans-serif;
-  overflow-x:hidden;
+    font-family:"Inter",sans-serif;
+    background:#08080c;
+    color:#fff;
+    line-height:1.6;
 }
 
 a{
-  color:inherit;
-  text-decoration:none;
-}
-
-button{
-  font-family:inherit;
-}
-
-::selection{
-  background:#a98cff;
-  color:#08070b;
-}
-
-/* =========================
-   BACKGROUND
-========================= */
-
-body::before{
-  content:"";
-  position:fixed;
-  width:650px;
-  height:650px;
-  top:-250px;
-  right:-200px;
-  background:radial-gradient(
-    circle,
-    rgba(137,105,255,.13) 0%,
-    rgba(137,105,255,.04) 35%,
-    transparent 70%
-  );
-  pointer-events:none;
-  z-index:-1;
-}
-
-body::after{
-  content:"";
-  position:fixed;
-  width:500px;
-  height:500px;
-  bottom:-200px;
-  left:-200px;
-  background:radial-gradient(
-    circle,
-    rgba(137,105,255,.08),
-    transparent 70%
-  );
-  pointer-events:none;
-  z-index:-1;
-}
-
-/* =========================
-   NAV
-========================= */
-
-.nav{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:76px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 6vw;
-  z-index:1000;
-  background:rgba(9,8,13,.72);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(255,255,255,.05);
-}
-
-.logo{
-  font-weight:700;
-  font-size:15px;
-  letter-spacing:1.5px;
-}
-
-.logo span{
-  color:#a98cff;
-}
-
-.nav-links{
-  display:flex;
-  gap:30px;
-  align-items:center;
-}
-
-.nav-links a{
-  font-size:11px;
-  letter-spacing:1.5px;
-  color:#89858f;
-  transition:.3s;
-}
-
-.nav-links a:hover{
-  color:#fff;
-}
-
-/* =========================
-   GENERAL
-========================= */
-
-section{
-  padding:120px 7vw;
-}
-
-.section-label{
-  color:#a98cff;
-  font-size:11px;
-  letter-spacing:3px;
-  font-weight:700;
-  margin-bottom:22px;
-}
-
-.serif{
-  font-family:"Playfair Display",serif;
-  font-weight:500;
+    color:inherit;
+    text-decoration:none;
 }
 
 .container{
-  max-width:1400px;
-  margin:auto;
+    width:min(1180px,92%);
+    margin:auto;
 }
 
-/* =========================
-   HERO
-========================= */
+/* NAVIGATION */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    background:rgba(8,8,12,.78);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.nav-inner{
+    height:76px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:20px;
+    font-weight:800;
+    letter-spacing:-.5px;
+}
+
+.logo span{
+    color:#9c7cff;
+}
+
+.nav-links{
+    display:flex;
+    gap:28px;
+    align-items:center;
+}
+
+.nav-links a{
+    color:#aaa;
+    font-size:14px;
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    color:#fff;
+}
+
+.nav-btn{
+    padding:10px 17px;
+    border-radius:10px;
+    background:#9c7cff;
+    color:#09090d!important;
+    font-weight:700;
+}
+
+/* HERO */
 
 .hero{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  padding-top:130px;
-  position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+    padding-top:80px;
 }
 
-.hero-inner{
-  max-width:1050px;
+.hero:before{
+    content:"";
+    position:absolute;
+    width:650px;
+    height:650px;
+    background:rgba(156,124,255,.12);
+    filter:blur(130px);
+    border-radius:50%;
+    top:-220px;
+    right:-180px;
 }
 
-.hero-small{
-  color:#aaa5b1;
-  font-size:13px;
-  letter-spacing:2px;
-  margin-bottom:25px;
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:850px;
 }
 
-.hero h1{
-  font-size:clamp(65px,9vw,145px);
-  line-height:.88;
-  letter-spacing:-6px;
-  font-weight:600;
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    border:1px solid rgba(156,124,255,.3);
+    background:rgba(156,124,255,.08);
+    color:#c8baff;
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:13px;
+    margin-bottom:25px;
 }
 
-.hero h1 em{
-  color:#a98cff;
-  font-family:"Playfair Display",serif;
-  font-weight:500;
+.badge-dot{
+    width:7px;
+    height:7px;
+    background:#9c7cff;
+    border-radius:50%;
 }
 
-.hero-description{
-  max-width:610px;
-  margin-top:42px;
-  color:#aaa6b0;
-  font-size:16px;
-  line-height:1.8;
+h1{
+    font-size:clamp(48px,7vw,88px);
+    line-height:1;
+    letter-spacing:-4px;
+    max-width:900px;
 }
 
-.hero-actions{
-  display:flex;
-  gap:25px;
-  align-items:center;
-  margin-top:38px;
+h1 span{
+    color:#9c7cff;
 }
 
-.primary-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:12px;
-  padding:15px 24px;
-  border:1px solid #a98cff;
-  color:#fff;
-  font-size:11px;
-  letter-spacing:2px;
-  font-weight:700;
-  transition:.3s;
+.hero-text{
+    color:#a5a5ad;
+    font-size:18px;
+    max-width:670px;
+    margin-top:28px;
 }
 
-.primary-btn:hover{
-  background:#a98cff;
-  color:#09080d;
-  box-shadow:0 0 35px rgba(169,140,255,.25);
+.hero-buttons{
+    display:flex;
+    gap:14px;
+    margin-top:35px;
+    flex-wrap:wrap;
 }
 
-.text-btn{
-  font-size:11px;
-  letter-spacing:2px;
-  color:#85818c;
-  transition:.3s;
+.btn{
+    padding:14px 22px;
+    border-radius:12px;
+    font-size:14px;
+    font-weight:700;
+    transition:.25s;
 }
 
-.text-btn:hover{
-  color:#fff;
+.btn-primary{
+    background:#9c7cff;
+    color:#09090d;
 }
 
-/* =========================
-   STATS
-========================= */
+.btn-primary:hover{
+    transform:translateY(-2px);
+}
+
+.btn-secondary{
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.03);
+}
+
+.btn-secondary:hover{
+    background:rgba(255,255,255,.08);
+}
 
 .stats{
-  padding-top:45px;
-  padding-bottom:90px;
-}
-
-.stats-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  border-top:1px solid rgba(255,255,255,.08);
-  border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.stat{
-  padding:35px 25px;
-  border-right:1px solid rgba(255,255,255,.08);
-}
-
-.stat:last-child{
-  border-right:0;
+    display:flex;
+    gap:55px;
+    margin-top:65px;
+    flex-wrap:wrap;
 }
 
 .stat-number{
-  font-size:45px;
-  font-weight:600;
-  margin-bottom:8px;
+    font-size:28px;
+    font-weight:800;
 }
 
 .stat-label{
-  color:#77737f;
-  font-size:11px;
-  letter-spacing:2px;
+    color:#777;
+    font-size:12px;
+    margin-top:3px;
 }
 
-/* =========================
-   INTRO
-========================= */
+/* SECTIONS */
 
-.intro{
-  padding-top:100px;
+section{
+    padding:110px 0;
 }
 
-.intro-grid{
-  display:grid;
-  grid-template-columns:1.15fr .85fr;
-  gap:70px;
-  align-items:center;
+.section-heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    gap:30px;
+    margin-bottom:45px;
 }
 
-.intro-video{
-  aspect-ratio:16/9;
-  background:#111017;
-  border:1px solid rgba(255,255,255,.08);
-  overflow:hidden;
-  position:relative;
+.eyebrow{
+    color:#9c7cff;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:12px;
 }
 
-.intro-video video{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+.section-title{
+    font-size:42px;
+    line-height:1.05;
+    letter-spacing:-2px;
 }
 
-.video-placeholder{
-  width:100%;
-  height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#55515c;
-  font-size:12px;
-  letter-spacing:2px;
+.section-description{
+    color:#888;
+    max-width:470px;
+    font-size:14px;
 }
 
-.intro-name{
-  font-size:clamp(50px,7vw,100px);
-  line-height:.9;
-}
-
-.intro-role{
-  margin-top:25px;
-  color:#a98cff;
-  font-size:11px;
-  letter-spacing:3px;
-}
-
-/* =========================
-   WORK
-========================= */
-
-.work{
-  padding-top:150px;
-}
-
-.work-title{
-  font-size:clamp(65px,10vw,150px);
-  line-height:.8;
-  letter-spacing:-6px;
-  margin-bottom:70px;
-}
-
-.work-title em{
-  color:#a98cff;
-}
-
-/* CATEGORY POINTS */
-
-.category-area{
-  margin-bottom:45px;
-}
-
-.category-heading{
-  font-size:12px;
-  color:#aaa5b0;
-  letter-spacing:3px;
-  margin-bottom:20px;
-  font-weight:700;
-}
-
-.category-list{
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px 30px;
-  margin-bottom:55px;
-}
-
-.category-point{
-  position:relative;
-  background:none;
-  border:0;
-  padding:0;
-  color:#6f6b76;
-  font-size:13px;
-  font-weight:700;
-  letter-spacing:1px;
-  cursor:pointer;
-  transition:.3s ease;
-}
-
-.category-point::before{
-  content:"";
-  display:inline-block;
-  width:6px;
-  height:6px;
-  border-radius:50%;
-  background:#45414c;
-  margin-right:10px;
-  vertical-align:middle;
-  transition:.3s ease;
-}
-
-.category-point:hover{
-  color:#fff;
-}
-
-.category-point:hover::before{
-  background:#8d73db;
-}
-
-.category-point.active{
-  color:#fff;
-}
-
-.category-point.active::before{
-  background:#a98cff;
-  box-shadow:0 0 12px rgba(169,140,255,.8);
-}
-
-/* VIDEO GRID / HORIZONTAL STYLE */
-
-.video-section{
-  margin-bottom:110px;
-}
-
-.video-section-title{
-  display:flex;
-  align-items:end;
-  justify-content:space-between;
-  margin-bottom:28px;
-}
-
-.video-section-title h3{
-  font-size:28px;
-  font-weight:500;
-}
-
-.video-section-title span{
-  color:#625e68;
-  font-size:10px;
-  letter-spacing:2px;
-}
-
-.video-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:24px;
-}
-
-.video-card{
-  background:#111017;
-  border:1px solid rgba(255,255,255,.07);
-  overflow:hidden;
-  transition:.4s ease;
-}
-
-.video-card:hover{
-  transform:translateY(-5px);
-  border-color:rgba(169,140,255,.4);
-  box-shadow:0 20px 60px rgba(0,0,0,.35);
-}
-
-.video-wrapper{
-  aspect-ratio:16/9;
-  background:#0e0d12;
-  overflow:hidden;
-}
-
-.video-wrapper video{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
-
-.video-info{
-  padding:20px 22px 22px;
-}
-
-.video-category{
-  color:#a98cff;
-  font-size:9px;
-  letter-spacing:2px;
-  font-weight:700;
-  margin-bottom:8px;
-}
-
-.video-name{
-  font-size:18px;
-  font-weight:600;
-}
-
-.video-description{
-  color:#77737d;
-  font-size:12px;
-  margin-top:8px;
-  line-height:1.6;
-}
-
-.is-hidden{
-  display:none !important;
-}
-
-/* =========================
-   ABOUT
-========================= */
-
-.about{
-  border-top:1px solid rgba(255,255,255,.06);
-}
+/* ABOUT */
 
 .about-grid{
-  display:grid;
-  grid-template-columns:.85fr 1.15fr;
-  gap:80px;
-  align-items:center;
-}
-
-.about-photo{
-  aspect-ratio:4/5;
-  background:#111017;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,.07);
-}
-
-.about-photo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.about-title{
-  font-size:clamp(55px,8vw,120px);
-  line-height:.85;
-  letter-spacing:-5px;
-  margin-bottom:35px;
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:70px;
+    align-items:center;
 }
 
 .about-text{
-  max-width:650px;
-  color:#99949f;
-  font-size:16px;
-  line-height:1.9;
+    color:#999;
+    font-size:16px;
 }
 
-.about-text + .about-text{
-  margin-top:18px;
+.about-text p{
+    margin-bottom:18px;
 }
 
-/* =========================
-   TOOLS
-========================= */
-
-.tools{
-  padding-top:90px;
+.skills{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
 }
 
-.tools-title{
-  font-size:45px;
-  margin-bottom:45px;
+.skill{
+    padding:17px;
+    border:1px solid rgba(255,255,255,.08);
+    background:rgba(255,255,255,.025);
+    border-radius:12px;
+    color:#ccc;
+    font-size:13px;
 }
 
-.tools-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
+/* VIDEOS */
+
+.video-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
 }
 
-.tool{
-  min-height:180px;
-  background:#101017;
-  border:1px solid rgba(255,255,255,.07);
-  padding:25px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  transition:.3s;
+.video-card{
+    border:1px solid rgba(255,255,255,.08);
+    background:#0d0d13;
+    border-radius:16px;
+    overflow:hidden;
+    transition:.3s;
 }
 
-.tool:hover{
-  border-color:rgba(169,140,255,.35);
-  transform:translateY(-4px);
+.video-card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(156,124,255,.4);
 }
 
-.tool-icon{
-  font-size:35px;
-  font-weight:700;
-  color:#a98cff;
+.video-wrapper{
+    position:relative;
+    aspect-ratio:16/9;
+    background:#050507;
 }
 
-.tool-name{
-  font-size:13px;
-  color:#c2bec7;
+.video-wrapper video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
 }
 
-/* =========================
-   TESTIMONIALS
-========================= */
-
-.testimonials{
-  border-top:1px solid rgba(255,255,255,.06);
+.video-info{
+    padding:18px;
 }
 
-.testimonial-title{
-  font-size:clamp(55px,8vw,110px);
-  line-height:.85;
-  letter-spacing:-4px;
-  margin-bottom:60px;
+.video-title{
+    font-size:15px;
+    font-weight:700;
+    margin-bottom:6px;
 }
 
-.testimonial-title em{
-  color:#a98cff;
+.video-category{
+    color:#9c7cff;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1px;
 }
+
+/* EMPTY */
+
+.empty-message{
+    display:none;
+    padding:30px;
+    text-align:center;
+    color:#777;
+    border:1px dashed rgba(255,255,255,.1);
+    border-radius:15px;
+}
+
+/* TESTIMONIALS */
 
 .testimonial-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:25px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
 }
 
-.testimonial-card{
-  background:#101017;
-  border:1px solid rgba(255,255,255,.07);
-  padding:20px;
+.testimonial{
+    padding:30px;
+    border:1px solid rgba(255,255,255,.08);
+    background:#0d0d13;
+    border-radius:16px;
 }
 
-.testimonial-video{
-  aspect-ratio:16/9;
-  background:#0b0a0f;
+.quote{
+    color:#ccc;
+    font-size:15px;
 }
 
-.testimonial-video video{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+.client{
+    margin-top:22px;
+    color:#9c7cff;
+    font-weight:700;
+    font-size:13px;
 }
 
-/* =========================
-   CONTACT
-========================= */
+/* CONTACT */
 
-.contact{
-  border-top:1px solid rgba(255,255,255,.06);
-  min-height:75vh;
-  display:flex;
-  align-items:center;
+.contact-box{
+    padding:70px 50px;
+    text-align:center;
+    border:1px solid rgba(156,124,255,.2);
+    background:
+        radial-gradient(circle at center,rgba(156,124,255,.12),transparent 55%),
+        #0d0d13;
+    border-radius:24px;
 }
 
-.contact-grid{
-  display:grid;
-  grid-template-columns:1.3fr .7fr;
-  gap:80px;
-  width:100%;
+.contact-box h2{
+    font-size:48px;
+    letter-spacing:-2px;
 }
 
-.contact-title{
-  font-size:clamp(60px,9vw,135px);
-  line-height:.82;
-  letter-spacing:-6px;
-}
-
-.contact-title em{
-  color:#a98cff;
-}
-
-.contact-description{
-  max-width:550px;
-  margin-top:35px;
-  color:#89848f;
-  line-height:1.8;
+.contact-box p{
+    color:#888;
+    max-width:560px;
+    margin:18px auto 30px;
 }
 
 .contact-links{
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-  justify-content:center;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
 }
 
-.contact-link{
-  border-bottom:1px solid rgba(255,255,255,.1);
-  padding-bottom:16px;
-  color:#aaa5af;
-  font-size:13px;
-  transition:.3s;
-}
-
-.contact-link:hover{
-  color:#a98cff;
-  border-color:#a98cff;
-}
-
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer{
-  border-top:1px solid rgba(255,255,255,.07);
-  padding:45px 7vw 30px;
+    padding:35px 0;
+    border-top:1px solid rgba(255,255,255,.07);
+    color:#666;
+    font-size:12px;
 }
 
-.footer-top{
-  display:flex;
-  justify-content:space-between;
-  gap:40px;
-  padding-bottom:50px;
+.footer-inner{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
 }
 
-.footer-name{
-  font-size:22px;
-  font-weight:700;
-  letter-spacing:1px;
-}
-
-.footer-role{
-  color:#77737e;
-  font-size:11px;
-  letter-spacing:1px;
-  margin-top:8px;
-}
-
-.footer-columns{
-  display:flex;
-  gap:80px;
-}
-
-.footer-column h4{
-  font-size:10px;
-  color:#55515b;
-  letter-spacing:2px;
-  margin-bottom:18px;
-}
-
-.footer-column a{
-  display:block;
-  font-size:12px;
-  color:#85818b;
-  margin-bottom:10px;
-  transition:.3s;
-}
-
-.footer-column a:hover{
-  color:#a98cff;
-}
-
-.footer-bottom{
-  border-top:1px solid rgba(255,255,255,.06);
-  padding-top:25px;
-  display:flex;
-  justify-content:space-between;
-  color:#4f4b55;
-  font-size:10px;
-  letter-spacing:1px;
-}
-
-/* =========================
-   REVEAL
-========================= */
-
-.reveal{
-  opacity:0;
-  transform:translateY(30px);
-  transition:opacity .8s ease,transform .8s ease;
-}
-
-.reveal.visible{
-  opacity:1;
-  transform:translateY(0);
-}
-
-/* =========================
-   MOBILE
-========================= */
+/* RESPONSIVE */
 
 @media(max-width:900px){
 
-  .nav{
-    padding:0 5vw;
-  }
+    .video-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-  .nav-links{
-    display:none;
-  }
-
-  section{
-    padding:90px 6vw;
-  }
-
-  .hero{
-    min-height:90vh;
-  }
-
-  .hero h1{
-    font-size:17vw;
-    letter-spacing:-4px;
-  }
-
-  .hero-description{
-    font-size:14px;
-  }
-
-  .stats-grid{
-    grid-template-columns:1fr;
-  }
-
-  .stat{
-    border-right:0;
-    border-bottom:1px solid rgba(255,255,255,.08);
-  }
-
-  .stat:last-child{
-    border-bottom:0;
-  }
-
-  .intro-grid,
-  .about-grid,
-  .contact-grid{
-    grid-template-columns:1fr;
-    gap:45px;
-  }
-
-  .work-title{
-    font-size:18vw;
-    letter-spacing:-4px;
-  }
-
-  .category-list{
-    gap:15px 22px;
-    margin-bottom:40px;
-  }
-
-  .video-grid{
-    grid-template-columns:1fr;
-  }
-
-  .tools-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .testimonial-grid{
-    grid-template-columns:1fr;
-  }
-
-  .contact-title{
-    font-size:17vw;
-    letter-spacing:-4px;
-  }
-
-  .footer-top{
-    flex-direction:column;
-  }
-
-  .footer-columns{
-    gap:45px;
-    flex-wrap:wrap;
-  }
-
-  .footer-bottom{
-    flex-direction:column;
-    gap:10px;
-  }
+    .about-grid{
+        grid-template-columns:1fr;
+    }
 
 }
 
-@media(max-width:500px){
+@media(max-width:650px){
 
-  .hero-actions{
-    flex-direction:column;
-    align-items:flex-start;
-  }
+    .nav-links{
+        display:none;
+    }
 
-  .tools-grid{
-    grid-template-columns:1fr 1fr;
-  }
+    h1{
+        letter-spacing:-2px;
+    }
 
-  .tool{
-    min-height:140px;
-  }
+    .hero-text{
+        font-size:16px;
+    }
+
+    .stats{
+        gap:28px;
+    }
+
+    section{
+        padding:80px 0;
+    }
+
+    .section-heading{
+        display:block;
+    }
+
+    .section-description{
+        margin-top:15px;
+    }
+
+    .section-title{
+        font-size:34px;
+    }
+
+    .video-grid{
+        grid-template-columns:1fr;
+    }
+
+    .testimonial-grid{
+        grid-template-columns:1fr;
+    }
+
+    .contact-box{
+        padding:45px 22px;
+    }
+
+    .contact-box h2{
+        font-size:36px;
+    }
+
+    .footer-inner{
+        flex-direction:column;
+    }
 
 }
 
@@ -874,1311 +490,524 @@ footer{
 
 <body>
 
-<!-- =========================
-     NAVIGATION
-========================= -->
+<!-- ================= NAVIGATION ================= -->
 
-<nav class="nav">
+<nav>
+<div class="container nav-inner">
 
-  <a href="#home" class="logo">
-    KESHU <span>PARMAR</span>
-  </a>
+    <a href="#home" class="logo">
+        Keshu<span>.</span>
+    </a>
 
-  <div class="nav-links">
-    <a href="#about">ABOUT</a>
-    <a href="#work">LONG-FORM</a>
-    <a href="#short-form">SHORT-FORM</a>
-    <a href="#testimonials">TESTIMONIALS</a>
-    <a href="#contact">CONTACT</a>
-  </div>
+    <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#long-form">Long Video</a>
+        <a href="#short-form">Short Video</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact" class="nav-btn">Let's Work</a>
+    </div>
 
+</div>
 </nav>
 
 
-<!-- =========================
-     HERO
-========================= -->
+<!-- ================= HERO ================= -->
 
 <section class="hero" id="home">
 
-  <div class="container">
+<div class="container">
 
-    <div class="hero-inner reveal">
+<div class="hero-content">
 
-      <div class="hero-small">
-        FOUNDER · QUICK MEDIA
-      </div>
+<div class="badge">
+    <span class="badge-dot"></span>
+    Available for selected projects
+</div>
 
-      <h1>
-        Video<br>
-        <em>Editing</em><br>
-        That Keeps<br>
-        People Watching.
-      </h1>
+<h1>
+    Video Editing That
+    <span>Keeps People Watching.</span>
+</h1>
 
-      <p class="hero-description">
-        I'm Keshu Parmar, a Professional Video Editor and Founder of Quick Media.
-        I create high-retention videos for creators, brands and YouTube channels.
-      </p>
+<p class="hero-text">
+    I'm Keshu Parmar, a Professional Video Editor & Founder of Quick Media.
+    I create high-retention YouTube videos, Shorts, Reels, documentaries,
+    talking-head content and cinematic edits designed to keep viewers engaged.
+</p>
 
-      <div class="hero-actions">
+<div class="hero-buttons">
 
-        <a href="#work" class="primary-btn">
-          VIEW MY WORK ↘
-        </a>
+<a href="#long-form" class="btn btn-primary">
+    View My Work
+</a>
 
-        <a href="https://keshuparmar.framer.website/" target="_blank" class="text-btn">
-          MY WEBSITE ↗
-        </a>
+<a href="#contact" class="btn btn-secondary">
+    Let's Work Together
+</a>
 
-      </div>
+</div>
 
-    </div>
+<div class="stats">
 
-  </div>
+<div>
+    <div class="stat-number">4+</div>
+    <div class="stat-label">Years Experience</div>
+</div>
 
+<div>
+    <div class="stat-number">500+</div>
+    <div class="stat-label">Videos Edited</div>
+</div>
+
+<div>
+    <div class="stat-number">50+</div>
+    <div class="stat-label">Creators</div>
+</div>
+
+<div>
+    <div class="stat-number">Level 2</div>
+    <div class="stat-label">Fiverr Seller</div>
+</div>
+
+</div>
+
+</div>
+</div>
 </section>
 
 
-<!-- =========================
-     STATS
-========================= -->
+<!-- ================= ABOUT ================= -->
 
-<section class="stats">
+<section id="about">
 
-  <div class="container">
+<div class="container">
 
-    <div class="stats-grid reveal">
+<div class="section-heading">
 
-      <div class="stat">
-        <div class="stat-number counter" data-target="4">0</div>
-        <div class="stat-label">YEARS EXPERIENCE</div>
-      </div>
+<div>
+<div class="eyebrow">About Me</div>
+<h2 class="section-title">More Than Just<br>an Editor.</h2>
+</div>
 
-      <div class="stat">
-        <div class="stat-number counter" data-target="500">0</div>
-        <div class="stat-label">VIDEOS EDITED</div>
-      </div>
+<p class="section-description">
+I focus on storytelling, pacing, retention, motion and sound —
+not simply cutting clips together.
+</p>
 
-      <div class="stat">
-        <div class="stat-number">
-          LEVEL 2
-        </div>
-        <div class="stat-label">FIVERR SELLER</div>
-      </div>
+</div>
 
-    </div>
 
-  </div>
+<div class="about-grid">
 
+<div class="about-text">
+
+<p>
+I'm Keshu Parmar, a Professional Video Editor and Founder of
+Quick Media. I've worked on 500+ videos across YouTube,
+Instagram and other social platforms.
+</p>
+
+<p>
+My goal is simple: make every second of a video worth watching.
+I combine editing, storytelling, motion graphics, sound design,
+B-roll, pacing and retention-focused techniques to create content
+that feels professional and keeps viewers engaged.
+</p>
+
+<p>
+My primary tools are Adobe Premiere Pro and After Effects,
+along with Photoshop and modern AI editing tools.
+</p>
+
+</div>
+
+
+<div class="skills">
+
+<div class="skill">YouTube Long-Form</div>
+<div class="skill">YouTube Shorts</div>
+<div class="skill">Instagram Reels</div>
+<div class="skill">Documentary Editing</div>
+<div class="skill">Talking Head</div>
+<div class="skill">Motion Graphics</div>
+<div class="skill">Color Grading</div>
+<div class="skill">Sound Design</div>
+<div class="skill">B-Roll</div>
+<div class="skill">AI Visuals</div>
+
+</div>
+
+</div>
+
+</div>
 </section>
 
 
-<!-- =========================
-     INTRO
-========================= -->
+<!-- ================= LONG FORM ================= -->
 
-<section class="intro">
+<section id="long-form">
 
-  <div class="container">
+<div class="container">
 
-    <div class="intro-grid">
+<div class="section-heading">
 
-      <div class="intro-video reveal">
+<div>
+<div class="eyebrow">Selected Work</div>
+<h2 class="section-title">Long-Form Videos</h2>
+</div>
 
-        <!--
-          ADD YOUR INTRO VIDEO HERE
+<p class="section-description">
+YouTube videos, talking-head content, documentaries,
+brand videos and high-retention storytelling.
+</p>
 
-          Example:
+</div>
 
-          <video controls preload="metadata">
-            <source src="YOUR_CLOUDINARY_VIDEO_URL" type="video/mp4">
-          </video>
-        -->
+<div class="video-grid" id="longFormGrid"></div>
 
-        <div class="video-placeholder">
-          INTRO VIDEO
-        </div>
+<div class="empty-message" id="longEmpty">
+    Add your long-form video URLs in the code to display them here.
+</div>
 
-      </div>
-
-      <div class="reveal">
-
-        <div class="section-label">
-          WHO I AM
-        </div>
-
-        <div class="intro-name serif">
-          KESHU
-        </div>
-
-        <div class="intro-role">
-          VIDEO EDITOR · FOUNDER · QUICK MEDIA
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
+</div>
 </section>
 
 
-<!-- =========================
-     WORK
-========================= -->
+<!-- ================= SHORT FORM ================= -->
 
-<section class="work" id="work">
+<section id="short-form">
 
-  <div class="container">
+<div class="container">
 
-    <div class="section-label">
-      MY WORK
-    </div>
+<div class="section-heading">
 
-    <h2 class="work-title serif reveal">
-      Long-<em>Form</em>
-    </h2>
+<div>
+<div class="eyebrow">Short-Form Content</div>
+<h2 class="section-title">Short Videos & Reels</h2>
+</div>
 
+<p class="section-description">
+Fast-paced Reels, Shorts, talking-head clips, documentary
+reels and motion graphics built for social media.
+</p>
 
-    <!-- LONG-FORM POINT FILTER -->
+</div>
 
-    <div class="category-area reveal">
+<div class="video-grid" id="shortFormGrid"></div>
 
-      <div class="category-heading">
-        LONG-FORM
-      </div>
+<div class="empty-message" id="shortEmpty">
+    Add your short-form video URLs in the code to display them here.
+</div>
 
-      <div class="category-list" data-filter-group="long">
-
-        <button class="category-point active" data-filter="all">
-          ALL
-        </button>
-
-        <button class="category-point" data-filter="talking-head">
-          TALKING HEAD
-        </button>
-
-        <button class="category-point" data-filter="documentary">
-          DOCUMENTARY
-        </button>
-
-        <button class="category-point" data-filter="brand-video">
-          BRAND VIDEO
-        </button>
-
-        <button class="category-point" data-filter="motion-graphics">
-          MOTION GRAPHICS
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <!-- LONG-FORM VIDEOS -->
-
-    <div class="video-section">
-
-      <div class="video-section-title reveal">
-
-        <h3>
-          Long-Form Videos
-        </h3>
-
-        <span>
-          SELECTED EDITS
-        </span>
-
-      </div>
-
-
-      <div class="video-grid">
-
-
-        <!-- TALKING HEAD -->
-
-        <article class="video-card long-video reveal"
-                 data-category="talking-head">
-
-          <div class="video-wrapper">
-
-            <!-- REPLACE WITH CLOUDINARY URL -->
-
-            <video controls preload="metadata">
-              <!--
-              <source src="YOUR_VIDEO_URL.mp4" type="video/mp4">
-              -->
-            </video>
-
-          </div>
-
-          <div class="video-info">
-
-            <div class="video-category">
-              TALKING HEAD
-            </div>
-
-            <div class="video-name">
-              Talking Head Project
-            </div>
-
-            <div class="video-description">
-              High-retention talking-head editing with pacing, B-roll and sound design.
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <!-- DOCUMENTARY -->
-
-        <article class="video-card long-video reveal"
-                 data-category="documentary">
-
-          <div class="video-wrapper">
-
-            <video controls preload="metadata">
-              <!--
-              <source src="YOUR_VIDEO_URL.mp4" type="video/mp4">
-              -->
-            </video>
-
-          </div>
-
-          <div class="video-info">
-
-            <div class="video-category">
-              DOCUMENTARY
-            </div>
-
-            <div class="video-name">
-              Documentary Project
-            </div>
-
-            <div class="video-description">
-              Story-driven documentary editing with cinematic pacing and visual storytelling.
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <!-- BRAND VIDEO -->
-
-        <article class="video-card long-video reveal"
-                 data-category="brand-video">
-
-          <div class="video-wrapper">
-
-            <video controls preload="metadata">
-              <!--
-              <source src="YOUR_VIDEO_URL.mp4" type="video/mp4">
-              -->
-            </video>
-
-          </div>
-
-          <div class="video-info">
-
-            <div class="video-category">
-              BRAND VIDEO
-            </div>
-
-            <div class="video-name">
-              Brand Video Project
-            </div>
-
-            <div class="video-description">
-              Clean and cinematic brand-focused editing.
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <!-- MOTION GRAPHICS -->
-
-        <article class="video-card long-video reveal"
-                 data-category="motion-graphics">
-
-          <div class="video-wrapper">
-
-            <video controls preload="metadata">
-              <!--
-              <source src="YOUR_VIDEO_URL.mp4" type="video/mp4">
-              -->
-            </video>
-
-          </div>
-
-          <div class="video-info">
-
-            <div class="video-category">
-              MOTION GRAPHICS
-            </div>
-
-            <div class="video-name">
-              Motion Graphics Project
-            </div>
-
-            <div class="video-description">
-              Motion graphics, animations and visual effects.
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <!-- MORE TALKING HEAD -->
-
-        <article class="video-card long-video reveal"
-                 data-category="talking-head">
-
-          <div class="video-wrapper">
-
-            <video controls preload="metadata">
-              <!--
-              <source src="YOUR_VIDEO_URL.mp4" type="video/mp4">
-              -->
-            </video>
-
-          </div>
-
-          <div class="video-info">
-
-            <div class="video-category">
-              TALKING HEAD
-            </div>
-
-            <div class="video-name">
-              Creator Video
-            </div>
-
-            <div class="video-description">
-              Retention-focused YouTube editing.
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <!-- MORE DOCUMENTARY -->
-
-        <article class="video-card long-video reveal"
-                 data-category="documentary">
-
-          <div class="video-wrapper">
-
-            <video controls preload="metadata">
-              <!--
-              <source src="YOUR_VIDEO_URL.mp4" type="video/mp4">
-              -->
-            </video>
-
-          </div>
-
-          <div class="video-info">
-
-            <div class="video-category">
-              DOCUMENTARY
-            </div>
-
-            <div class="video-name">
-              Storytelling Edit
-            </div>
-
-            <div class="video-description">
-              Documentary-style visual storytelling.
-            </div>
-
-          </div>
-
-        </article>
-
-      </div>
-
-    </div>
-
-
-    <!-- =========================
-         SHORT-FORM
-    ========================= -->
-
-    <div id="short-form">
-
-      <h2 class="work-title serif reveal">
-        Short-<em>Form</em>
-      </h2>
-
-
-      <!-- SHORT FORM POINT FILTER -->
-
-      <div class="category-area reveal">
-
-        <div class="category-heading">
-          SHORT-FORM
-        </div>
-
-        <div class="category-list" data-filter-group="short">
-
-          <button class="category-point active" data-filter="all">
-            ALL
-          </button>
-
-          <button class="category-point" data-filter="talking-head">
-            TALKING HEAD
-          </button>
-
-          <button class="category-point" data-filter="documentary">
-            DOCUMENTARY
-          </button>
-
-          <button class="category-point" data-filter="brand-reels">
-            BRAND REELS
-          </button>
-
-          <button class="category-point" data-filter="food">
-            FOOD
-          </button>
-
-          <button class="category-point" data-filter="motion-graphics">
-            MOTION GRAPHICS
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <!-- SHORT VIDEOS -->
-
-      <div class="video-section">
-
-        <div class="video-section-title reveal">
-
-          <h3>
-            Short-Form Videos
-          </h3>
-
-          <span>
-            REELS · SHORTS
-          </span>
-
-        </div>
-
-
-        <div class="video-grid">
-
-
-          <!-- TALKING HEAD -->
-
-          <article class="video-card short-video reveal"
-                   data-category="talking-head">
-
-            <div class="video-wrapper">
-
-              <video controls preload="metadata">
-                <!--
-                <source src="YOUR_VIDEO_URL.mp4" type="video/mp4">
-                -->
-              </video>
-
-            </div>
-
-            <div class="video-info">
-
-              <div class="video-category">
-                TALKING HEAD
-              </div>
-
-              <div class="video-name">
-                Talking Head Reel
-              </div>
-
-              <div class="video-description">
-                Fast-paced short-form editing.
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <!-- DOCUMENTARY -->
-
-          <article class="video-card short-video reveal"
-                   data-category="documentary">
-
-            <div class="video-wrapper">
-
-              <video controls preload="metadata">
-                <!--
-                <source src="YOUR_VIDEO_URL.mp4" type="video/mp4">
-                -->
-              </video>
-
-            </div>
-
-            <div class="video-info">
-
-              <div class="video-category">
-                DOCUMENTARY
-              </div>
-
-              <div class="video-name">
-                Documentary Reel
-              </div>
-
-              <div class="video-description">
-                Storytelling-focused short-form edit.
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <!-- BRAND REELS -->
-
-          <article class="video-card short-video reveal"
-                   data-category="brand-reels">
-
-            <div class="video-wrapper">
-
-              <video controls preload="metadata">
-                <!--
-                <source src="YOUR_VIDEO_URL.mp4" type="video/mp4">
-                -->
-              </video>
-
-            </div>
-
-            <div class="video-info">
-
-              <div class="video-category">
-                BRAND REELS
-              </div>
-
-              <div class="video-name">
-                Brand Reel
-              </div>
-
-              <div class="video-description">
-                Premium social media brand editing.
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <!-- FOOD -->
-
-          <article class="video-card short-video reveal"
-                   data-category="food">
-
-            <div class="video-wrapper">
-
-              <video controls preload="metadata">
-                <!--
-                <source src="YOUR_VIDEO_URL.mp4" type="video/mp4">
-                -->
-              </video>
-
-            </div>
-
-            <div class="video-info">
-
-              <div class="video-category">
-                FOOD
-              </div>
-
-              <div class="video-name">
-                Food Concept Reel
-              </div>
-
-              <div class="video-description">
-                Cinematic food-focused short-form editing.
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <!-- MOTION GRAPHICS -->
-
-          <article class="video-card short-video reveal"
-                   data-category="motion-graphics">
-
-            <div class="video-wrapper">
-
-              <video controls preload="metadata">
-                <!--
-                <source src="YOUR_VIDEO_URL.mp4" type="video/mp4">
-                -->
-              </video>
-
-            </div>
-
-            <div class="video-info">
-
-              <div class="video-category">
-                MOTION GRAPHICS
-              </div>
-
-              <div class="video-name">
-                Motion Graphics Reel
-              </div>
-
-              <div class="video-description">
-                Animated graphics and visual effects.
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <!-- MORE FOOD -->
-
-          <article class="video-card short-video reveal"
-                   data-category="food">
-
-            <div class="video-wrapper">
-
-              <video controls preload="metadata">
-                <!--
-                <source src="YOUR_VIDEO_URL.mp4" type="video/mp4">
-                -->
-              </video>
-
-            </div>
-
-            <div class="video-info">
-
-              <div class="video-category">
-                FOOD
-              </div>
-
-              <div class="video-name">
-                Food Reel
-              </div>
-
-              <div class="video-description">
-                Fast cinematic social edit.
-              </div>
-
-            </div>
-
-          </article>
-
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
+</div>
 </section>
 
 
-<!-- =========================
-     ABOUT
-========================= -->
+<!-- ================= TESTIMONIALS ================= -->
 
-<section class="about" id="about">
+<section id="testimonials">
 
-  <div class="container">
+<div class="container">
 
-    <div class="about-grid">
+<div class="section-heading">
 
-      <div class="about-photo reveal">
+<div>
+<div class="eyebrow">Client Feedback</div>
+<h2 class="section-title">What Clients Say</h2>
+</div>
 
-        <img
-          src="assets/keshu.jpg"
-          alt="Keshu Parmar"
-          loading="lazy"
-        >
+<p class="section-description">
+Real feedback from clients and creators I've worked with.
+</p>
 
-      </div>
+</div>
 
 
-      <div class="reveal">
+<div class="testimonial-grid">
 
-        <div class="section-label">
-          ABOUT ME
-        </div>
+<div class="testimonial">
 
-        <h2 class="about-title serif">
-          ABOUT<br>
-          KESHU
-        </h2>
+<p class="quote">
+"Working with Keshu has been a great experience. His editing,
+attention to detail and understanding of pacing make a huge
+difference to the final video."
+</p>
 
-        <p class="about-text">
-          I'm Keshu Parmar, a Professional Video Editor and Founder of Quick Media.
-          I specialize in creating high-retention content for creators, brands and
-          YouTube channels.
-        </p>
+<div class="client">
+Client Testimonial
+</div>
 
-        <p class="about-text">
-          My editing focuses on storytelling, pacing, strong hooks, engaging visuals,
-          sound design, motion graphics and retention.
-        </p>
+</div>
 
-        <p class="about-text">
-          I don't just edit videos. I help turn raw footage into content that keeps
-          people watching.
-        </p>
 
-      </div>
+<div class="testimonial">
 
-    </div>
+<p class="quote">
+"Keshu understands how to make content engaging. The edits,
+motion graphics and overall storytelling are exactly what we need."
+</p>
 
-  </div>
+<div class="client">
+Creator Testimonial
+</div>
 
+</div>
+
+</div>
+
+</div>
 </section>
 
 
-<!-- =========================
-     TOOLS
-========================= -->
+<!-- ================= CONTACT ================= -->
 
-<section class="tools">
+<section id="contact">
 
-  <div class="container">
+<div class="container">
 
-    <div class="section-label">
-      TOOLS I USE
-    </div>
+<div class="contact-box">
 
-    <h2 class="tools-title serif reveal">
-      Built With The Right Tools.
-    </h2>
+<div class="eyebrow">Let's Work Together</div>
 
+<h2>Have a project in mind?</h2>
 
-    <div class="tools-grid">
+<p>
+Tell me about your project, content style and goals.
+Let's create something that people actually want to watch.
+</p>
 
+<div class="contact-links">
 
-      <div class="tool reveal">
+<a class="btn btn-primary"
+href="mailto:keshuparmar306@gmail.com">
+Email Me
+</a>
 
-        <div class="tool-icon">
-          Pr
-        </div>
+<a class="btn btn-secondary"
+href="https://wa.me/919016913568"
+target="_blank">
+WhatsApp
+</a>
 
-        <div class="tool-name">
-          Adobe Premiere Pro
-        </div>
+<a class="btn btn-secondary"
+href="https://www.fiverr.com/s/X0R2YDm"
+target="_blank">
+Fiverr
+</a>
 
-      </div>
+<a class="btn btn-secondary"
+href="https://www.instagram.com/quick_media._/"
+target="_blank">
+Instagram
+</a>
 
+<a class="btn btn-secondary"
+href="https://www.linkedin.com/in/keshu-parmar-b26829236/"
+target="_blank">
+LinkedIn
+</a>
 
-      <div class="tool reveal">
+</div>
 
-        <div class="tool-icon">
-          Ae
-        </div>
+</div>
 
-        <div class="tool-name">
-          Adobe After Effects
-        </div>
-
-      </div>
-
-
-      <div class="tool reveal">
-
-        <div class="tool-icon">
-          Ps
-        </div>
-
-        <div class="tool-name">
-          Adobe Photoshop
-        </div>
-
-      </div>
-
-
-      <div class="tool reveal">
-
-        <div class="tool-icon">
-          AI
-        </div>
-
-        <div class="tool-name">
-          AI Editing Tools
-        </div>
-
-      </div>
-
-
-    </div>
-
-  </div>
-
+</div>
 </section>
 
 
-<!-- =========================
-     TESTIMONIALS
-========================= -->
-
-<section class="testimonials" id="testimonials">
-
-  <div class="container">
-
-    <div class="section-label">
-      CLIENT TESTIMONIALS
-    </div>
-
-    <h2 class="testimonial-title serif reveal">
-      Client <em>Satisfaction.</em>
-    </h2>
-
-
-    <div class="testimonial-grid">
-
-
-      <div class="testimonial-card reveal">
-
-        <div class="testimonial-video">
-
-          <!-- ADD TESTIMONIAL VIDEO -->
-
-          <video controls preload="metadata">
-            <!--
-            <source src="YOUR_TESTIMONIAL_VIDEO_URL.mp4" type="video/mp4">
-            -->
-          </video>
-
-        </div>
-
-      </div>
-
-
-      <div class="testimonial-card reveal">
-
-        <div class="testimonial-video">
-
-          <!-- ADD TESTIMONIAL VIDEO -->
-
-          <video controls preload="metadata">
-            <!--
-            <source src="YOUR_TESTIMONIAL_VIDEO_URL.mp4" type="video/mp4">
-            -->
-          </video>
-
-        </div>
-
-      </div>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     CONTACT
-========================= -->
-
-<section class="contact" id="contact">
-
-  <div class="container">
-
-    <div class="contact-grid">
-
-      <div class="reveal">
-
-        <div class="section-label">
-          LET'S WORK TOGETHER
-        </div>
-
-        <h2 class="contact-title serif">
-          HAVE A<br>
-          PROJECT<br>
-          <em>IN MIND?</em>
-        </h2>
-
-        <p class="contact-description">
-          Have a video project, YouTube channel or brand that needs
-          high-retention editing? Let's talk about it.
-        </p>
-
-        <br>
-
-        <a
-          href="https://wa.me/919016913568?text=Hi%20Keshu%2C%20I%20visited%20your%20portfolio%20and%20I%27m%20interested%20in%20discussing%20a%20video%20editing%20project."
-          target="_blank"
-          class="primary-btn"
-        >
-          START A PROJECT ↗
-        </a>
-
-      </div>
-
-
-      <div class="contact-links reveal">
-
-        <a
-          href="mailto:keshuparmar306@gmail.com"
-          class="contact-link"
-        >
-          EMAIL ↗
-        </a>
-
-        <a
-          href="https://wa.me/919016913568"
-          target="_blank"
-          class="contact-link"
-        >
-          WHATSAPP ↗
-        </a>
-
-        <a
-          href="https://www.linkedin.com/in/keshu-parmar-b26829236"
-          target="_blank"
-          class="contact-link"
-        >
-          LINKEDIN ↗
-        </a>
-
-        <a
-          href="https://www.instagram.com/quick_media._/"
-          target="_blank"
-          class="contact-link"
-        >
-          INSTAGRAM ↗
-        </a>
-
-        <a
-          href="https://www.fiverr.com/s/X0R2YDm"
-          target="_blank"
-          class="contact-link"
-        >
-          FIVERR · LEVEL 2 ↗
-        </a>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
-  <div class="footer-top">
+<div class="container footer-inner">
 
-    <div>
+<div>
+© 2026 Keshu Parmar — Quick Media
+</div>
 
-      <div class="footer-name">
-        KESHU PARMAR
-      </div>
+<div>
+Professional Video Editor & Founder of Quick Media
+</div>
 
-      <div class="footer-role">
-        Professional Video Editor
-      </div>
-
-      <div class="footer-role">
-        Founder of Quick Media
-      </div>
-
-    </div>
-
-
-    <div class="footer-columns">
-
-
-      <div class="footer-column">
-
-        <h4>
-          QUICK LINKS
-        </h4>
-
-        <a href="#home">
-          Home
-        </a>
-
-        <a href="#work">
-          Work
-        </a>
-
-        <a href="#about">
-          About
-        </a>
-
-        <a href="#contact">
-          Contact
-        </a>
-
-      </div>
-
-
-      <div class="footer-column">
-
-        <h4>
-          SOCIAL
-        </h4>
-
-        <a
-          href="https://www.instagram.com/quick_media._/"
-          target="_blank"
-        >
-          Instagram
-        </a>
-
-        <a
-          href="https://www.linkedin.com/in/keshu-parmar-b26829236"
-          target="_blank"
-        >
-          LinkedIn
-        </a>
-
-        <a
-          href="https://wa.me/919016913568"
-          target="_blank"
-        >
-          WhatsApp
-        </a>
-
-        <a
-          href="mailto:keshuparmar306@gmail.com"
-        >
-          Email
-        </a>
-
-      </div>
-
-
-    </div>
-
-  </div>
-
-
-  <div class="footer-bottom">
-
-    <span>
-      © 2026 Keshu Parmar. All rights reserved.
-    </span>
-
-    <span>
-      Quick Media
-    </span>
-
-  </div>
+</div>
 
 </footer>
 
 
-<!-- =========================
-     JAVASCRIPT
-========================= -->
+<!-- =========================================================
+     VIDEO DATABASE
+     =========================================================
+
+     IMPORTANT:
+
+     અહીંથી તમે videos add / remove કરી શકો છો.
+
+     LONG-FORM VIDEO ADD કરવાની રીત:
+
+     {
+        title: "Your Video Name",
+        category: "Talking Head",
+        url: "YOUR CLOUDINARY VIDEO URL"
+     },
+
+     SHORT-FORM માટે પણ same format છે.
+
+     ========================================================= -->
+
 
 <script>
 
-/* =========================
-   CATEGORY FILTER
-========================= */
 
-document.querySelectorAll(".category-list").forEach(list => {
+/* =========================================================
+   LONG-FORM VIDEOS
+   ========================================================= */
 
-  const group = list.dataset.filterGroup;
+const longFormVideos = [
 
-  const buttons = list.querySelectorAll(".category-point");
+    {
+        title: "Facebook Subscribe V2",
+        category: "Talking Head",
+        url: "https://res.cloudinary.com/sle2ecwx/video/upload/v1789287652/Facebook_Subscribe_2_V2.mp4"
+    },
 
+    /*
+    COPY THIS FORMAT TO ADD MORE LONG-FORM VIDEOS:
 
-  buttons.forEach(button => {
+    {
+        title: "My Documentary Video",
+        category: "Documentary",
+        url: "https://res.cloudinary.com/YOUR-CLOUDINARY-VIDEO-URL.mp4"
+    },
 
-    button.addEventListener("click", () => {
+    {
+        title: "Brand Video",
+        category: "Brand Video",
+        url: "https://res.cloudinary.com/YOUR-CLOUDINARY-VIDEO-URL.mp4"
+    }
 
-      const selected = button.dataset.filter;
+    */
 
-
-      /* Active point */
-
-      buttons.forEach(btn => {
-        btn.classList.remove("active");
-      });
-
-      button.classList.add("active");
-
-
-      /* Find correct videos */
-
-      let cards = [];
-
-      if(group === "long"){
-        cards = document.querySelectorAll(".long-video");
-      }
-
-      if(group === "short"){
-        cards = document.querySelectorAll(".short-video");
-      }
+];
 
 
-      /* Filter videos */
+/* =========================================================
+   SHORT-FORM VIDEOS
+   ========================================================= */
 
-      cards.forEach(card => {
+const shortFormVideos = [
 
-        const category = card.dataset.category;
+    /*
+    ADD YOUR SHORTS / REELS HERE:
 
-        if(
-          selected === "all" ||
-          category === selected
-        ){
+    {
+        title: "Instagram Reel 01",
+        category: "Talking Head Reel",
+        url: "https://res.cloudinary.com/YOUR-CLOUDINARY-VIDEO-URL.mp4"
+    },
 
-          card.classList.remove("is-hidden");
+    {
+        title: "Documentary Reel",
+        category: "Documentary Reel",
+        url: "https://res.cloudinary.com/YOUR-CLOUDINARY-VIDEO-URL.mp4"
+    },
 
-        }else{
+    {
+        title: "Motion Graphics Reel",
+        category: "Motion Graphics",
+        url: "https://res.cloudinary.com/YOUR-CLOUDINARY-VIDEO-URL.mp4"
+    }
 
-          card.classList.add("is-hidden");
+    */
 
-        }
-
-      });
-
-    });
-
-  });
-
-});
-
-
-/* =========================
-   SCROLL REVEAL
-========================= */
-
-const observer = new IntersectionObserver(
-  entries => {
-
-    entries.forEach(entry => {
-
-      if(entry.isIntersecting){
-
-        entry.target.classList.add("visible");
-
-      }
-
-    });
-
-  },
-  {
-    threshold:.12
-  }
-);
+];
 
 
-document.querySelectorAll(".reveal").forEach(el => {
-  observer.observe(el);
-});
+/* =========================================================
+   VIDEO CARD CREATOR
+   ========================================================= */
+
+function createVideoCard(video){
+
+    const card = document.createElement("div");
+
+    card.className = "video-card";
+
+    card.innerHTML = `
+
+        <div class="video-wrapper">
+
+            <video
+                controls
+                preload="metadata"
+                playsinline
+            >
+                <source src="${video.url}" type="video/mp4">
+                Your browser does not support video playback.
+            </video>
+
+        </div>
+
+        <div class="video-info">
+
+            <div class="video-title">
+                ${video.title}
+            </div>
+
+            <div class="video-category">
+                ${video.category}
+            </div>
+
+        </div>
+
+    `;
+
+    return card;
+}
 
 
-/* =========================
-   COUNTERS
-========================= */
+/* =========================================================
+   LOAD LONG-FORM VIDEOS
+   ========================================================= */
 
-const counters = document.querySelectorAll(".counter");
+const longFormGrid = document.getElementById("longFormGrid");
+const longEmpty = document.getElementById("longEmpty");
 
-const counterObserver = new IntersectionObserver(
-  entries => {
+if(longFormVideos.length > 0){
 
-    entries.forEach(entry => {
-
-      if(!entry.isIntersecting) return;
-
-      const counter = entry.target;
-
-      const target = Number(counter.dataset.target);
-
-      let current = 0;
-
-      const duration = 1300;
-
-      const start = performance.now();
-
-
-      function update(time){
-
-        const progress = Math.min(
-          (time - start) / duration,
-          1
+    longFormVideos.forEach(video => {
+        longFormGrid.appendChild(
+            createVideoCard(video)
         );
-
-        const ease = 1 - Math.pow(1 - progress, 3);
-
-        current = Math.floor(target * ease);
-
-        counter.textContent = current + "+";
-
-
-        if(progress < 1){
-
-          requestAnimationFrame(update);
-
-        }else{
-
-          counter.textContent = target + "+";
-
-        }
-
-      }
-
-
-      requestAnimationFrame(update);
-
-      counterObserver.unobserve(counter);
-
     });
 
-  },
-  {
-    threshold:.5
-  }
-);
+}else{
+
+    longEmpty.style.display = "block";
+
+}
 
 
-counters.forEach(counter => {
-  counterObserver.observe(counter);
-});
+/* =========================================================
+   LOAD SHORT-FORM VIDEOS
+   ========================================================= */
 
+const shortFormGrid = document.getElementById("shortFormGrid");
+const shortEmpty = document.getElementById("shortEmpty");
 
-/* =========================
-   STOP OTHER VIDEOS
-========================= */
+if(shortFormVideos.length > 0){
 
-document.querySelectorAll("video").forEach(video => {
-
-  video.addEventListener("play", () => {
-
-    document.querySelectorAll("video").forEach(other => {
-
-      if(other !== video){
-        other.pause();
-      }
-
+    shortFormVideos.forEach(video => {
+        shortFormGrid.appendChild(
+            createVideoCard(video)
+        );
     });
 
-  });
+}else{
 
-});
+    shortEmpty.style.display = "block";
+
+}
+
 
 </script>
 

@@ -645,6 +645,599 @@ along with Photoshop and modern AI editing tools.
 
 <!-- ================= LONG FORM ================= -->
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Keshu Parmar — Video Editor</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#08080c;
+    color:white;
+    font-family:Arial, sans-serif;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+/* NAV */
+
+nav{
+    height:75px;
+    display:flex;
+    align-items:center;
+    border-bottom:1px solid #202027;
+    position:sticky;
+    top:0;
+    background:rgba(8,8,12,.95);
+    z-index:10;
+}
+
+.nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#9c7cff;
+}
+
+nav a{
+    color:#aaa;
+    text-decoration:none;
+    margin-left:25px;
+}
+
+nav a:hover{
+    color:white;
+}
+
+/* HERO */
+
+.hero{
+    min-height:85vh;
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero:before{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:#7c5cff;
+    opacity:.12;
+    filter:blur(130px);
+    border-radius:50%;
+    right:-150px;
+    top:-100px;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.badge{
+    display:inline-block;
+    color:#c8baff;
+    background:#15121f;
+    border:1px solid #302650;
+    padding:8px 15px;
+    border-radius:30px;
+    font-size:13px;
+    margin-bottom:25px;
+}
+
+h1{
+    font-size:clamp(45px,7vw,85px);
+    line-height:1;
+    max-width:850px;
+}
+
+h1 span{
+    color:#9c7cff;
+}
+
+.hero p{
+    color:#999;
+    max-width:650px;
+    font-size:18px;
+    line-height:1.7;
+    margin-top:25px;
+}
+
+.buttons{
+    margin-top:30px;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 22px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:bold;
+    margin-right:10px;
+}
+
+.primary{
+    background:#9c7cff;
+    color:#08080c;
+}
+
+.secondary{
+    border:1px solid #292932;
+    color:white;
+}
+
+/* SECTION */
+
+section{
+    padding:100px 0;
+}
+
+.eyebrow{
+    color:#9c7cff;
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:10px;
+}
+
+.section-title{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.section-description{
+    color:#888;
+    max-width:600px;
+    margin-bottom:40px;
+}
+
+/* VIDEO */
+
+.video-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.video-card{
+    background:#101015;
+    border:1px solid #24242d;
+    border-radius:15px;
+    overflow:hidden;
+}
+
+.video-card video{
+    width:100%;
+    display:block;
+    aspect-ratio:16/9;
+    object-fit:cover;
+    background:#000;
+}
+
+.video-info{
+    padding:18px;
+}
+
+.video-title{
+    font-size:16px;
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+.video-category{
+    color:#9c7cff;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+/* ABOUT */
+
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+}
+
+.about p{
+    color:#999;
+    line-height:1.8;
+}
+
+.skills{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.skill{
+    padding:18px;
+    background:#101015;
+    border:1px solid #24242d;
+    border-radius:10px;
+    color:#ccc;
+}
+
+/* CONTACT */
+
+.contact{
+    text-align:center;
+    padding:80px 20px;
+    background:#101015;
+    border:1px solid #292932;
+    border-radius:20px;
+}
+
+.contact h2{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.contact p{
+    color:#888;
+    margin-bottom:30px;
+}
+
+footer{
+    padding:35px 0;
+    border-top:1px solid #202027;
+    color:#666;
+    font-size:13px;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .video-grid{
+        grid-template-columns:1fr;
+    }
+
+    .about{
+        grid-template-columns:1fr;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .section-title{
+        font-size:35px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<div class="container nav">
+
+    <div class="logo">
+        Keshu<span>.</span>
+    </div>
+
+    <div class="nav-links">
+
+        <a href="#about">About</a>
+
+        <a href="#long-form">Long Video</a>
+
+        <a href="#short-form">Short Video</a>
+
+        <a href="#contact">Contact</a>
+
+    </div>
+
+</div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="container">
+
+<div class="hero-content">
+
+<div class="badge">
+    Professional Video Editor & Founder of Quick Media
+</div>
+
+<h1>
+    Video Editing That
+    <span>Keeps People Watching.</span>
+</h1>
+
+<p>
+    I'm Keshu Parmar, a Professional Video Editor and Founder
+    of Quick Media. I create high-retention YouTube videos,
+    Shorts, Reels, documentaries and cinematic content.
+</p>
+
+<div class="buttons">
+
+<a href="#long-form" class="btn primary">
+    View My Work
+</a>
+
+<a href="#contact" class="btn secondary">
+    Contact Me
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<div class="container">
+
+<div class="eyebrow">
+    ABOUT ME
+</div>
+
+<h2 class="section-title">
+    More Than Just an Editor.
+</h2>
+
+<div class="about">
+
+<div>
+
+<p>
+I'm Keshu Parmar — Professional Video Editor & Founder of
+Quick Media. With 4+ years of experience and 500+ videos
+edited, I focus on storytelling, pacing, retention,
+motion graphics, sound design and visual quality.
+</p>
+
+</div>
+
+<div class="skills">
+
+<div class="skill">YouTube Long-Form</div>
+
+<div class="skill">YouTube Shorts</div>
+
+<div class="skill">Instagram Reels</div>
+
+<div class="skill">Documentary Editing</div>
+
+<div class="skill">Talking Head</div>
+
+<div class="skill">Motion Graphics</div>
+
+<div class="skill">Color Grading</div>
+
+<div class="skill">Sound Design</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- LONG FORM -->
+
+<section id="long-form">
+
+<div class="container">
+
+<div class="eyebrow">
+    SELECTED WORK
+</div>
+
+<h2 class="section-title">
+    Long-Form Videos
+</h2>
+
+<p class="section-description">
+    YouTube, talking-head and documentary-style editing.
+</p>
+
+
+<div class="video-grid">
+
+
+<!-- REAL VIDEO -->
+
+<div class="video-card">
+
+<video
+    controls
+    preload="metadata"
+    playsinline
+>
+
+<source
+src="https://res.cloudinary.com/sle2ecwx/video/upload/v1789287652/Facebook_Subscribe_2_V2.mp4"
+type="video/mp4">
+
+Your browser does not support video playback.
+
+</video>
+
+
+<div class="video-info">
+
+<div class="video-title">
+    Facebook Subscribe V2
+</div>
+
+<div class="video-category">
+    Talking Head
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SHORT FORM -->
+
+<section id="short-form">
+
+<div class="container">
+
+<div class="eyebrow">
+    SOCIAL CONTENT
+</div>
+
+<h2 class="section-title">
+    Short-Form Videos
+</h2>
+
+<p class="section-description">
+    Shorts, Reels and social media content.
+</p>
+
+
+<div class="video-grid">
+
+<div class="video-card">
+
+<div style="
+height:100%;
+aspect-ratio:16/9;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#0d0d12;
+color:#666;
+">
+
+Short-form videos coming soon
+
+</div>
+
+<div class="video-info">
+
+<div class="video-title">
+    Short-Form Content
+</div>
+
+<div class="video-category">
+    Reels / Shorts
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<div class="container">
+
+<div class="contact">
+
+<h2>
+    Let's Work Together
+</h2>
+
+<p>
+Have a video project? Let's create something people want to watch.
+</p>
+
+<a
+href="mailto:keshuparmar306@gmail.com"
+class="btn primary"
+>
+Email Me
+</a>
+
+<a
+href="https://wa.me/919016913568"
+target="_blank"
+class="btn secondary"
+>
+WhatsApp
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="container">
+
+© 2026 Keshu Parmar — Quick Media
+
+</div>
+
+</footer>
+
+
+</body>
+</html>
+
+    
 <section id="long-form">
 
 <div class="container">

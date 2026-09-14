@@ -4,55 +4,56 @@ import re
 path = Path("/mnt/data/keshu_portfolio.html")
 html = path.read_text(encoding="utf-8")
 
-# 1) Remove the "AVAILABLE FOR WORK" badge from the hero photo.
-html = re.sub(
-    r'\s*<div class="hero-label">.*?</div>\s*',
-    '\n',
-    html,
-    count=1,
-    flags=re.S
+# ---------- Contact links ----------
+html = html.replace(
+    'href="mailto:YOUR_EMAIL_HERE"',
+    'href="mailto:keshuparmar306@gmail.com"'
 )
 
-# 2) Change intro placeholder to "INTRODUCTION VIDEO".
+old = '''<div class="footer-links">
+        <a href="https://keshuparmar.framer.website" target="_blank" rel="noopener">WEBSITE</a>
+        <a href="https://managing-vi-t5xat0rq.dcms.site" target="_blank" rel="noopener">PORTFOLIO</a>
+        <a href="https://www.fiverr.com/s/wkvk4Pq" target="_blank" rel="noopener">FIVERR</a>
+      </div>'''
+
+new = '''<div class="footer-links">
+        <a href="mailto:keshuparmar306@gmail.com">EMAIL</a>
+        <a href="https://wa.me/919016913568" target="_blank" rel="noopener">WHATSAPP</a>
+        <a href="https://www.instagram.com/quick_media._?stkn=dmFtODBzdWI2ZGw5" target="_blank" rel="noopener">INSTAGRAM</a>
+        <a href="https://www.linkedin.com/in/keshu-parmar-b26829236" target="_blank" rel="noopener">LINKEDIN</a>
+        <a href="https://x.com/Keshuparmar41" target="_blank" rel="noopener">X</a>
+      </div>'''
+
+if old in html:
+    html = html.replace(old, new)
+
+# ---------- Remove Available for Work ----------
+html = re.sub(r'\s*<div class="hero-label">.*?</div>\s*', '\n', html, count=1, flags=re.S)
+
+# ---------- Introduction video placeholder ----------
 html = html.replace(
     '<span class="mono">SELECT A VIDEO FROM THE PORTFOLIO</span>',
     '<span class="mono">INTRODUCTION VIDEO</span>'
 )
 
-# 3) Update worldwide clients to 30 and prepare animated stat numbers.
-html = html.replace(
-    '<strong>4+ Years</strong>',
-    '<strong class="count-number" data-target="4" data-suffix="+ Years">0</strong>'
+# ---------- Animated stats ----------
+html = re.sub(
+    r'<strong>4\+\s*Years</strong>',
+    '<strong class="count-number" data-target="4" data-suffix="+ Years">0</strong>',
+    html
 )
-html = html.replace(
-    '<strong>500+</strong>',
-    '<strong class="count-number" data-target="500" data-suffix="+ Videos">0</strong>'
+html = re.sub(
+    r'<strong>500\+</strong>',
+    '<strong class="count-number" data-target="500" data-suffix="+ Videos">0</strong>',
+    html
 )
-html = html.replace(
-    '<strong>130+</strong>',
-    '<strong class="count-number" data-target="30" data-suffix=" Clients Worldwide">0</strong>'
-)
-
-# 4) Make the "about" photo sit a little lower on desktop.
-html = html.replace(
-    '''    .about-photo {
-      position: relative;''',
-    '''    .about-photo {
-      position: relative;
-      transform: translateY(34px);'''
+html = re.sub(
+    r'<strong>130\+</strong>',
+    '<strong class="count-number" data-target="30" data-suffix=" Clients Worldwide">0</strong>',
+    html
 )
 
-html = html.replace(
-    '''      .about-photo {
-        width: 100%;
-      }''',
-    '''      .about-photo {
-        width: 100%;
-        transform: none;
-      }'''
-)
-
-# 5) Add a dedicated tools section before About.
+# ---------- Tools section ----------
 about_marker = '''    <!-- =========================
          ABOUT
     ========================== -->'''
@@ -62,13 +63,11 @@ tools_section = '''    <!-- =========================
     ========================== -->
     <section class="section tools-section" id="tools">
       <div class="wrap">
-
         <div class="section-head reveal">
           <div>
             <div class="kicker mono">02 / TOOLS</div>
             <h2 class="section-title">TOOLS I <span>USE.</span></h2>
           </div>
-
           <p class="section-copy">
             Professional editing software and AI tools used to build
             polished, efficient and high-retention content.
@@ -76,7 +75,6 @@ tools_section = '''    <!-- =========================
         </div>
 
         <div class="tools-grid reveal">
-
           <div class="tool-card">
             <div class="tool-logo adobe-pr">Pr</div>
             <div>
@@ -103,37 +101,42 @@ tools_section = '''    <!-- =========================
               <p>AI-assisted creative workflow</p>
             </div>
           </div>
-
         </div>
-
       </div>
     </section>
-
 
     <!-- =========================
          ABOUT
     ========================== -->'''
 
-html = html.replace(about_marker, tools_section)
+if about_marker in html and 'id="tools"' not in html:
+    html = html.replace(about_marker, tools_section)
 
-# 6) Rename About from section 02 to section 03.
 html = html.replace(
     '<div class="kicker mono">02 / ABOUT KESHU</div>',
     '<div class="kicker mono">03 / ABOUT KESHU</div>'
 )
 
-# 7) Replace the existing Contact Details + CTA area with CTA followed immediately
-#    by compact clickable contact boxes. IDs/details are NOT visibly shown.
+# ---------- Move About photo slightly down ----------
+if '.about-photo {' in html and 'transform: translateY(34px);' not in html:
+    html = html.replace(
+        '''    .about-photo {
+      position: relative;''',
+        '''    .about-photo {
+      position: relative;
+      transform: translateY(34px);'''
+    )
+
+# ---------- Replace Contact section with final CTA + compact clickable boxes ----------
 contact_start = html.find('    <!-- =========================\n         CONTACT\n    ========================== -->')
 footer_start = html.find('    <!-- =========================\n       FOOTER\n    ========================== -->')
 
 if contact_start != -1 and footer_start != -1:
-    replacement = '''    <!-- =========================
+    final_contact = '''    <!-- =========================
          CONTACT / FINAL CTA
     ========================== -->
     <section class="cta" id="contact">
       <div class="wrap reveal">
-
         <div class="kicker mono">04 / CONTACT</div>
 
         <h2>
@@ -147,8 +150,7 @@ if contact_start != -1 and footer_start != -1:
         </p>
 
         <div class="final-contact-grid">
-
-          <a class="final-contact-box email-box" href="mailto:keshuparmar306@gmail.com" aria-label="Email Keshu">
+          <a class="final-contact-box" href="mailto:keshuparmar306@gmail.com" aria-label="Email Keshu">
             <span class="final-contact-icon">✉</span>
             <span class="final-contact-label">EMAIL</span>
             <span class="final-contact-arrow">↗</span>
@@ -177,24 +179,15 @@ if contact_start != -1 and footer_start != -1:
             <span class="final-contact-label">X</span>
             <span class="final-contact-arrow">↗</span>
           </a>
-
         </div>
-
       </div>
     </section>
 
-
 '''
-    html = html[:contact_start] + replacement + html[footer_start:]
+    html = html[:contact_start] + final_contact + html[footer_start:]
 
-# 8) Change footer numbering / remove redundant old social links if present.
-html = html.replace(
-    '<a href="mailto:keshuparmar306@gmail.com">EMAIL</a>\n        <a href="https://wa.me/919016913568" target="_blank" rel="noopener">WHATSAPP</a>\n        <a href="https://www.instagram.com/quick_media._?stkn=dmFtODBzdWI2ZGw5" target="_blank" rel="noopener">INSTAGRAM</a>\n        <a href="https://www.linkedin.com/in/keshu-parmar-b26829236" target="_blank" rel="noopener">LINKEDIN</a>\n        <a href="https://x.com/Keshuparmar41" target="_blank" rel="noopener">X</a>',
-    '<a href="#work">WORK</a>\n        <a href="#tools">TOOLS</a>\n        <a href="#about">ABOUT</a>'
-)
-
-# 9) Add CSS for tools and final compact contact boxes.
-css_marker = '''    /* ---------- CTA ---------- */'''
+# ---------- CSS ----------
+style_marker = '''    /* ---------- CTA ---------- */'''
 extra_css = '''    /* ---------- Tools ---------- */
     .tools-section {
       border-top: 1px solid var(--line);
@@ -272,7 +265,6 @@ extra_css = '''    /* ---------- Tools ---------- */
       line-height: 1.5;
     }
 
-
     /* ---------- Final contact boxes ---------- */
     .final-contact-grid {
       width: min(720px, 100%);
@@ -348,18 +340,17 @@ extra_css = '''    /* ---------- Tools ---------- */
     }
 
 '''
-html = html.replace(css_marker, extra_css + css_marker)
+if style_marker in html and '.final-contact-grid' not in html:
+    html = html.replace(style_marker, extra_css + style_marker)
 
-# 10) Mobile adjustments for tools and final contacts.
+# ---------- Responsive ----------
 mobile_marker = '''      .video-grid {
         grid-template-columns: 1fr;
-      }
-
-      .contact-grid {
-        grid-template-columns: 1fr;
       }'''
-
-mobile_replacement = '''      .video-grid {
+if mobile_marker in html and 'grid-template-columns: repeat(3, minmax(0, 1fr));' not in html[html.find(mobile_marker):html.find(mobile_marker)+1200]:
+    html = html.replace(
+        mobile_marker,
+        '''      .video-grid {
         grid-template-columns: 1fr;
       }
 
@@ -369,23 +360,16 @@ mobile_replacement = '''      .video-grid {
 
       .final-contact-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .contact-grid {
-        grid-template-columns: 1fr;
       }'''
+    )
 
-html = html.replace(mobile_marker, mobile_replacement)
-
-# 11) Add the zero-to-target number animation before the initial render.
+# ---------- Counter animation ----------
 script_marker = '''    /* Initial render */
     renderCategories();
     renderVideos();'''
-
 counter_script = '''    /* ==========================================================
        ZERO -> TARGET STAT COUNTERS
     ========================================================== */
-
     function animateCounters() {
       document.querySelectorAll(".count-number").forEach(counter => {
         const target = Number(counter.dataset.target);
@@ -397,14 +381,10 @@ counter_script = '''    /* =====================================================
           const progress = Math.min((now - start) / duration, 1);
           const eased = 1 - Math.pow(1 - progress, 3);
           const value = Math.floor(target * eased);
-
           counter.textContent = `${value}${suffix}`;
 
-          if (progress < 1) {
-            requestAnimationFrame(tick);
-          } else {
-            counter.textContent = `${target}${suffix}`;
-          }
+          if (progress < 1) requestAnimationFrame(tick);
+          else counter.textContent = `${target}${suffix}`;
         }
 
         requestAnimationFrame(tick);
@@ -415,8 +395,8 @@ counter_script = '''    /* =====================================================
     renderCategories();
     renderVideos();
     animateCounters();'''
-
-html = html.replace(script_marker, counter_script)
+if script_marker in html and 'function animateCounters()' not in html:
+    html = html.replace(script_marker, counter_script)
 
 path.write_text(html, encoding="utf-8")
 print(f"Updated successfully: {path}")

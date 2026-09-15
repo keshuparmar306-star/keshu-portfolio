@@ -1,226 +1,2232 @@
-from pathlib import Path
-import re
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050507">
+<meta name="description" content="Keshu Parmar — Professional Video Editor">
+<title>KESHU — Video Editor</title>
 
-source = Path("/mnt/data/keshu_portfolio_updated.html") 
-out = Path("/mnt/data/keshu_portfolio_final.html")
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-html = source.read_text(encoding="utf-8")
+<style>
 
-# Remove ONLY the right-side hero photo/frame.
-m = re.search(r'\n\s*<div class="hero-visual">.*?</div>\s*</div>\s*</div>', html, flags=re.S)
-if m and 'class="hero-frame"' in m.group(0):
-    html = html[:m.start()] + "\n" + html[m.end():]
+:root{
+  --bg:#050507;
+  --panel:#09090d;
+  --panel2:#0d0d13;
+  --text:#f7f5fb;
+  --muted:#8e8a98;
+  --muted2:#625e69;
+  --line:rgba(255,255,255,.085);
+  --purple:#9747ff;
+  --purple2:#b36cff;
+  --green:#35d36a;
+  --ease:cubic-bezier(.2,.75,.2,1);
+}
 
-# Hero now uses the full width, without changing the left-side content.
-html = html.replace( 
-    'grid-template-columns: 1.1fr .9fr;\n      gap: 50px;',
-    'grid-template-columns: 1fr;\n      gap: 0;'
-)
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-# Counters: explicitly start at zero.
-for target, suffix in [
-    ("4", "+ Years"),
-    ("500", "+ Videos"),
-    ("30", " Clients Worldwide"),
-]:
-    pattern = rf'(<strong class="count-number" data-target="{target}" data-suffix="{re.escape(suffix)}">)\d+(</strong>)'
-    html = re.sub(pattern, rf'\g<1>0\g<2>', html)
+html{
+  scroll-behavior:smooth;
+  background:var(--bg);
+}
 
-# Compact the four software/tool cards.
-html = html.replace(
-'''    .software-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
+body{
+  background:
+    radial-gradient(circle at 85% 5%,rgba(151,71,255,.14),transparent 25rem),
+    radial-gradient(circle at 8% 48%,rgba(113,42,185,.08),transparent 23rem),
+    var(--bg);
+  color:var(--text);
+  font-family:Inter,sans-serif;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:100;
+  opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button{
+  font:inherit;
+}
+
+img,
+video{
+  max-width:100%;
+}
+
+.wrap{
+  width:min(1240px,calc(100% - 72px));
+  margin:auto;
+}
+
+.mono{
+  font:500 10px/1.4 "DM Mono",monospace;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
+.brand{
+  color:var(--purple2);
+}
+
+
+/* =========================================================
+   CURSOR GLOW
+========================================================= */
+
+.cursor-glow{
+  position:fixed;
+  width:420px;
+  height:420px;
+  left:0;
+  top:0;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  pointer-events:none;
+  background:radial-gradient(
+    circle,
+    rgba(151,71,255,.08),
+    transparent 65%
+  );
+  filter:blur(12px);
+  z-index:0;
+}
+
+
+/* =========================================================
+   NAV
+========================================================= */
+
+header{
+  position:relative;
+  z-index:10;
+  border-bottom:1px solid var(--line);
+  background:rgba(5,5,7,.68);
+  backdrop-filter:blur(18px);
+}
+
+.nav{
+  height:78px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-size:15px;
+  font-weight:800;
+  letter-spacing:.11em;
+}
+
+.logo span{
+  color:var(--purple2);
+}
+
+.nav-links{
+  display:flex;
+  gap:34px;
+}
+
+.nav-links a{
+  color:#96919f;
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.09em;
+  transition:.25s ease;
+}
+
+.nav-links a:hover{
+  color:white;
+}
+
+.nav-cta{
+  height:36px;
+  padding:0 17px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:5px;
+  background:var(--purple);
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.08em;
+  box-shadow:0 0 28px rgba(151,71,255,.18);
+  transition:.25s ease;
+}
+
+.nav-cta:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 32px rgba(151,71,255,.32);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+  position:relative;
+  min-height:680px;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+}
+
+.hero-orb{
+  position:absolute;
+  width:680px;
+  height:680px;
+  right:-180px;
+  top:-150px;
+  border-radius:50%;
+  background:
+    radial-gradient(
+      circle,
+      rgba(145,58,255,.25),
+      rgba(73,22,127,.08) 38%,
+      transparent 69%
+    );
+  filter:blur(5px);
+  animation:orbFloat 8s ease-in-out infinite;
+}
+
+@keyframes orbFloat{
+  0%,100%{
+    transform:translate(0,0) scale(1);
+  }
+  50%{
+    transform:translate(-22px,20px) scale(1.04);
+  }
+}
+
+.hero-inner{
+  position:relative;
+  z-index:2;
+  width:100%;
+}
+
+.hero-copy{
+  max-width:900px;
+  animation:rise .9s var(--ease) both;
+}
+
+@keyframes rise{
+  from{
+    opacity:0;
+    transform:translateY(28px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.eyebrow{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:24px;
+  color:var(--purple2);
+}
+
+.eyebrow::before{
+  content:"";
+  width:25px;
+  height:1px;
+  background:var(--purple);
+  box-shadow:0 0 14px var(--purple);
+}
+
+.hero h1{
+  font-size:clamp(52px,7vw,94px);
+  line-height:.91;
+  letter-spacing:-.065em;
+  font-weight:800;
+  text-transform:uppercase;
+}
+
+.hero h1 .accent{
+  color:var(--purple2);
+  text-shadow:0 0 42px rgba(151,71,255,.18);
+}
+
+.hero-desc{
+  width:min(560px,100%);
+  margin-top:30px;
+  color:#8e8a96;
+  font-size:12px;
+  line-height:1.9;
+}
+
+.hero-actions{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  margin-top:30px;
+}
+
+.btn-primary{
+  min-height:42px;
+  padding:0 20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:5px;
+  background:var(--purple);
+  box-shadow:0 12px 34px rgba(151,71,255,.18);
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.08em;
+  transition:.25s ease;
+}
+
+.btn-primary:hover{
+  transform:translateY(-3px);
+  box-shadow:0 18px 44px rgba(151,71,255,.32);
+}
+
+.btn-text{
+  color:#aaa5b0;
+  font-size:9px;
+  letter-spacing:.08em;
+  border-bottom:1px solid #4e4a54;
+  padding-bottom:4px;
+}
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+section{
+  position:relative;
+  z-index:2;
+}
+
+.section{
+  padding:125px 0;
+}
+
+.section-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:30px;
+  margin-bottom:45px;
+}
+
+.kicker{
+  color:var(--purple2);
+  margin-bottom:10px;
+}
+
+.section-title{
+  font-size:clamp(30px,4vw,48px);
+  line-height:.98;
+  letter-spacing:-.055em;
+  text-transform:uppercase;
+  font-weight:800;
+}
+
+.section-title span{
+  color:var(--purple2);
+}
+
+.section-copy{
+  max-width:390px;
+  color:#77727f;
+  font-size:10px;
+  line-height:1.8;
+  text-align:right;
+}
+
+
+/* =========================================================
+   INTRODUCTION
+========================================================= */
+
+.intro-section{
+  border-top:1px solid var(--line);
+}
+
+.intro-grid{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:70px;
+  align-items:center;
+}
+
+.intro-card{
+  position:relative;
+  aspect-ratio:16/9;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:var(--panel);
+}
+
+.intro-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    135deg,
+    rgba(151,71,255,.07),
+    transparent 42%
+  );
+  pointer-events:none;
+}
+
+.intro-placeholder{
+  width:100%;
+  height:100%;
+  display:grid;
+  place-items:center;
+  color:#4c4852;
+}
+
+.stats{
+  display:grid;
+  gap:22px;
+}
+
+.stat{
+  padding:0 0 19px 17px;
+  border-left:1px solid var(--purple);
+  border-bottom:1px solid var(--line);
+}
+
+.stat span{
+  display:block;
+  color:#696570;
+  font:500 9px/1.3 "DM Mono",monospace;
+  text-transform:uppercase;
+  letter-spacing:.09em;
+  margin-bottom:6px;
+}
+
+.stat strong{
+  font-size:16px;
+  letter-spacing:-.02em;
+}
+
+
+/* =========================================================
+   PORTFOLIO
+========================================================= */
+
+.portfolio{
+  border-top:1px solid var(--line);
+}
+
+.type-switch{
+  display:inline-flex;
+  padding:4px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:rgba(255,255,255,.018);
+}
+
+.type-btn{
+  border:0;
+  background:transparent;
+  color:#716d78;
+  padding:10px 16px;
+  border-radius:5px;
+  cursor:pointer;
+  font:500 9px/1 "DM Mono",monospace;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  transition:.25s ease;
+}
+
+.type-btn:hover{
+  color:white;
+}
+
+.type-btn.active{
+  color:white;
+  background:var(--purple);
+  box-shadow:0 7px 24px rgba(151,71,255,.2);
+}
+
+.category-bar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  padding:4px 0 26px;
+  margin-top:20px;
+  border-bottom:1px solid var(--line);
+}
+
+.category-btn{
+  border:1px solid var(--line);
+  background:#08080c;
+  color:#77727e;
+  padding:11px 14px;
+  border-radius:5px;
+  cursor:pointer;
+  font-size:9px;
+  font-weight:600;
+  letter-spacing:.04em;
+  transition:.25s ease;
+}
+
+.category-btn:hover{
+  color:white;
+  border-color:rgba(151,71,255,.38);
+  transform:translateY(-2px);
+}
+
+.category-btn.active{
+  color:white;
+  background:linear-gradient(
+    135deg,
+    rgba(151,71,255,.22),
+    rgba(151,71,255,.07)
+  );
+  border-color:rgba(151,71,255,.7);
+}
+
+.selected-label{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  min-height:75px;
+}
+
+.selected-label h3{
+  font-size:13px;
+  text-transform:uppercase;
+}
+
+.selected-label p{
+  color:#65616c;
+  font-size:9px;
+  margin-top:5px;
+}
+
+.video-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+
+.video-item{
+  overflow:hidden;
+  background:#09090d;
+  border:1px solid var(--line);
+  transition:.45s var(--ease);
+  animation:cardIn .6s var(--ease) both;
+}
+
+@keyframes cardIn{
+  from{
+    opacity:0;
+    transform:translateY(18px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.video-item:hover{
+  transform:translateY(-5px);
+  border-color:rgba(151,71,255,.32);
+  box-shadow:0 25px 70px rgba(0,0,0,.4);
+}
+
+.video-shell{
+  position:relative;
+  aspect-ratio:16/9;
+  background:#040406;
+}
+
+.video-shell video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.video-meta{
+  padding:14px 15px 16px;
+  border-top:1px solid var(--line);
+}
+
+.video-meta .index{
+  color:var(--purple2);
+  margin-bottom:6px;
+}
+
+.video-meta h4{
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+}
+
+.video-meta p{
+  color:#66616d;
+  font-size:8px;
+  margin-top:5px;
+}
+
+.no-videos{
+  grid-column:1/-1;
+  min-height:230px;
+  display:grid;
+  place-items:center;
+  border:1px dashed rgba(255,255,255,.10);
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(151,71,255,.045),
+      transparent 48%
+    ),
+    #07070a;
+  text-align:center;
+}
+
+.no-videos strong{
+  display:block;
+  font-size:11px;
+  text-transform:uppercase;
+}
+
+.no-videos span{
+  display:block;
+  margin-top:7px;
+  color:#57535e;
+  font-size:8px;
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about{
+  border-top:1px solid var(--line);
+  overflow:hidden;
+}
+
+.about::before{
+  content:"";
+  position:absolute;
+  width:600px;
+  height:600px;
+  left:-400px;
+  top:10%;
+  border-radius:50%;
+  background:
+    radial-gradient(
+      circle,
+      rgba(122,38,203,.16),
+      transparent 65%
+    );
+  filter:blur(5px);
+}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:.75fr 1.25fr;
+  gap:85px;
+  align-items:center;
+}
+
+.about-photo{
+  position:relative;
+  width:min(390px,100%);
+  aspect-ratio:1/1;
+  border:1px solid rgba(151,71,255,.24);
+  background:#08080b;
+  box-shadow:0 30px 90px rgba(0,0,0,.5);
+}
+
+.about-photo::before{
+  content:"";
+  position:absolute;
+  inset:-12px 12px 12px -12px;
+  border:1px solid rgba(151,71,255,.17);
+  z-index:-1;
+}
+
+.about-photo::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(151,71,255,.10),
+      transparent 40%
+    );
+  pointer-events:none;
+}
+
+.about-photo img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+
+.about-copy{
+  max-width:650px;
+}
+
+.about-copy h2{
+  margin-top:5px;
+  font-size:clamp(35px,5vw,64px);
+  line-height:.94;
+  letter-spacing:-.065em;
+  text-transform:uppercase;
+}
+
+.about-copy h2 span{
+  color:var(--purple2);
+}
+
+.about-copy p{
+  margin-top:25px;
+  color:#7c7782;
+  font-size:11px;
+  line-height:1.9;
+  max-width:570px;
+}
+
+
+/* =========================================================
+   TOOLS
+========================================================= */
+
+.tools-section{
+  border-top:1px solid var(--line);
+}
+
+.software-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:9px;
+}
+
+.software-card{
+  min-height:92px;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:10px;
+  border:1px solid var(--line);
+  background:#08080c;
+  transition:.4s var(--ease);
+}
+
+.software-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(151,71,255,.42);
+  box-shadow:0 20px 50px rgba(0,0,0,.35);
+}
+
+.software-card::after{
+  content:"";
+  position:absolute;
+  width:100px;
+  height:100px;
+  right:-45px;
+  top:-45px;
+  border-radius:50%;
+  background:radial-gradient(
+    circle,
+    rgba(151,71,255,.18),
+    transparent 68%
+  );
+  transition:.5s ease;
+}
+
+.software-card:hover::after{
+  transform:scale(1.5);
+}
+
+.software-mark{
+  width:38px;
+  height:38px;
+  flex:0 0 38px;
+  display:grid;
+  place-items:center;
+  border-radius:7px;
+  font-size:13px;
+  font-weight:800;
+  color:white;
+  border:1px solid rgba(255,255,255,.12);
+  animation:toolFloat 4.5s ease-in-out infinite;
+}
+
+@keyframes toolFloat{
+  0%,100%{
+    transform:translateY(0);
+  }
+  50%{
+    transform:translateY(-4px);
+  }
+}
+
+.premiere-mark{
+  background:linear-gradient(145deg,#30143d,#140b18);
+  color:#f0b7ff;
+}
+
+.after-mark{
+  background:linear-gradient(145deg,#23134d,#0e0b1e);
+  color:#b89cff;
+}
+
+.photoshop-mark{
+  background:linear-gradient(145deg,#092b42,#07141e);
+  color:#72c9ff;
+}
+
+.ai-mark{
+  background:linear-gradient(145deg,#281440,#120b19);
+  color:var(--purple2);
+}
+
+.software-copy{
+  position:relative;
+  z-index:2;
+}
+
+.software-copy > span{
+  color:var(--purple2);
+  font-size:7px;
+}
+
+.software-copy h3{
+  margin-top:4px;
+  font-size:9px;
+  text-transform:uppercase;
+}
+
+.software-copy p{
+  margin-top:3px;
+  color:#625e69;
+  font-size:7px;
+  line-height:1.35;
+}
+
+
+/* =========================================================
+   FINAL CTA
+========================================================= */
+
+.cta{
+  padding:90px 0 65px;
+  text-align:center;
+  border-top:1px solid var(--line);
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(132,46,225,.20),
+      transparent 48%
+    );
+}
+
+.cta .kicker{
+  margin-bottom:12px;
+}
+
+.cta h2{
+  font-size:clamp(42px,6vw,78px);
+  line-height:.9;
+  letter-spacing:-.065em;
+  text-transform:uppercase;
+}
+
+.cta h2 span{
+  color:var(--purple2);
+}
+
+.cta p{
+  max-width:440px;
+  margin:19px auto 0;
+  color:#716c78;
+  font-size:10px;
+  line-height:1.8;
+}
+
+
+/* =========================================================
+   CONTACT ICON BOXES
+========================================================= */
+
+.final-contact-grid{
+  width:min(360px,100%);
+  margin:25px auto 0;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:6px;
+}
+
+.final-contact-box{
+  width:50px;
+  height:46px;
+  justify-self:center;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(6,6,9,.72);
+  transition:.3s var(--ease);
+}
+
+.final-contact-box:hover{
+  transform:translateY(-5px);
+  border-color:rgba(151,71,255,.55);
+  background:rgba(151,71,255,.08);
+  box-shadow:0 15px 40px rgba(0,0,0,.3);
+}
+
+.final-contact-icon{
+  color:var(--purple2);
+  font-size:16px;
+  font-weight:800;
+  line-height:1;
+}
+
+.final-contact-box.whatsapp-box{
+  border-color:rgba(53,211,106,.3);
+}
+
+.final-contact-box.whatsapp-box:hover{
+  border-color:var(--green);
+  background:rgba(53,211,106,.08);
+}
+
+.final-contact-box.whatsapp-box .final-contact-icon{
+  color:var(--green);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+  border-top:1px solid var(--line);
+  padding:32px 0;
+}
+
+.footer{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.footer-left{
+  color:#66616c;
+  font-size:8px;
+}
+
+.footer-left strong{
+  color:#aaa5b0;
+}
+
+.footer-links{
+  display:flex;
+  gap:20px;
+}
+
+.footer-links a{
+  color:#6d6874;
+  font:500 8px/1 "DM Mono",monospace;
+}
+
+.footer-links a:hover{
+  color:var(--purple2);
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+.reveal{
+  opacity:0;
+  transform:translateY(24px);
+  transition:
+    opacity .8s var(--ease),
+    transform .8s var(--ease);
+}
+
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+  .wrap{
+    width:min(100% - 38px,1240px);
+  }
+
+  .hero{
+    min-height:600px;
+  }
+
+  .hero h1{
+    font-size:clamp(45px,10vw,72px);
+  }
+
+  .intro-grid,
+  .about-grid{
+    grid-template-columns:1fr;
+  }
+
+  .about-grid{
+    gap:55px;
+  }
+
+  .about-photo{
+    width:min(420px,100%);
+  }
+
+  .software-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .section-head{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .section-copy{
+    text-align:left;
+  }
+
+  .video-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+
+@media(max-width:620px){
+
+  .wrap{
+    width:calc(100% - 30px);
+  }
+
+  .nav{
+    height:68px;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .nav-cta{
+    height:33px;
+  }
+
+  .hero{
+    min-height:600px;
+  }
+
+  .hero h1{
+    font-size:48px;
+  }
+
+  .hero-actions{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:15px;
+  }
+
+  .type-switch{
+    width:100%;
+  }
+
+  .type-btn{
+    flex:1;
+    padding-inline:7px;
+  }
+
+  .category-bar{
+    gap:6px;
+  }
+
+  .category-btn{
+    flex:1 1 calc(50% - 6px);
+  }
+
+  .software-grid{
+    grid-template-columns:1fr;
+  }
+
+  .final-contact-grid{
+    width:300px;
+  }
+
+  .final-contact-box{
+    width:44px;
+    height:42px;
+  }
+
+  .footer{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:18px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="cursor-glow" id="cursorGlow"></div>
+
+
+<!-- =====================================================
+     NAVIGATION
+====================================================== -->
+
+<header>
+
+  <div class="wrap nav">
+
+    <a href="#" class="logo">
+      KESHU<span>.</span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#work">WORK</a>
+      <a href="#about">ABOUT</a>
+      <a href="#tools">TOOLS</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+
+    <a href="#contact" class="nav-cta">
+      LET'S TALK
+    </a>
+
+  </div>
+
+</header>
+
+
+<main>
+
+
+<!-- =====================================================
+     HERO
+====================================================== -->
+
+<section class="hero">
+
+  <div class="hero-orb"></div>
+
+  <div class="wrap hero-inner">
+
+    <div class="hero-copy">
+
+      <div class="eyebrow mono">
+        VIDEO EDITOR / 4+ YEARS
+      </div>
+
+      <h1>
+        VIDEO EDITOR<br>
+        WHO MAKES<br>
+        <span class="accent">
+          PEOPLE WATCH.
+        </span>
+      </h1>
+
+      <p class="hero-desc">
+        I turn raw footage into clean, engaging and
+        retention-focused videos for creators, brands
+        and businesses — from long-form storytelling
+        to short-form content.
+      </p>
+
+      <div class="hero-actions">
+
+        <a class="btn-primary" href="#work">
+          WATCH THE EDITS
+        </a>
+
+        <a class="btn-text" href="#contact">
+          LET'S WORK TOGETHER →
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     INTRODUCTION / STATS
+====================================================== -->
+
+<section class="section intro-section">
+
+  <div class="wrap intro-grid reveal">
+
+    <div class="intro-card">
+
+      <!-- INTRO VIDEO WILL BE ADDED HERE LATER -->
+
+      <div class="intro-placeholder">
+        <span class="mono">
+          INTRODUCTION VIDEO
+        </span>
+      </div>
+
+    </div>
+
+
+    <div class="stats">
+
+      <div class="stat">
+
+        <span>
+          Experience
+        </span>
+
+        <strong
+          class="count-number"
+          data-target="4"
+          data-suffix="+ Years">
+          0
+        </strong>
+
+      </div>
+
+
+      <div class="stat">
+
+        <span>
+          Videos Edited
+        </span>
+
+        <strong
+          class="count-number"
+          data-target="500"
+          data-suffix="+ Videos">
+          0
+        </strong>
+
+      </div>
+
+
+      <div class="stat">
+
+        <span>
+          Clients Worldwide
+        </span>
+
+        <strong
+          class="count-number"
+          data-target="30"
+          data-suffix="+ Clients">
+          0
+        </strong>
+
+      </div>
+
+
+      <div class="stat">
+
+        <span>
+          Core Focus
+        </span>
+
+        <strong>
+          Storytelling + Retention
+        </strong>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     PORTFOLIO
+====================================================== -->
+
+<section class="section portfolio" id="work">
+
+  <div class="wrap">
+
+    <div class="section-head reveal">
+
+      <div>
+
+        <div class="kicker mono">
+          01 / SELECTED WORK
+        </div>
+
+        <h2 class="section-title">
+          WATCH THE <span>EDITS.</span>
+        </h2>
+
+      </div>
+
+      <p class="section-copy">
+        Choose Long Form or Short Form and then
+        select a specific category. Only the selected
+        category's videos will appear.
+      </p>
+
+    </div>
+
+
+    <!-- LONG / SHORT -->
+
+    <div
+      class="type-switch reveal"
+      role="tablist">
+
+      <button
+        class="type-btn active"
+        data-type="long"
+        type="button">
+
+        LONG FORM
+
+      </button>
+
+
+      <button
+        class="type-btn"
+        data-type="short"
+        type="button">
+
+        SHORT FORM
+
+      </button>
+
+    </div>
+
+
+    <!-- CATEGORY BUTTONS -->
+
+    <div
+      class="category-bar reveal"
+      id="categoryBar">
+    </div>
+
+
+    <!-- CURRENT CATEGORY -->
+
+    <div class="selected-label reveal">
+
+      <div>
+
+        <h3 id="selectedTitle">
+          ALL VIDEOS
+        </h3>
+
+        <p id="selectedDescription">
+          All long-form portfolio work.
+        </p>
+
+      </div>
+
+      <span
+        class="mono brand"
+        id="videoCount">
+        0 VIDEOS
+      </span>
+
+    </div>
+
+
+    <!-- ONLY SELECTED CATEGORY VIDEOS -->
+
+    <div
+      class="video-grid"
+      id="videoGrid">
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     ABOUT
+====================================================== -->
+
+<section
+  class="section about"
+  id="about">
+
+  <div class="wrap about-grid reveal">
+
+
+    <!-- YOUR PHOTO -->
+
+    <div class="about-photo">
+
+      <img
+        src="./128.jpg.jpeg"
+        alt="Keshu Parmar">
+
+    </div>
+
+
+    <div class="about-copy">
+
+      <div class="kicker mono">
+        02 / ABOUT KESHU
+      </div>
+
+      <h2>
+        EDITING THAT<br>
+        MAKES
+        <span>
+          PEOPLE<br>
+          WATCH.
+        </span>
+      </h2>
+
+      <p>
+        I'm Keshu Parmar, a professional video editor
+        with 4+ years of experience. I specialize in
+        YouTube, talking-head, documentary, podcast,
+        reaction, reels and short-form editing.
+        My approach is clean, intentional and built
+        around pacing, storytelling and audience retention.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     SOFTWARE / TOOLS
+====================================================== -->
+
+<section
+  class="section tools-section"
+  id="tools">
+
+  <div class="wrap">
+
+    <div class="section-head reveal">
+
+      <div>
+
+        <div class="kicker mono">
+          03 / SOFTWARE
+        </div>
+
+        <h2 class="section-title">
+          TOOLS I <span>USE.</span>
+        </h2>
+
+      </div>
+
+      <p class="section-copy">
+        Professional software used for editing,
+        motion graphics, design and AI-assisted
+        creative workflows.
+      </p>
+
+    </div>
+
+
+    <div class="software-grid reveal">
+
+
+      <!-- PREMIERE -->
+
+      <div class="software-card">
+
+        <div class="software-mark premiere-mark">
+          Pr
+        </div>
+
+        <div class="software-copy">
+
+          <span class="mono">
+            EDITING
+          </span>
+
+          <h3>
+            Premiere Pro
+          </h3>
+
+          <p>
+            Professional video editing
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- AFTER EFFECTS -->
+
+      <div class="software-card">
+
+        <div class="software-mark after-mark">
+          Ae
+        </div>
+
+        <div class="software-copy">
+
+          <span class="mono">
+            MOTION
+          </span>
+
+          <h3>
+            After Effects
+          </h3>
+
+          <p>
+            Motion graphics & VFX
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- PHOTOSHOP -->
+
+      <div class="software-card">
+
+        <div class="software-mark photoshop-mark">
+          Ps
+        </div>
+
+        <div class="software-copy">
+
+          <span class="mono">
+            DESIGN
+          </span>
+
+          <h3>
+            Photoshop
+          </h3>
+
+          <p>
+            Thumbnails & visual design
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- AI -->
+
+      <div class="software-card">
+
+        <div class="software-mark ai-mark">
+          ✦
+        </div>
+
+        <div class="software-copy">
+
+          <span class="mono">
+            WORKFLOW
+          </span>
+
+          <h3>
+            AI Tools
+          </h3>
+
+          <p>
+            AI-assisted creative workflow
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     FINAL CONTACT
+====================================================== -->
+
+<section
+  class="cta"
+  id="contact">
+
+  <div class="wrap reveal">
+
+    <div class="kicker mono">
+      04 / CONTACT
+    </div>
+
+    <h2>
+      LET'S WORK<br>
+      <span>TOGETHER.</span>
+    </h2>
+
+    <p>
+      Have a project in mind? Let's turn your footage
+      into something people actually want to watch.
+    </p>
+
+
+    <!-- ONLY LOGOS ARE VISIBLE -->
+
+    <div
+      class="final-contact-grid"
+      aria-label="Contact links">
+
+
+      <!-- EMAIL -->
+
+      <a
+        class="final-contact-box"
+        href="mailto:keshuparmar306@gmail.com"
+        aria-label="Email Keshu">
+
+        <span class="final-contact-icon">
+          ✉
+        </span>
+
+      </a>
+
+
+      <!-- WHATSAPP -->
+
+      <a
+        class="final-contact-box whatsapp-box"
+        href="https://wa.me/919016913568"
+        target="_blank"
+        rel="noopener"
+        aria-label="WhatsApp Keshu">
+
+        <span class="final-contact-icon">
+          ◉
+        </span>
+
+      </a>
+
+
+      <!-- LINKEDIN -->
+
+      <a
+        class="final-contact-box"
+        href="https://www.linkedin.com/in/keshu-parmar-b26829236"
+        target="_blank"
+        rel="noopener"
+        aria-label="LinkedIn">
+
+        <span class="final-contact-icon">
+          in
+        </span>
+
+      </a>
+
+
+      <!-- INSTAGRAM -->
+
+      <a
+        class="final-contact-box"
+        href="https://www.instagram.com/quick_media._?stkn=dmFtODBzdWI2ZGw5"
+        target="_blank"
+        rel="noopener"
+        aria-label="Instagram">
+
+        <span class="final-contact-icon">
+          ◎
+        </span>
+
+      </a>
+
+
+      <!-- X -->
+
+      <a
+        class="final-contact-box"
+        href="https://x.com/Keshuparmar41"
+        target="_blank"
+        rel="noopener"
+        aria-label="X">
+
+        <span class="final-contact-icon">
+          𝕏
+        </span>
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+
+<footer>
+
+  <div class="wrap footer">
+
+    <div class="footer-left">
+      © 2026
+      <strong>KESHU PARMAR</strong>
+      — VIDEO EDITOR
+    </div>
+
+    <div class="footer-links">
+
+      <a href="#work">
+        WORK
+      </a>
+
+      <a href="#tools">
+        TOOLS
+      </a>
+
+      <a href="#about">
+        ABOUT
+      </a>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   PORTFOLIO VIDEO DATA
+
+   IMPORTANT:
+   अभी कोई videos intentionally add नहीं किए हैं.
+
+   बाद में जब आप URL दोगे:
+   सिर्फ उसी category में add होगा.
+========================================================= */
+
+const VIDEO_DATA = {
+
+  long: {
+
+    "long-all": {
+      title:"ALL VIDEOS",
+      description:"All long-form portfolio work.",
+      videos:[]
+    },
+
+    "long-talking": {
+      title:"TALKING HEAD",
+      description:"Talking-head editing with clean pacing and retention.",
+      videos:[]
+    },
+
+    "long-doc": {
+      title:"DOCUMENTARY",
+      description:"Documentary storytelling, pacing and visual structure.",
+      videos:[]
+    },
+
+    "long-ad": {
+      title:"AD VIDEO",
+      description:"Long-form advertising and promotional editing.",
+      videos:[]
     }
 
-    .software-card {
-      min-height: 165px;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 18px;''',
-'''    .software-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 9px;
+  },
+
+
+  short: {
+
+    "short-talking": {
+      title:"TALKING HEAD",
+      description:"Short-form talking-head edits for social platforms.",
+      videos:[]
+    },
+
+    "short-food": {
+      title:"FOOD VIDEO",
+      description:"Food-focused short-form edits.",
+      videos:[]
+    },
+
+    "short-brand": {
+      title:"BRAND VIDEO",
+      description:"Brand-focused social content.",
+      videos:[]
+    },
+
+    "short-ad": {
+      title:"AD VIDEO",
+      description:"Short-form advertisements.",
+      videos:[]
     }
 
-    .software-card {
-      min-height: 86px;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 11px;
-      padding: 10px 11px;'''
-)
+  }
 
-html = html.replace(
-'''    .software-mark {
-      width: 52px;
-      height: 52px;
-      display: grid;''',
-'''    .software-mark {
-      width: 38px;
-      height: 38px;
-      flex: 0 0 38px;
-      display: grid;'''
-)
+};
 
-html = html.replace(
-'''    .software-copy h3 { margin-top: 6px; font-size: 12px; text-transform: uppercase; }
-    .software-copy p { margin-top: 5px; color: #625e69; font-size: 8px; line-height: 1.5; }''',
-'''    .software-copy h3 { margin-top: 4px; font-size: 10px; text-transform: uppercase; }
-    .software-copy p { margin-top: 3px; color: #625e69; font-size: 7px; line-height: 1.35; }'''
-)
 
-# Make final CTA shorter.
-html = html.replace(
-    '.cta {\n      padding: 145px 0;',
-    '.cta {\n      padding: 82px 0 65px;'
-)
+/* =========================================================
+   PORTFOLIO SYSTEM
+========================================================= */
 
-# Make contact boxes small and show only logos (labels remain accessible to screen readers).
-html = html.replace(
-'''    .final-contact-grid {
-      width: min(760px, 100%);
-      margin: 34px auto 0;
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 7px;
-    }
+let currentType = "long";
+let currentCategory = "long-all";
 
-    .final-contact-box {
-      min-height: 70px;
-      position: relative;''',
-'''    .final-contact-grid {
-      width: min(360px, 100%);
-      margin: 22px auto 0;
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 6px;
-    }
+const categoryBar =
+  document.getElementById("categoryBar");
 
-    .final-contact-box {
-      width: 50px;
-      height: 44px;
-      min-height: 0;
-      justify-self: center;
-      position: relative;'''
-)
+const videoGrid =
+  document.getElementById("videoGrid");
 
-html = re.sub(
-    r'\s*\.final-contact-label \{.*?\n\s*\}',
-    '''
-    .final-contact-label {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }''',
-    html,
-    count=1,
-    flags=re.S
-)
+const selectedTitle =
+  document.getElementById("selectedTitle");
 
-html = re.sub(
-    r'\s*\.final-contact-arrow \{.*?\n\s*\}',
-    '''
-    .final-contact-arrow {
-      display: none;
-    }''',
-    html,
-    count=1,
-    flags=re.S
-)
+const selectedDescription =
+  document.getElementById("selectedDescription");
 
-# Keep WhatsApp green.
-# Existing .whatsapp-box styles are retained.
+const videoCount =
+  document.getElementById("videoCount");
 
-# Mobile: five small logo boxes stay on one line.
-html = html.replace(
-'''      .final-contact-grid {
-        gap: 4px;
+
+function renderCategories(){
+
+  categoryBar.innerHTML = "";
+
+  const categories =
+    VIDEO_DATA[currentType];
+
+  Object.entries(categories).forEach(
+    ([id,category]) => {
+
+      const button =
+        document.createElement("button");
+
+      button.type = "button";
+
+      button.className =
+        "category-btn";
+
+      button.textContent =
+        category.title;
+
+      if(id === currentCategory){
+
+        button.classList.add("active");
+
       }
 
-      .final-contact-box {
-        min-height: 62px;
-        padding: 6px 3px;
-      }
+      button.addEventListener(
+        "click",
+        () => {
 
-      .final-contact-label {
-        font-size: 6px;
-      }''',
-'''      .final-contact-grid {
-        width: min(300px, 100%);
-        gap: 4px;
-      }
+          currentCategory = id;
 
-      .final-contact-box {
-        width: 46px;
-        height: 42px;
-        padding: 5px;
-      }'''
-)
+          renderCategories();
 
-# Remove now-unused mobile hero-photo sizing.
-html = re.sub(
-    r'\n\s*\.hero-visual \{\n\s*min-height: 430px;\n\s*\}\n\n\s*\.hero-frame \{\n\s*width: min\(350px, 78%\);\n\s*\}\n',
-    '\n',
-    html
-)
+          renderVideos();
 
-# Make the counter animation definitely start at 0 and finish at the exact target.
-old = re.search(r'function animateCounters\(\) \{.*?\n    \}', html, flags=re.S)
-if old:
-    counter_fn = '''function animateCounters() {
-      document.querySelectorAll(".count-number").forEach(counter => {
-        const target = Number(counter.dataset.target);
-        const suffix = counter.dataset.suffix || "";
-        const duration = 1500;
-        const start = performance.now();
+        }
+      );
 
-        counter.textContent = `0${suffix}`;
+      categoryBar.appendChild(button);
 
-        function tick(now) {
-          const progress = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          const value = Math.floor(target * eased);
+    }
+  );
 
-          counter.textContent = `${value}${suffix}`;
+}
 
-          if (progress < 1) {
-            requestAnimationFrame(tick);
-          } else {
-            counter.textContent = `${target}${suffix}`;
-          }
+
+/* =========================================================
+   ALL VIDEOS
+========================================================= */
+
+function getSelectedVideos(){
+
+  if(
+    currentType === "long" &&
+    currentCategory === "long-all"
+  ){
+
+    return [
+
+      ...VIDEO_DATA.long["long-talking"].videos,
+
+      ...VIDEO_DATA.long["long-doc"].videos,
+
+      ...VIDEO_DATA.long["long-ad"].videos
+
+    ];
+
+  }
+
+  return VIDEO_DATA
+    [currentType]
+    [currentCategory]
+    .videos;
+
+}
+
+
+/* =========================================================
+   RENDER VIDEOS
+========================================================= */
+
+function renderVideos(){
+
+  const category =
+    VIDEO_DATA[currentType][currentCategory];
+
+  selectedTitle.textContent =
+    category.title;
+
+  selectedDescription.textContent =
+    category.description;
+
+  const videos =
+    getSelectedVideos();
+
+  videoCount.textContent =
+    `${videos.length} ${
+      videos.length === 1
+      ? "VIDEO"
+      : "VIDEOS"
+    }`;
+
+  videoGrid.innerHTML = "";
+
+
+  if(!videos.length){
+
+    videoGrid.innerHTML = `
+
+      <div class="no-videos">
+
+        <div>
+
+          <strong>
+            WORK WILL APPEAR HERE
+          </strong>
+
+          <span>
+            ${category.title} portfolio videos
+          </span>
+
+        </div>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  videos.forEach(
+    (video,index) => {
+
+      const item =
+        document.createElement("article");
+
+      item.className =
+        "video-item";
+
+      item.innerHTML = `
+
+        <div class="video-shell">
+
+          <video
+            controls
+            playsinline
+            preload="metadata"
+            src="${video.url}">
+          </video>
+
+        </div>
+
+        <div class="video-meta">
+
+          <div class="index mono">
+            ${String(index + 1).padStart(2,"0")}
+            / ${category.title}
+          </div>
+
+          <h4>
+            ${video.title || "Selected Edit"}
+          </h4>
+
+          <p>
+            ${video.subtitle || "Video editing portfolio"}
+          </p>
+
+        </div>
+
+      `;
+
+      videoGrid.appendChild(item);
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   LONG / SHORT SWITCH
+========================================================= */
+
+document
+  .querySelectorAll(".type-btn")
+  .forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        document
+          .querySelectorAll(".type-btn")
+          .forEach(btn =>
+            btn.classList.remove("active")
+          );
+
+        button.classList.add("active");
+
+        currentType =
+          button.dataset.type;
+
+
+        if(currentType === "long"){
+
+          currentCategory =
+            "long-all";
+
+        }else{
+
+          currentCategory =
+            "short-talking";
+
         }
 
-        requestAnimationFrame(tick);
+        renderCategories();
+
+        renderVideos();
+
+      }
+    );
+
+  });
+
+
+/* =========================================================
+   ZERO → TARGET COUNTER
+
+   EXACT:
+   0 → 4
+   0 → 500
+   0 → 30
+========================================================= */
+
+function animateCounters(){
+
+  document
+    .querySelectorAll(".count-number")
+    .forEach(counter => {
+
+      const target =
+        Number(counter.dataset.target);
+
+      const suffix =
+        counter.dataset.suffix || "";
+
+      const duration =
+        1500;
+
+      const start =
+        performance.now();
+
+
+      counter.textContent =
+        "0";
+
+
+      function tick(now){
+
+        const progress =
+          Math.min(
+            (now - start) / duration,
+            1
+          );
+
+        const eased =
+          1 - Math.pow(
+            1 - progress,
+            3
+          );
+
+        const value =
+          Math.floor(
+            target * eased
+          );
+
+
+        counter.textContent =
+          `${value}${suffix}`;
+
+
+        if(progress < 1){
+
+          requestAnimationFrame(tick);
+
+        }else{
+
+          counter.textContent =
+            `${target}${suffix}`;
+
+        }
+
+      }
+
+      requestAnimationFrame(tick);
+
+    });
+
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const observer =
+  new IntersectionObserver(
+    entries => {
+
+      entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+          entry.target
+            .classList
+            .add("visible");
+
+          observer
+            .unobserve(entry.target);
+
+        }
+
       });
-    }'''
-    html = html[:old.start()] + counter_fn + html[old.end():]
 
-out.write_text(html, encoding="utf-8")
+    },
+    {
+      threshold:.12,
+      rootMargin:"0px 0px -40px 0px"
+    }
+  );
 
-print(f"Created: {out}")
-print(f"Size: {out.stat().st_size:,} bytes")
-print("Changes verified:")
-print("✓ Right-side hero photo/frame removed")
-print("✓ Experience counter: 0 → 4")
-print("✓ Videos counter: 0 → 500")
-print("✓ Clients counter: 0 → 30")
-print("✓ Compact software cards")
-print("✓ Shorter final CTA")
-print("✓ Contact row shows only clickable logos")
-print("✓ WhatsApp remains green")
+
+document
+  .querySelectorAll(".reveal")
+  .forEach(element =>
+    observer.observe(element)
+  );
+
+
+/* =========================================================
+   CURSOR PURPLE GLOW
+========================================================= */
+
+const glow =
+  document.getElementById("cursorGlow");
+
+window.addEventListener(
+  "pointermove",
+  event => {
+
+    glow.style.left =
+      `${event.clientX}px`;
+
+    glow.style.top =
+      `${event.clientY}px`;
+
+  }
+);
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+renderCategories();
+
+renderVideos();
+
+animateCounters();
+
+</script>
+
+</body>
+</html>

@@ -22,6 +22,106 @@
 
   <style>
 
+  /* tumhari existing CSS */
+  
+  /* tumhari existing CSS */
+  
+  /* tumhari existing CSS */
+
+
+  /* PERSONAL WEBSITE CARD — START */
+
+  .website-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    margin-top: 28px;
+    padding: 16px 18px;
+    border: 1px solid var(--line);
+    background: linear-gradient(
+      135deg,
+      rgba(151, 71, 255, 0.08),
+      rgba(8, 8, 12, 0.72)
+    );
+    text-decoration: none;
+    overflow: hidden;
+    transition:
+      transform 0.35s var(--ease),
+      border-color 0.3s ease,
+      background 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .website-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(151, 71, 255, 0.45);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  }
+
+  .website-card-icon {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(151, 71, 255, 0.4);
+    border-radius: 7px;
+    color: var(--brand-2);
+    background: rgba(151, 71, 255, 0.08);
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  .website-card-content {
+    min-width: 0;
+  }
+
+  .website-kicker {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--brand-2);
+    font-size: 8px;
+    letter-spacing: 0.14em;
+  }
+
+  .website-card-content strong {
+    display: block;
+    color: #f1eef5;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+  }
+
+  .website-card-content p {
+    margin: 5px 0 0;
+    color: #625d69;
+    font-size: 9px;
+    line-height: 1.5;
+  }
+
+  .website-card-arrow {
+    color: #625d69;
+    font-size: 17px;
+  }
+
+  .website-card:hover .website-card-arrow {
+    color: var(--brand-2);
+  }
+
+  @media (max-width: 600px) {
+    .website-card {
+      grid-template-columns: 42px 1fr auto;
+      padding: 14px;
+    }
+  }
+
+  /* PERSONAL WEBSITE CARD — END */
+
+</style>
+
+  <style>
+
     :root {
       --bg: #050507;
       --bg-soft: #09090d;
@@ -2407,6 +2507,23 @@
 
 
       </div>
+
+      <a
+  class="website-card"
+  href="https://keshuparmar.framer.website/"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <div class="website-card-icon">↗</div>
+
+  <div class="website-card-content">
+    <span class="mono website-kicker">MY WEBSITE</span>
+    <strong>VISIT KESHU PARMAR</strong>
+    <p>Explore my website, profile and creative work.</p>
+  </div>
+
+  <span class="website-card-arrow">↗</span>
+</a>
 
     </section>
 

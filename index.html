@@ -12,7 +12,7 @@ if m and 'class="hero-frame"' in m.group(0):
     html = html[:m.start()] + "\n" + html[m.end():]
 
 # Hero now uses the full width, without changing the left-side content.
-html = html.replace(
+html = html.replace( 
     'grid-template-columns: 1.1fr .9fr;\n      gap: 50px;',
     'grid-template-columns: 1fr;\n      gap: 0;'
 )

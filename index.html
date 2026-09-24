@@ -1165,7 +1165,53 @@
       font-size: 8px;
     }
 
+/* =========================================================
+   CLIENT TESTIMONIALS
+========================================================= */
 
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.testimonial-card {
+  overflow: hidden;
+  background: #09090d;
+  border: 1px solid var(--line);
+  transition:
+    transform .45s var(--ease),
+    border-color .35s ease,
+    box-shadow .35s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(151,71,255,.32);
+  box-shadow: 0 25px 70px rgba(0,0,0,.4);
+}
+
+.testimonial-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  overflow: hidden;
+}
+
+.testimonial-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background: #000;
+}
+
+@media (max-width: 620px) {
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</section>
     /* =========================================================
        TOOLS
     ========================================================= */
@@ -2343,7 +2389,78 @@
           <span>USE.</span>
         </h2>
       </div>
+<!-- =====================================================
+     CLIENT TESTIMONIALS
+===================================================== -->
 
+<section
+  class="section testimonials"
+  id="testimonials">
+
+  <div class="wrap">
+
+    <div class="section-head reveal">
+
+      <div>
+
+        <div class="kicker mono">
+          02 / CLIENT TESTIMONIALS
+        </div>
+
+        <h2 class="section-title">
+          WHAT CLIENTS
+          <span>SAY.</span>
+        </h2>
+
+      </div>
+
+      <p class="section-copy">
+        Real feedback from clients I've worked with.
+      </p>
+
+    </div>
+
+    <div class="testimonial-grid reveal">
+
+      <div class="testimonial-card">
+
+        <div class="testimonial-video">
+
+          <video
+            controls
+            playsinline
+            preload="metadata"
+            poster="THUMBNAIL_URL"
+            src="VIDEO_URL">
+          </video>
+
+        </div>
+
+      </div>
+
+
+      <div class="testimonial-card">
+
+        <div class="testimonial-video">
+
+          <video
+            controls
+            playsinline
+            preload="metadata"
+            poster="THUMBNAIL_URL"
+            src="VIDEO_URL">
+          </video>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+      
       <p class="section-copy">
         Professional software and AI tools used
         throughout my editing workflow.

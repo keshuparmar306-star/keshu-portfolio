@@ -796,7 +796,13 @@
     }
 
 
-    .intro-card::after {
+    .intro-card::after { .intro-card video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  background: #000;
+}
       content: "";
 
       position: absolute;
@@ -2270,19 +2276,15 @@
       <div class="wrap intro-grid reveal">
 
 
-        <!-- INTRO VIDEO PLACEHOLDER -->
-
-        <div class="intro-card">
-
-          <div class="intro-placeholder">
-
-            <span class="mono">
-              INTRODUCTION VIDEO
-            </span>
-
-          </div>
-
-        </div>
+<!-- INTRO VIDEO -->
+<div class="intro-card">
+  <video
+    controls
+    playsinline
+    preload="metadata"
+    src="https://res.cloudinary.com/sle2ecwx/video/upload/v1792666356/Keshu_Final_100_mb.mp4">
+  </video>
+</div>
 
 
         <!-- COUNTERS -->

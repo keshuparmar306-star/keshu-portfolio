@@ -2277,13 +2277,14 @@
 
 
 <div class="intro-card">
-  <video
-    controls
-    playsinline
-    preload="metadata"
-    poster="https://res.cloudinary.com/sle2ecwx/image/upload/v1792826385/final.png"
-    src="https://res.cloudinary.com/sle2ecwx/video/upload/v1792666356/Keshu_Final_100_mb.mp4">
-  </video>
+ <video
+  controls
+  controlsList="nodownload"
+  playsinline
+  preload="metadata"
+  poster="https://res.cloudinary.com/sle2ecwx/image/upload/v1792826385/final.png"
+  src="https://res.cloudinary.com/sle2ecwx/video/upload/v1792666356/Keshu_Final_100_mb.mp4">
+</video>
 </div>
 
 
@@ -2516,7 +2517,7 @@
   <!-- VIDEO 1 -->
   <div class="testimonial-card">
     <div class="testimonial-video">
-      <video controls playsinline preload="metadata"
+     <video controls controlsList="nodownload" playsinline preload="metadata"
         src="https://res.cloudinary.com/sle2ecwx/video/upload/v1791623348/Black_1.mp4">
       </video>
     </div>
@@ -2525,7 +2526,7 @@
   <!-- VIDEO 2 -->
   <div class="testimonial-card">
     <div class="testimonial-video">
-      <video controls playsinline preload="metadata"
+      <video controls controlsList="nodownload" playsinline preload="metadata"
         src="https://res.cloudinary.com/sle2ecwx/video/upload/v1791623358/Black_3.mp4">
       </video>
     </div>
@@ -2534,7 +2535,7 @@
   <!-- VIDEO 3 -->
   <div class="testimonial-card">
     <div class="testimonial-video">
-      <video controls playsinline preload="metadata"
+     <video controls controlsList="nodownload" playsinline preload="metadata"
         src="https://res.cloudinary.com/sle2ecwx/video/upload/v1791623350/Black_2.mp4">
       </video>
     </div>
@@ -3584,8 +3585,9 @@ videos: [
 
             <div class="video-shell ${currentType === "short" ? "reel" : ""}">
 
-             <video
+ <video
   controls
+  controlsList="nodownload"
   playsinline
   preload="metadata"
   poster="${video.poster || ''}"
